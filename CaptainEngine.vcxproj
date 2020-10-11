@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{e8325dd9-686c-4a50-beb3-18bafdc288f3}</ProjectGuid>
+    <RootNamespace>CaptainEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source\libraries\imgui;$(SolutionDir)source\libraries\sfml\include;$(SolutionDir)source\libraries;$(SolutionDir)source</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(SolutionDir)source\libraries\imgui;$(SolutionDir)source\libraries\sfml\include;$(SolutionDir)source\libraries;$(SolutionDir)source</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)source\libraries\imgui;$(SolutionDir)source\libraries\sfml\include;$(SolutionDir)source\libraries;$(SolutionDir)source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-audio.lib;sfml-main.lib;sfml-network.lib;sfml-window.lib;sfml-system.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)source\libraries\sfml\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)source\libraries\imgui;$(SolutionDir)source\libraries\sfml\include;$(SolutionDir)source\libraries;$(SolutionDir)source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>Default</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-audio.lib;sfml-main.lib;sfml-network.lib;sfml-window.lib;sfml-system.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)source\libraries\sfml\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\core\resource_manager.cpp" />
+    <ClCompile Include="source\core\core.cpp" />
+    <ClCompile Include="source\core\entity.cpp" />
+    <ClCompile Include="source\core\gui.cpp" />
+    <ClCompile Include="source\core\level.cpp" />
+    <ClCompile Include="source\core\script.cpp" />
+    <ClCompile Include="source\core\types.cpp" />
+    <ClCompile Include="source\libraries\imgui\imgui-SFML.cpp" />
+    <ClCompile Include="source\libraries\imgui\imgui.cpp" />
+    <ClCompile Include="source\libraries\imgui\imgui_demo.cpp" />
+    <ClCompile Include="source\libraries\imgui\imgui_draw.cpp" />
+    <ClCompile Include="source\libraries\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="source\loaders\levelloader.cpp" />
+    <ClCompile Include="source\loaders\TiledLoaderCSV.cpp" />
+    <ClCompile Include="source\libraries\lua\lapi.c" />
+    <ClCompile Include="source\libraries\lua\lauxlib.c" />
+    <ClCompile Include="source\libraries\lua\lbaselib.c" />
+    <ClCompile Include="source\libraries\lua\lcode.c" />
+    <ClCompile Include="source\libraries\lua\lcorolib.c" />
+    <ClCompile Include="source\libraries\lua\lctype.c" />
+    <ClCompile Include="source\libraries\lua\ldblib.c" />
+    <ClCompile Include="source\libraries\lua\ldebug.c" />
+    <ClCompile Include="source\libraries\lua\ldo.c" />
+    <ClCompile Include="source\libraries\lua\ldump.c" />
+    <ClCompile Include="source\libraries\lua\lfunc.c" />
+    <ClCompile Include="source\libraries\lua\lgc.c" />
+    <ClCompile Include="source\libraries\lua\linit.c" />
+    <ClCompile Include="source\libraries\lua\liolib.c" />
+    <ClCompile Include="source\libraries\lua\llex.c" />
+    <ClCompile Include="source\libraries\lua\lmathlib.c" />
+    <ClCompile Include="source\libraries\lua\lmem.c" />
+    <ClCompile Include="source\libraries\lua\loadlib.c" />
+    <ClCompile Include="source\libraries\lua\lobject.c" />
+    <ClCompile Include="source\libraries\lua\lopcodes.c" />
+    <ClCompile Include="source\libraries\lua\loslib.c" />
+    <ClCompile Include="source\libraries\lua\lparser.c" />
+    <ClCompile Include="source\libraries\lua\lstate.c" />
+    <ClCompile Include="source\libraries\lua\lstring.c" />
+    <ClCompile Include="source\libraries\lua\lstrlib.c" />
+    <ClCompile Include="source\libraries\lua\ltable.c" />
+    <ClCompile Include="source\libraries\lua\ltablib.c" />
+    <ClCompile Include="source\libraries\lua\ltm.c" />
+    <ClCompile Include="source\libraries\lua\lua.c" />
+    <ClCompile Include="source\libraries\lua\luac.c" />
+    <ClCompile Include="source\libraries\lua\lundump.c" />
+    <ClCompile Include="source\libraries\lua\lutf8lib.c" />
+    <ClCompile Include="source\libraries\lua\lvm.c" />
+    <ClCompile Include="source\libraries\lua\lzio.c" />
+    <ClCompile Include="source\libraries\tinyxml2\tinyxml2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\core\resource_manager.h" />
+    <ClInclude Include="source\core\core.h" />
+    <ClInclude Include="source\core\entity.h" />
+    <ClInclude Include="source\core\gui.h" />
+    <ClInclude Include="source\core\constants.h" />
+    <ClInclude Include="source\core\level.h" />
+    <ClInclude Include="source\core\script.h" />
+    <ClInclude Include="source\core\types.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\config\ftconfig.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\config\ftheader.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\config\ftmodule.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\config\ftoption.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\config\ftstdlib.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\freetype.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftadvanc.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftbbox.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftbdf.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftbitmap.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftbzip2.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftcache.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftchapters.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftcid.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftcolor.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftdriver.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\fterrdef.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\fterrors.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftfntfmt.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftgasp.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftglyph.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftgxval.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftgzip.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftimage.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftincrem.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftlcdfil.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftlist.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftlzw.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftmac.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftmm.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftmodapi.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftmoderr.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftotval.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftoutln.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftparams.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftpfr.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftrender.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftsizes.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftsnames.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftstroke.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftsynth.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftsystem.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\fttrigon.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\fttypes.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ftwinfnt.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\autohint.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\cffotypes.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\cfftypes.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftcalc.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftdebug.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftdrv.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftgloadr.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\fthash.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftmemory.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftobjs.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftpsprop.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftrfork.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftserv.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftstream.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\fttrace.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\ftvalid.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\internal.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\psaux.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\pshints.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svbdf.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svcfftl.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svcid.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svfntfmt.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svgldict.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svgxval.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svkern.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svmetric.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svmm.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svotval.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svpfr.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svpostnm.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svprop.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svpscmap.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svpsinfo.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svsfnt.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svttcmap.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svtteng.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svttglyf.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\services\svwinfnt.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\sfnt.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\t1types.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\tttypes.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\internal\wofftypes.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\t1tables.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\ttnameid.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\tttables.h" />
+    <ClInclude Include="source\libraries\freetype\freetype\tttags.h" />
+    <ClInclude Include="source\libraries\freetype\ft2build.h" />
+    <ClInclude Include="source\libraries\gui.hpp" />
+    <ClInclude Include="source\libraries\imgui\imconfig-SFML.h" />
+    <ClInclude Include="source\libraries\imgui\imconfig.h" />
+    <ClInclude Include="source\libraries\imgui\imgui-SFML.h" />
+    <ClInclude Include="source\libraries\imgui\imgui-SFML_export.h" />
+    <ClInclude Include="source\libraries\imgui\imgui.h" />
+    <ClInclude Include="source\libraries\imgui\imgui_internal.h" />
+    <ClInclude Include="source\libraries\imgui\imstb_rectpack.h" />
+    <ClInclude Include="source\libraries\imgui\imstb_textedit.h" />
+    <ClInclude Include="source\libraries\imgui\imstb_truetype.h" />
+    <ClInclude Include="source\libraries\lua.hpp" />
+    <ClInclude Include="source\libraries\sfml.hpp" />
+    <ClInclude Include="source\libraries\std.hpp" />
+    <ClInclude Include="source\libraries\xml.hpp" />
+    <ClInclude Include="source\loaders\levelloader.h" />
+    <ClInclude Include="source\loaders\TiledLoaderCSV.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\CFunctions.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\ClassInfo.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\Config.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\Constructor.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\dump.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\FuncTraits.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\Iterator.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\LuaException.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\LuaHelpers.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\LuaRef.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\Namespace.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\Security.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\Stack.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\TypeList.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\TypeTraits.h" />
+    <ClInclude Include="source\libraries\luabridge\detail\Userdata.h" />
+    <ClInclude Include="source\libraries\luabridge\List.h" />
+    <ClInclude Include="source\libraries\luabridge\LuaBridge.h" />
+    <ClInclude Include="source\libraries\luabridge\Map.h" />
+    <ClInclude Include="source\libraries\luabridge\RefCountedObject.h" />
+    <ClInclude Include="source\libraries\luabridge\RefCountedPtr.h" />
+    <ClInclude Include="source\libraries\luabridge\UnorderedMap.h" />
+    <ClInclude Include="source\libraries\luabridge\Vector.h" />
+    <ClInclude Include="source\libraries\lua\lapi.h" />
+    <ClInclude Include="source\libraries\lua\lauxlib.h" />
+    <ClInclude Include="source\libraries\lua\lcode.h" />
+    <ClInclude Include="source\libraries\lua\lctype.h" />
+    <ClInclude Include="source\libraries\lua\ldebug.h" />
+    <ClInclude Include="source\libraries\lua\ldo.h" />
+    <ClInclude Include="source\libraries\lua\lfunc.h" />
+    <ClInclude Include="source\libraries\lua\lgc.h" />
+    <ClInclude Include="source\libraries\lua\ljumptab.h" />
+    <ClInclude Include="source\libraries\lua\llex.h" />
+    <ClInclude Include="source\libraries\lua\llimits.h" />
+    <ClInclude Include="source\libraries\lua\lmem.h" />
+    <ClInclude Include="source\libraries\lua\lobject.h" />
+    <ClInclude Include="source\libraries\lua\lopcodes.h" />
+    <ClInclude Include="source\libraries\lua\lopnames.h" />
+    <ClInclude Include="source\libraries\lua\lparser.h" />
+    <ClInclude Include="source\libraries\lua\lprefix.h" />
+    <ClInclude Include="source\libraries\lua\lstate.h" />
+    <ClInclude Include="source\libraries\lua\lstring.h" />
+    <ClInclude Include="source\libraries\lua\ltable.h" />
+    <ClInclude Include="source\libraries\lua\ltm.h" />
+    <ClInclude Include="source\libraries\lua\lua.h" />
+    <ClInclude Include="source\libraries\lua\lua.hpp" />
+    <ClInclude Include="source\libraries\lua\luaconf.h" />
+    <ClInclude Include="source\libraries\lua\lualib.h" />
+    <ClInclude Include="source\libraries\lua\lundump.h" />
+    <ClInclude Include="source\libraries\lua\lvm.h" />
+    <ClInclude Include="source\libraries\lua\lzio.h" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\AlResource.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\Export.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\InputSoundFile.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\Listener.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\Music.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\OutputSoundFile.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\Sound.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundBuffer.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundBufferRecorder.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundFileFactory.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundFileReader.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundFileWriter.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundRecorder.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundSource.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Audio\SoundStream.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Config.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\GpuPreference.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\BlendMode.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\CircleShape.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Color.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\ConvexShape.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Drawable.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Export.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Font.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Glsl.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Glyph.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Image.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\PrimitiveType.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Rect.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\RectangleShape.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\RenderStates.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\RenderTarget.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\RenderTexture.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\RenderWindow.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Shader.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Shape.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Sprite.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Text.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Texture.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Transform.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Transformable.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\Vertex.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\VertexArray.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\VertexBuffer.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Graphics\View.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Main.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\Export.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\Ftp.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\Http.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\IpAddress.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\Packet.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\Socket.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\SocketHandle.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\SocketSelector.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\TcpListener.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\TcpSocket.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Network\UdpSocket.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\OpenGL.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Clock.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Err.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Export.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\FileInputStream.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\InputStream.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Lock.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\MemoryInputStream.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Mutex.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\NativeActivity.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\NonCopyable.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Sleep.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\String.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Thread.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\ThreadLocal.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\ThreadLocalPtr.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Time.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Utf.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Vector2.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\System\Vector3.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Clipboard.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Context.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\ContextSettings.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Cursor.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Event.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Export.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\GlResource.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Joystick.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Keyboard.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Mouse.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Sensor.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Touch.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\VideoMode.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\Window.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\WindowHandle.hpp" />
+    <ClInclude Include="source\libraries\sfml\include\SFML\Window\WindowStyle.hpp" />
+    <ClInclude Include="source\libraries\tinyxml2\tinyxml2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gamedata\scripts\main.lua" />
+    <None Include="source\libraries\sfml\include\SFML\Audio\SoundFileFactory.inl" />
+    <None Include="source\libraries\sfml\include\SFML\Graphics\Glsl.inl" />
+    <None Include="source\libraries\sfml\include\SFML\Graphics\Rect.inl" />
+    <None Include="source\libraries\sfml\include\SFML\System\String.inl" />
+    <None Include="source\libraries\sfml\include\SFML\System\Thread.inl" />
+    <None Include="source\libraries\sfml\include\SFML\System\ThreadLocalPtr.inl" />
+    <None Include="source\libraries\sfml\include\SFML\System\Utf.inl" />
+    <None Include="source\libraries\sfml\include\SFML\System\Vector2.inl" />
+    <None Include="source\libraries\sfml\include\SFML\System\Vector3.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
