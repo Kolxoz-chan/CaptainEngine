@@ -1,5 +1,4 @@
 #include <loaders\TiledLoaderCSV.h>
-#include <core\core.h>
 
 TiledLoaderCSV::TiledLoaderCSV()
 {
@@ -15,7 +14,7 @@ cap::Texture* TiledLoaderCSV::getTexture(int index)
 	return nullptr;
 }
 
-Level* TiledLoaderCSV::load(const string& name)
+Level* TiledLoaderCSV::loadLevel(const string& name)
 {
 	// Загрузка тайлмапа
 	string path = name + ".tmx";

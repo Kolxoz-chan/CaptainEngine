@@ -29,6 +29,9 @@ namespace cap
 
 		Point(double x = 0.0, double y = 0.0);
 
+		operator Vector2f();
+		operator Vector2i();
+		operator Vector2u();
 	};
 
 	// Прямоугольник

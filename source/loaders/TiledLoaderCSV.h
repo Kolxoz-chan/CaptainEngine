@@ -1,14 +1,13 @@
 #pragma once
-#include <loaders\levelloader.h>
+#include <core/resource_manager.h>
+#include <core/types.h>
 
-#include <core\types.h>
-
-#include <libraries\xml.hpp>
-#include <libraries\std.hpp>
+#include <libraries/xml.hpp>
+#include <libraries/std.hpp>
 
 using namespace cap;
 
-class TiledLoaderCSV : public LevelLoader
+class TiledLoaderCSV : public LevelManager
 {
 private:
 	int tilewidth, tileheight;
@@ -28,6 +27,6 @@ public:
 	TiledLoaderCSV();
 	~TiledLoaderCSV() = default;
 
-	Level* load(const string& name);
+	Level* loadLevel(const string& name);
 	Tilesets loadTilesets(const string& name);
 };

@@ -1,10 +1,14 @@
 function Core:onSetup()
-	--local level = Core:loadLevel("test", "TILED_CSV_LOADER")
-	--Core:loadLevel("test", "TILED_CSV_LOADER")
+	-- Settings --
+	Core.setProperty("fps", 60)
+
 end
 
 function Core:onClose()
 
-	print("Good buy!")
 	return true
+end
+
+function Core:onUpdate()
+	print(Core.deltaTime)
 end

@@ -32,4 +32,10 @@ namespace cap
 	{
 		properties.set(key, value);
 	}
+
+	// -------------- Level Manager ------------------------------- //
+	void LevelManager::setRequired(const RequiredResources& resources)
+	{
+		m_required = resources;
+	}
 }

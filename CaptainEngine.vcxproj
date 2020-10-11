@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\core\resource.cpp" />
     <ClCompile Include="source\core\resource_manager.cpp" />
     <ClCompile Include="source\core\core.cpp" />
     <ClCompile Include="source\core\entity.cpp" />
@@ -163,7 +164,6 @@
     <ClCompile Include="source\libraries\imgui\imgui_demo.cpp" />
     <ClCompile Include="source\libraries\imgui\imgui_draw.cpp" />
     <ClCompile Include="source\libraries\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="source\loaders\levelloader.cpp" />
     <ClCompile Include="source\loaders\TiledLoaderCSV.cpp" />
     <ClCompile Include="source\libraries\lua\lapi.c" />
     <ClCompile Include="source\libraries\lua\lauxlib.c" />
@@ -202,6 +202,7 @@
     <ClCompile Include="source\libraries\tinyxml2\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\core\resource.h" />
     <ClInclude Include="source\core\resource_manager.h" />
     <ClInclude Include="source\core\core.h" />
     <ClInclude Include="source\core\entity.h" />
@@ -317,7 +318,6 @@
     <ClInclude Include="source\libraries\sfml.hpp" />
     <ClInclude Include="source\libraries\std.hpp" />
     <ClInclude Include="source\libraries\xml.hpp" />
-    <ClInclude Include="source\loaders\levelloader.h" />
     <ClInclude Include="source\loaders\TiledLoaderCSV.h" />
     <ClInclude Include="source\libraries\luabridge\detail\CFunctions.h" />
     <ClInclude Include="source\libraries\luabridge\detail\ClassInfo.h" />

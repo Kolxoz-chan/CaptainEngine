@@ -3,17 +3,21 @@ namespace cap
 {
 	RenderWindow*	Core::window;
 	Clock			Core::clock;
-	float			Core::deltaTime;
+	Time			Core::time;
+	float			Core::deltaTime = 0.0;
 	View*			Core::camera;
 	Event			Core::event;
+
 	LuaMap			Core::properties;
 	LvlLoaders		Core::lvl_loaders;
 	Tilesets		Core::tilesets;
 	Levels			Core::levels;
+	Forms           Core::forms;
+	GUIStack        Core::stack_gui;
+
     LuaRef          Core::onSetup = 0;
     LuaRef          Core::onClose = 0;
-    Forms           Core::forms;
-    GUIStack        Core::stack_gui;
+	LuaRef			Core::onUpdate = 0;
 
 	void Core::init(int width, int height, const string& title)
 	{
@@ -23,8 +27,10 @@ namespace cap
         // Data init
 		window = new RenderWindow(VideoMode(width, height), title);
 		camera = nullptr;
+
         onSetup = Script::newRef();
         onClose = Script::newRef();
+		onUpdate = Script::newRef();
 
         // GUI init
 		ImGui::SFML::Init(*window);
@@ -60,7 +66,7 @@ namespace cap
 		lvl_loaders["TILED_CSV_LOADER"] = new TiledLoaderCSV();
 	}
 
-	void Core::setProperty(string name, LuaRef value)
+	void Core::setProperty(const string& name, LuaRef value)
 	{
 		if (name == "fps")
 		{
@@ -70,10 +76,10 @@ namespace cap
 		{
 			window->setSize(value.cast<Point>());
 		}
-		properties.set(name, value);
+		//properties.set(name, value);
 	}
 
-	LuaRef Core::getProperty(string name)
+	LuaRef Core::getProperty(const string& name)
 	{
 		return properties.get(name);
 	}
@@ -100,7 +106,7 @@ namespace cap
 				if (onClose.isFunction())
 				{
 					LuaRef result = onClose();
-					if (result.isNil() || result == true) window->close();;
+					if (result.isNil() || result == true) window->close();
 				}
 				else window->close();
             }
@@ -111,6 +117,10 @@ namespace cap
 	{
 		while (window->isOpen())
 		{
+			// Time reset
+			time = clock.restart();
+			deltaTime = time.asSeconds();
+
 			eventProcessing();
 			update();	
 			draw();
@@ -120,7 +130,8 @@ namespace cap
 
 	void Core::update()
 	{
-		ImGui::SFML::Update(*window, clock.restart());
+		ImGui::SFML::Update(*window, time);
+		if (onUpdate.isFunction()) onUpdate();
 	}
 
 	void Core::draw()
@@ -174,34 +185,37 @@ namespace cap
     {
         Script::global()
 
-                // ------- Class Core ----------------------------------------------- //
-                .beginClass<Core>("Core")
-                .addStaticFunction("setProperty", &Core::setProperty)
-                .addStaticFunction("getProperty", &Core::getProperty)
+			// ------- Class Core ----------------------------------------------- //
+			.beginClass<Core>("Core")
+			.addStaticFunction("setProperty", &Core::setProperty)
+			.addStaticFunction("getProperty", &Core::getProperty)
 
-                .addStaticProperty("onSetup", &Core::onSetup)
-                .addStaticProperty("onClose", &Core::onClose)
+			.addStaticProperty("onSetup", &Core::onSetup)
+			.addStaticProperty("onClose", &Core::onClose)
+			.addStaticProperty("onUpdate", &Core::onUpdate)
 
-                //.addStaticFunction("loadLevel", &Core::loadLevel)
-                .endClass()
+			.addStaticProperty("deltaTime", &Core::deltaTime, false)
 
-                // ------- Class Entity ----------------------------------------------- //
-                .beginClass<Entity>("Entity")
+			//.addStaticFunction("loadLevel", &Core::loadLevel)
+			.endClass()
 
-                .addFunction("update",		&Entity::update)
+			// ------- Class Entity ----------------------------------------------- //
+			.beginClass<Entity>("Entity")
 
-                .addFunction("addChild",	&Entity::addChild)
+			.addFunction("update",		&Entity::update)
 
-                .addFunction("setName",		&Entity::setName)
+			.addFunction("addChild",	&Entity::addChild)
 
-                .addFunction("getName",		&Entity::getName)
-                .addFunction("getType",		&Entity::getType)
-                .addFunction("getParent",	&Entity::getParent)
-                .addFunction("getChild",	&Entity::getChild)
-                .endClass()
+			.addFunction("setName",		&Entity::setName)
 
-                // ------- Class PointEntity ----------------------------------------------- //
-                .deriveClass<PointEntity, Entity>("PointEntity")
-                .endClass();
+			.addFunction("getName",		&Entity::getName)
+			.addFunction("getType",		&Entity::getType)
+			.addFunction("getParent",	&Entity::getParent)
+			.addFunction("getChild",	&Entity::getChild)
+			.endClass()
+
+			// ------- Class PointEntity ----------------------------------------------- //
+			.deriveClass<PointEntity, Entity>("PointEntity")
+			.endClass();
     }
 }

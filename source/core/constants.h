@@ -41,4 +41,10 @@ namespace cap
 		CAP_VALUE_RELATIVE,
 		CAP_VALUE_ABSOLUTE
 	};
+
+	// Resource types
+	enum
+	{
+		CAP_RESOURCE_TILESET
+	};
 }

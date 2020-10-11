@@ -43,6 +43,21 @@ namespace cap
 	Point::Point(double x, double y) 
 		: x(x), y(y) {}
 
+	Point::operator Vector2f()
+	{
+		return Vector2f(x, y);
+	}
+
+	Point::operator Vector2i()
+	{
+		return Vector2i(x, y);
+	}
+
+	Point::operator Vector2u()
+	{
+		return Vector2u(x, y);
+	}
+
 	// ------ Rect Class -------------------------------------//
 	Rect::Rect(double x, double y, double h, double w)
 		: x(x), y(y), width(w), height(h) {}

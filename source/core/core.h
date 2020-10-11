@@ -29,6 +29,7 @@ namespace cap
 		static RenderWindow* window;
 		static View* camera;
 		static Clock clock;
+		static Time time;
 		static float deltaTime;
 		static Event event;
         static GUIStack stack_gui;
@@ -36,6 +37,7 @@ namespace cap
         // Callbacks
         static LuaRef onSetup;
         static LuaRef onClose;
+		static LuaRef onUpdate;
 
 		// Data arrais
 		static LvlLoaders lvl_loaders;
@@ -50,8 +52,8 @@ namespace cap
 		static void startLoop();
 
 		// Методы
-		static void setProperty(string name, LuaRef value);
-		static LuaRef getProperty(string name);
+		static void setProperty(const string& name, LuaRef value);
+		static LuaRef getProperty(const string& name);
 		static Tileset getTilesets(const vector<string>& list);
 
 		// Загрузка ресурсов
