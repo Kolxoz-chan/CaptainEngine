@@ -1,8 +1,154 @@
-﻿  core.cpp
+﻿  main.cpp
   The contents of <filesystem> are available only with C++17 or later.
-  Создание кода
-  2 of 3657 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    17 functions had inline decision re-evaluated but remain unchanged
-  Создание кода завершено
-  CaptainEngine.vcxproj -> D:\Scripts\CaptainEngine\Release\CaptainEngine.exe
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,28): error C2065: Tileset: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2923: std::vector: "Tileset" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2976: std::vector: слишком мало аргументов шаблон
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : см. объявление "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C3646: tilesets: неизвестный спецификатор переопределения
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  resource.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,28): error C2065: Tileset: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2923: std::vector: "Tileset" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2976: std::vector: слишком мало аргументов шаблон
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : см. объявление "std::vector"
+  resource_manager.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,28): error C2065: Tileset: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2923: std::vector: "Tileset" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2976: std::vector: слишком мало аргументов шаблон
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : см. объявление "std::vector"
+  core.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,28): error C2065: Tileset: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2923: std::vector: "Tileset" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2976: std::vector: слишком мало аргументов шаблон
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : см. объявление "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C3646: tilesets: неизвестный спецификатор переопределения
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(13,18): error C2039: "tilesets": не является членом "cap::Core".
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(23): message : см. объявление "cap::Core"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(13,26): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(13,26): error C2146: синтаксическая ошибка: отсутствие ";" перед идентификатором "tilesets"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(153,19): error C2065: tilesets: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(153,4): error C3531: el: символ, тип которого содержит спецификатор 'auto' должен иметь инициализатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(153,17): error C2143: синтаксическая ошибка: отсутствие ";" перед ":"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(153,34): error C2143: синтаксическая ошибка: отсутствие ";" перед ")"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(155,13): error C2039: "push_back": не является членом "Tileset".
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(18): message : см. объявление "Tileset"
+  entity.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,28): error C2065: Tileset: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2923: std::vector: "Tileset" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2976: std::vector: слишком мало аргументов шаблон
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : см. объявление "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C3646: tilesets: неизвестный спецификатор переопределения
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+  gui.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+  level.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,28): error C2065: Tileset: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2923: std::vector: "Tileset" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2976: std::vector: слишком мало аргументов шаблон
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : см. объявление "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C3646: tilesets: неизвестный спецификатор переопределения
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.h(44,27): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\level.cpp(62,23): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\level.cpp(62,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\level.cpp(152,21): warning C4018: <: несоответствие типов со знаком и без знака
+  types.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(15,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(48,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(48,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(53,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(53,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(58,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(58,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(67,31): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(67,24): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(67,21): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(67,18): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(72,33): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(72,26): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(72,23): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(72,20): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+  TiledLoaderCSV.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,28): error C2065: Tileset: необъявленный идентификатор
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2923: std::vector: "Tileset" не является допустимым аргументом типа шаблон для параметра "_Ty"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(17,21): error C2976: std::vector: слишком мало аргументов шаблон
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : см. объявление "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(13,23): error C2039: "size": не является членом "Tileset".
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.h(18): message : см. объявление "Tileset"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(13,52): error C2676: бинарный "[": "Tileset" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(36,32): error C2653: Core: не является именем класса или пространства имен
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(36,21): error C3861: getTilesets: идентификатор не найден
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(274,1): error C2079: "TiledLoaderCSV::loadTilesets" использует не имеющую определения структуру class "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(277,22): error C2133: tilesets: неизвестный размер
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(277,14): error C2512: std::vector: нет подходящего конструктора по умолчанию
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413,1): message : см. объявление "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(289,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(294,39): error C2678: бинарный "[": не найден оператор, принимающий левый операнд типа "TilesetList" (или приемлемое преобразование отсутствует)
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(1507,27): message : может быть "const _Ty &std::vector<_Ty,_Alloc>::operator [](const allocator_traits<allocator_traits<_Alloc>::rebind_alloc<_Ty>>::size_type) noexcept const"
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(1497,21): message : или       "_Ty &std::vector<_Ty,_Alloc>::operator [](const allocator_traits<allocator_traits<_Alloc>::rebind_alloc<_Ty>>::size_type) noexcept"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(294,39): message : при попытке сопоставить список аргументов "(TilesetList, const char *)"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(299,17): error C2440: return: невозможно преобразовать "TilesetList" в "std::vector"
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(299,17): message : Создать class "std::vector" с помощью конструктора копий невозможно, так как конструкторы копий неоднозначны или отсутствуют

@@ -4,18 +4,18 @@
 #include <core/Level.h>
 #include <core/entity.h>
 #include <core/gui.h>
+#include <core/resource_manager.h>
 
 #include <libraries/std.hpp>
 #include <libraries/sfml.hpp>
 #include <libraries/lua.hpp>
 
-#include <loaders\levelloader.h>
 #include <loaders\TiledLoaderCSV.h>
 
 namespace cap
 {
     // Pseudotypes
-	using LvlLoaders =	map<string, LevelLoader*>;
+	using LvlLoaders =	map<string, ResourceManager*>;
 	using Levels =		map<string, Level*>;
     using Forms =       map<string, GUIForm*>;
     using GUIStack =    vector<GUIForm*>;

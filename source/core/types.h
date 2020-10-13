@@ -29,6 +29,10 @@ namespace cap
 
 		Point(double x = 0.0, double y = 0.0);
 
+		friend Point operator+ (const Point& left, const Point& right);
+		friend Point operator* (const Point& left, const Point& right);
+		friend Point operator* (const Point& left, float right);
+
 		operator Vector2f();
 		operator Vector2i();
 		operator Vector2u();
@@ -41,6 +45,7 @@ namespace cap
 		double x, y, width, height;
 
 		Rect(double x = 0.0, double y = 0.0, double h = 0.0, double w = 0.0);
+		Rect(Point pos , Point size);
 
 		operator IntRect();
 		operator FloatRect();
@@ -64,8 +69,6 @@ namespace cap
 		operator sf::Image();
 
 	};
-	using Tileset = vector<cap::Texture*>;
-	using Tilesets = map<string, Tileset>;
 
 	// Анимация 
 	class Animation : public Drawable

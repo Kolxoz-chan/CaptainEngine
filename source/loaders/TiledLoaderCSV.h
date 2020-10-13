@@ -28,5 +28,5 @@ public:
 	~TiledLoaderCSV() = default;
 
 	Level* loadLevel(const string& name);
-	Tilesets loadTilesets(const string& name);
+	TilesetList loadTilesets(const string& name);
 };

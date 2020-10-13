@@ -43,6 +43,21 @@ namespace cap
 	Point::Point(double x, double y) 
 		: x(x), y(y) {}
 
+	Point operator+ (const Point& left, const Point& right)
+	{
+		return Point(left.x + right.x, left.y + right.x);
+	}
+
+	Point operator* (const Point& left, const Point& right)
+	{
+		return Point(left.x * right.x, left.y * right.x);
+	}
+
+	Point operator* (const Point& left, float right)
+	{
+		return Point(left.x * right, left.y * right);
+	}
+
 	Point::operator Vector2f()
 	{
 		return Vector2f(x, y);
@@ -61,6 +76,9 @@ namespace cap
 	// ------ Rect Class -------------------------------------//
 	Rect::Rect(double x, double y, double h, double w)
 		: x(x), y(y), width(w), height(h) {}
+
+	Rect::Rect(Point pos, Point size) 
+		: x(pos.x), y(pos.y), width(size.x), height(size.y){}
 
 	Rect::operator IntRect()
 	{

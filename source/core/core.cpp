@@ -63,7 +63,7 @@ namespace cap
         Script::reset_log("Captain Engine log:");
 
         // Including plugins
-		lvl_loaders["TILED_CSV_LOADER"] = new TiledLoaderCSV();
+		//lvl_loaders["TILED_CSV_LOADER"] = new LevelManager();
 	}
 
 	void Core::setProperty(const string& name, LuaRef value)
@@ -160,24 +160,24 @@ namespace cap
 
 	Level* Core::loadLevel(string name, string loader_type)
 	{
-		LevelLoader* loader = lvl_loaders[loader_type];
+		/*LevelLoader* loader = lvl_loaders[loader_type];
 		if (loader)
 		{
 			levels[name] = loader->load(CAP_LEVELS_DIR + name);
 			return levels[name];
 		}
-		Script::print_log("Warning! Level loader '" + loader_type + "' is not found, level '" + name + "' is not loaded!");
+		Script::print_log("Warning! Level loader '" + loader_type + "' is not found, level '" + name + "' is not loaded!");*/
 		return nullptr;
 	}
 
 	LuaRef Core::loadTilesetForLevel(string name, string loader_type)
 	{
-		LevelLoader* loader = lvl_loaders[loader_type];
+		/*LevelLoader* loader = lvl_loaders[loader_type];
 		if (loader)
 		{
 			
 		}
-		Script::print_log("Warning! Level loader '" + loader_type + "' is not found, tilesets is not loaded!");
+		Script::print_log("Warning! Level loader '" + loader_type + "' is not found, tilesets is not loaded!");*/
 		return nullptr;
 	}
 

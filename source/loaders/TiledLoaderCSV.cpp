@@ -270,11 +270,11 @@ void TiledLoaderCSV::print_error(XMLDocument& doc, string path)
 	Script::print_log("Line: " + error_line);
 }
 
-Tilesets TiledLoaderCSV::loadTilesets(const string& name)
+TilesetList TiledLoaderCSV::loadTilesets(const string& name)
 {
 	// Загрузка тайлмапа
 	vector<string> titles;
-	Tilesets tilesets;
+	TilesetList tilesets;
 	string path = name + ".tmx";
 
 	// Получение списка тайлсетов
