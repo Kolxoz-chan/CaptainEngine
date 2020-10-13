@@ -15,7 +15,7 @@
 namespace cap
 {
     // Pseudotypes
-	using LvlLoaders =	map<string, ResourceManager*>;
+	using Managers =	map<string, ResourceManager*>;
 	using Levels =		map<string, Level*>;
     using Forms =       map<string, GUIForm*>;
     using GUIStack =    vector<GUIForm*>;
@@ -40,8 +40,8 @@ namespace cap
 		static LuaRef onUpdate;
 
 		// Data arrais
-		static LvlLoaders lvl_loaders;
-		static Tilesets tilesets;
+		static Managers managers;
+		static TilesetMap tilesets;
 		static Levels levels;
 		static LuaMap properties;
         static Forms forms;
@@ -54,11 +54,10 @@ namespace cap
 		// Методы
 		static void setProperty(const string& name, LuaRef value);
 		static LuaRef getProperty(const string& name);
-		static Tileset getTilesets(const vector<string>& list);
 
 		// Загрузка ресурсов
 		Level* loadLevel(string name, string loader_type);
-		LuaRef loadTilesetForLevel(string name, string loader_type);
+		Tileset* loadTilesetForLevel(string name, string loader_type);
 
 	private:
         static void initClasses();

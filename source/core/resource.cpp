@@ -4,32 +4,34 @@ namespace cap
 {
 	Sprite Tileset::getTile(int index)
 	{
-		
+		return m_tiles[index];
 	}
 
 	Sprite Tileset::getTile(Point coords)
 	{
-		Point pos = coords * tile_size + margin;
-		return Sprite(m_texrture, Rect(, tile_size));
+		return m_tiles[coords.y * m_tileset_size.x + coords.x - 1];;
 	}
 
-	void Tileset::setTexture(sf::Texture* texture)
+	void Tileset::subdivide(sf::Texture* texture, Point tileset_size, Point tile_size, int spacing, int margin)
 	{
 		m_texrture = texture;
-	}
+		m_tileset_size = tileset_size;
+		m_tile_size = tile_size;
+		m_margin = margin;
+		m_spacing = spacing;
 
-	void Tileset::setTileSize(Point size)
-	{
-		tile_size = size;
-	}
-
-	void Tileset::setTilesetSize(Point size)
-	{
-		tileset_size = size;
+		for (int y = 0; y < tileset_size.y; y++)
+		{
+			for (int x = 0; x < tileset_size.x; x++)
+			{
+				Point pos = Point(x, y) * (tile_size + margin) + spacing;
+				m_tiles.push_back(Sprite(*m_texrture, Rect(pos, tile_size)));
+			}
+		}
 	}
 
 	int Tileset::length()
 	{
-		return tileset_size.x * tileset_size.y;
+		return m_tiles.size();
 	}
 }

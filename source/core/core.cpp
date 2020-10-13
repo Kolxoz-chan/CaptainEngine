@@ -9,8 +9,8 @@ namespace cap
 	Event			Core::event;
 
 	LuaMap			Core::properties;
-	LvlLoaders		Core::lvl_loaders;
-	Tilesets		Core::tilesets;
+	Managers		Core::managers;
+	TilesetMap		Core::tilesets;
 	Levels			Core::levels;
 	Forms           Core::forms;
 	GUIStack        Core::stack_gui;
@@ -63,7 +63,7 @@ namespace cap
         Script::reset_log("Captain Engine log:");
 
         // Including plugins
-		//lvl_loaders["TILED_CSV_LOADER"] = new LevelManager();
+		managers["TILED_CSV_LOADER"] = new TiledLoaderCSV();
 	}
 
 	void Core::setProperty(const string& name, LuaRef value)
@@ -145,19 +145,6 @@ namespace cap
 		window->display();
 	}
 
-	Tileset Core::getTilesets(const vector<string>& list)
-	{
-		Tileset tileset;
-		for (auto title : list)
-		{
-			for (auto el : tilesets[title])
-			{
-				tileset.push_back(el);
-			}
-		}
-		return tileset;
-	}
-
 	Level* Core::loadLevel(string name, string loader_type)
 	{
 		/*LevelLoader* loader = lvl_loaders[loader_type];
@@ -170,7 +157,7 @@ namespace cap
 		return nullptr;
 	}
 
-	LuaRef Core::loadTilesetForLevel(string name, string loader_type)
+	Tileset Core::loadTilesetForLevel(string name, string loader_type)
 	{
 		/*LevelLoader* loader = lvl_loaders[loader_type];
 		if (loader)

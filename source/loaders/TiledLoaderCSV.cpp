@@ -1,57 +1,11 @@
 #include <loaders\TiledLoaderCSV.h>
 
-TiledLoaderCSV::TiledLoaderCSV()
+TiledLoaderCSV::TiledLoaderCSV(string level_name) : LevelManager(level_name)
 {
 	this->name = "Tiled CSV loader";
 	this->autor = "Kolxoz";
 	this->version = "1.0";
 	this->description = "This parser is designed to load maps created in Tiled 1.3.2 in CSV mode";
-}
-
-cap::Texture* TiledLoaderCSV::getTexture(int index)
-{
-	if (index < textures.size()) return textures[index];
-	return nullptr;
-}
-
-Level* TiledLoaderCSV::loadLevel(const string& name)
-{
-	// Загрузка тайлмапа
-	string path = name + ".tmx";
-	
-	XMLDocument doc;
-	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
-	{
-		XMLElement* map = doc.RootElement();
-		if (map)
-		{
-			Level* lvl = new Level(name);
-
-			tilewidth = atoi(map->Attribute("tilewidth"));
-			tileheight = atoi(map->Attribute("tileheight"));
-
-			// Перебор тайлсета
-			XMLElement* tileset = map->FirstChildElement("tileset");
-			vector<string> titles = getTitles(tileset);
-			textures = Core::getTilesets(titles);
-
-			// Считываем карту
-			XMLElement* elem = map->FirstChildElement();
-			while (elem)
-			{
-				string name = elem->Value();
-				if (name == "group") lvl->addContainer(loadGroupLayer(elem));
-				else if (name == "layer") lvl->addContainer(loadTileLayer(elem));
-				else if (name == "objectgroup") lvl->addContainer(loadObjectLayer(elem));
-				
-				elem = elem->NextSiblingElement();
-			}
-			return lvl;
-		}
-	}
-	else print_error(doc, path);
-
-	return nullptr;
 }
 
 TileLayer* TiledLoaderCSV::loadTileLayer(XMLElement* layer)
@@ -260,6 +214,68 @@ Tileset TiledLoaderCSV::loadTileset(XMLElement* tileset)
 	return Tileset(); // Заглушка
 }
 
+Level* TiledLoaderCSV::loadLevel()
+{
+	// Loading level file
+	string path = m_level_name + ".tmx";
+
+	XMLDocument doc;
+	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
+	{
+		XMLElement* map = doc.RootElement();
+		if (map)
+		{
+			Level* lvl = new Level(name);
+
+			tilewidth = atoi(map->Attribute("tilewidth"));
+			tileheight = atoi(map->Attribute("tileheight"));
+
+			// Считываем карту
+			XMLElement* elem = map->FirstChildElement();
+			while (elem)
+			{
+				string name = elem->Value();
+				if (name == "group") lvl->addContainer(loadGroupLayer(elem));
+				else if (name == "layer") lvl->addContainer(loadTileLayer(elem));
+				else if (name == "objectgroup") lvl->addContainer(loadObjectLayer(elem));
+
+				elem = elem->NextSiblingElement();
+			}
+			return lvl;
+		}
+	}
+	else print_error(doc, path);
+
+	return nullptr;
+}
+
+RequiredList TiledLoaderCSV::getRequired()
+{
+	RequiredList list;
+
+	// Loading level file
+	string path = m_level_name + ".tmx";
+
+	// Tileset paths loading
+	XMLDocument doc;
+	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
+	{
+		XMLElement* map = doc.RootElement();
+		if (map)
+		{
+			XMLElement* tileset = map->FirstChildElement("tileset");
+			while (tileset)
+			{
+				list.push_back({CAP_RESOURCE_TILESET, tileset->Attribute("source")});
+				tileset = tileset->NextSiblingElement("tileset");
+			}
+		}
+	}
+	else print_error(doc, path);
+
+	return list;
+}
+
 void TiledLoaderCSV::print_error(XMLDocument& doc, string path)
 {
 	string error_name = doc.ErrorName();
@@ -268,33 +284,4 @@ void TiledLoaderCSV::print_error(XMLDocument& doc, string path)
 	Script::print_log("Error! File '" + path + "' is not loaded! ");
 	Script::print_log("Reason: " + error_name);
 	Script::print_log("Line: " + error_line);
-}
-
-TilesetList TiledLoaderCSV::loadTilesets(const string& name)
-{
-	// Загрузка тайлмапа
-	vector<string> titles;
-	TilesetList tilesets;
-	string path = name + ".tmx";
-
-	// Получение списка тайлсетов
-	XMLDocument doc;
-	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
-	{
-		XMLElement* map = doc.RootElement();
-		if (map) titles = getTitles(map->FirstChildElement("tileset"));
-	}
-
-	// Загрузка тайлсетов
-	for (int i = 0; i < titles.size(); i++)
-	{
-		if (doc.LoadFile(titles[i].c_str()) == XML_SUCCESS)
-		{
-			XMLElement* tileset = doc.RootElement();
-			tilesets[tileset->Attribute("name")] = loadTileset(tileset);
-		}
-		else print_error(doc, path);
-	}
-
-	return tilesets;
 }

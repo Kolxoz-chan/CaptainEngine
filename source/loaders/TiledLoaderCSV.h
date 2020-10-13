@@ -18,15 +18,12 @@ private:
 	GroupLayer* loadGroupLayer(XMLElement* group);
 	Tileset loadTileset(XMLElement* tileset);
 
-	cap::Texture* getTexture(int index);
-	vector<string> getTitles(XMLElement* tileset);
-
 	void print_error(XMLDocument& elem, string path);
 
 public:
-	TiledLoaderCSV();
+	TiledLoaderCSV(string level_name = string());
 	~TiledLoaderCSV() = default;
 
-	Level* loadLevel(const string& name);
-	TilesetList loadTilesets(const string& name);
+	Level* loadLevel();
+	RequiredList getRequired();
 };

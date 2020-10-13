@@ -10,12 +10,13 @@ namespace cap
 	class Resource
 	{
 	protected:
-		int type;
+		int m_type;
+		string m_name;
 
 	public:
-		Resource();
+		Resource(int type, string name) : m_name(name), m_type(type) {};
 
-		int getType();
+		int getType() { return m_type; };
 	};
 
 	// --------------- Tileset Reource --------------------------- //
@@ -23,8 +24,8 @@ namespace cap
 	{
 	private:
 		sf::Texture* m_texrture = nullptr;
-		Point texture_size, tileset_size, tile_size, margin, spacing;
-		string name;
+		vector<sf::Sprite> m_tiles;
+		Point m_tileset_size, m_tile_size, m_margin, m_spacing;
 
 	public:
 		Tileset() = default;
@@ -33,11 +34,10 @@ namespace cap
 		Sprite getTile(Point coords);
 		inline Sprite getTile(int x, int y) { return getTile(Point(x, y)); };
 
-		void setTexture(sf::Texture* texture);
-		void setTileSize(Point size);
-		void setTilesetSize(Point size);
+		void subdivide(sf::Texture* texture, Point tileset_size, Point tile_size, int spacing = 0, int margin = 0);
 
 		int length();
 	};
 	using TilesetList = vector<Tileset>;
+	using TilesetMap = map<string, Tileset>;
 }

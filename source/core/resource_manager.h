@@ -38,12 +38,13 @@ namespace cap
 	class LevelManager : public ResourceManager
 	{
 	protected:
+		string m_level_name;
 		RequiredResources m_required;
 
 	public:
-		LevelManager() = default;
+		LevelManager(string level_name = string()) : m_level_name(level_name) {};
 
-		virtual const RequiredList& getRequired() = 0;
+		virtual RequiredList getRequired() = 0;
 		void setRequired(const RequiredResources& resources);
 
 		virtual Level* loadLevel(string name) = 0;
