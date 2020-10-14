@@ -1,35 +1,8 @@
-﻿  main.cpp
+﻿  core.cpp
   The contents of <filesystem> are available only with C++17 or later.
-  core.cpp
-  The contents of <filesystem> are available only with C++17 or later.
-  entity.cpp
-  The contents of <filesystem> are available only with C++17 or later.
-  level.cpp
-  The contents of <filesystem> are available only with C++17 or later.
-D:\Scripts\CaptainEngine\source\core\level.cpp(62,23): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Scripts\CaptainEngine\source\core\level.cpp(62,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Scripts\CaptainEngine\source\core\level.cpp(152,21): warning C4018: <: несоответствие типов со знаком и без знака
-  TiledLoaderCSV.cpp
-  The contents of <filesystem> are available only with C++17 or later.
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(4): error C2280: "cap::Tileset::Tileset(void)": предпринята попытка ссылки на удаленную функцию
-D:\Scripts\CaptainEngine\source\core\resource.h(31): message : см. объявление "cap::Tileset::Tileset"
-D:\Scripts\CaptainEngine\source\core\resource.h(31,3): message : "cap::Tileset::Tileset(void)": функция неявно удалена, так как в базовый класс "cap::Resource" не содержится соответствующий конструктор по умолчанию или разрешение перегрузки было неоднозначным.
-D:\Scripts\CaptainEngine\source\core\resource.h(10): message : см. объявление "cap::Resource"
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(13,23): error C2039: "size": не является членом "cap::Tileset".
-D:\Scripts\CaptainEngine\source\core\resource.h(23): message : см. объявление "cap::Tileset"
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(13,52): error C2676: бинарный "[": "cap::Tileset" не определяет этот оператор или преобразование к типу приемлемо к встроенному оператору
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(36,32): error C2653: Core: не является именем класса или пространства имен
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(36,21): error C3861: getTilesets: идентификатор не найден
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(289,20): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(294,39): error C2679: бинарный "[": не найден оператор, принимающий правый операнд типа "const char *" (или приемлемое преобразование отсутствует)
-D:\Games\VisualStudio19\VC\Tools\MSVC\14.27.29110\include\vector(1507,27): message : может быть "const _Ty &std::vector<_Ty,std::allocator<_Ty>>::operator [](const unsigned int) noexcept const"
-          with
-          [
-              _Ty=cap::Tileset
-          ]
-D:\Games\VisualStudio19\VC\Tools\MSVC\14.27.29110\include\vector(1497,21): message : или       "_Ty &std::vector<_Ty,std::allocator<_Ty>>::operator [](const unsigned int) noexcept"
-          with
-          [
-              _Ty=cap::Tileset
-          ]
-D:\Scripts\CaptainEngine\source\loaders\TiledLoaderCSV.cpp(294,39): message : при попытке сопоставить список аргументов "(cap::TilesetList, const char *)"
+  Создание кода
+  218 of 3758 functions ( 5.8%) were compiled, the rest were copied from previous compilation.
+    48 functions were new in current compilation
+    71 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  CaptainEngine.vcxproj -> C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\Release\CaptainEngine.exe

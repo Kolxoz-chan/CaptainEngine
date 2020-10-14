@@ -28,6 +28,11 @@ namespace cap
 		return url;
 	}
 
+	int ResourceManager::getType()
+	{
+		return m_type;
+	}
+
 	void ResourceManager::setProperty(const string& key, LuaRef value)
 	{
 		properties.set(key, value);

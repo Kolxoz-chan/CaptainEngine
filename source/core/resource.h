@@ -1,5 +1,6 @@
 #pragma once
 #include <core/types.h>
+#include <core/constants.h>
 
 #include <libraries/std.hpp>
 #include <libraries/sfml.hpp>
@@ -16,7 +17,8 @@ namespace cap
 	public:
 		Resource(int type, string name) : m_name(name), m_type(type) {};
 
-		int getType() { return m_type; };
+		int getType() { return m_type; }
+		const string& getName() { return m_name; };
 	};
 
 	// --------------- Tileset Reource --------------------------- //
@@ -28,7 +30,7 @@ namespace cap
 		Point m_tileset_size, m_tile_size, m_margin, m_spacing;
 
 	public:
-		Tileset() = default;
+		Tileset(string name = string()) : Resource(CAP_RESOURCE_TILESET, name) {};
 
 		Sprite getTile(int index);
 		Sprite getTile(Point coords);
@@ -38,6 +40,6 @@ namespace cap
 
 		int length();
 	};
-	using TilesetList = vector<Tileset>;
-	using TilesetMap = map<string, Tileset>;
+	using TilesetList = vector<Tileset*>;
+	using TilesetMap = map<string, Tileset*>;
 }

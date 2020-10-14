@@ -16,11 +16,12 @@ namespace cap
 	class ResourceManager
 	{
 	protected:
+		int m_type;
 		LuaMap properties;
 		string name, description, autor, version, url;
 
 	public:
-		ResourceManager() = default;
+		ResourceManager(int type) : m_type(type) {};
 		virtual ~ResourceManager() = default;
 
 		// Setters //
@@ -32,21 +33,31 @@ namespace cap
 		const string& getAutor();
 		const string& getVersion();
 		const string& getUrl();
+
+		int getType();
 	};
 
 	// -------------- Level Manager ------------------------------- //
 	class LevelManager : public ResourceManager
 	{
 	protected:
-		string m_level_name;
 		RequiredResources m_required;
 
 	public:
-		LevelManager(string level_name = string()) : m_level_name(level_name) {};
+		LevelManager() : ResourceManager(CAP_MANAGER_LEVEL) {};
 
-		virtual RequiredList getRequired() = 0;
+		virtual RequiredList getRequired(const string& name) = 0;
 		void setRequired(const RequiredResources& resources);
 
-		virtual Level* loadLevel(string name) = 0;
+		virtual Level* loadLevel(const string& name) = 0;
+	};
+
+	// -------------- Tileset Manager ------------------------------- //
+	class TilesetManager : public ResourceManager
+	{
+	public:
+		TilesetManager() : ResourceManager(CAP_MANAGER_TILESET) {};
+
+		virtual Tileset* loadTileset(const string& name) = 0;
 	};
 }

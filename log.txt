@@ -1,1 +1,2 @@
 Captain Engine log:
+gamedata/scripts/main.lua:5: The class is not registered in LuaBridge

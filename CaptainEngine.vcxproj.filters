@@ -33,9 +33,6 @@
     <ClCompile Include="source\core\types.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="source\loaders\TiledLoaderCSV.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -165,6 +162,9 @@
     <ClCompile Include="source\core\resource.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="source\loaders.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\core.h">
@@ -183,9 +183,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\core\types.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\loaders\TiledLoaderCSV.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\libraries\freetype\freetype\config\ftconfig.h">
@@ -966,6 +963,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\core\resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\loaders.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

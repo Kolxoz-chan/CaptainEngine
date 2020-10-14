@@ -10,7 +10,7 @@
 #include <libraries/sfml.hpp>
 #include <libraries/lua.hpp>
 
-#include <loaders\TiledLoaderCSV.h>
+#include "loaders.h"
 
 namespace cap
 {
@@ -56,8 +56,9 @@ namespace cap
 		static LuaRef getProperty(const string& name);
 
 		// Загрузка ресурсов
-		Level* loadLevel(string name, string loader_type);
-		Tileset* loadTilesetForLevel(string name, string loader_type);
+		static Level* loadLevel(string name, string loader_type);
+		static Tileset* loadTileset(string name, string loader_type);
+		static vector<Tileset*> loadTilesetsForLevel(string name, string loader_type);
 
 	private:
         static void initClasses();

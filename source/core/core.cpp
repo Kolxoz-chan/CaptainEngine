@@ -21,18 +21,19 @@ namespace cap
 
 	void Core::init(int width, int height, const string& title)
 	{
-        // Lua init
+        // Lua init //
         Script::init();
 
-        // Data init
+        // Data init //
 		window = new RenderWindow(VideoMode(width, height), title);
 		camera = nullptr;
 
+		// Init events //
         onSetup = Script::newRef();
         onClose = Script::newRef();
 		onUpdate = Script::newRef();
 
-        // GUI init
+        // GUI init //
 		ImGui::SFML::Init(*window);
 
 		//////////////////////////////////////////////////////////////////////////////
@@ -59,11 +60,12 @@ namespace cap
         stack_gui.push_back(test);
 		///////////////////////////////////////////////////////////////////////////
 
-        // Reset log
+        // Reset log //
         Script::reset_log("Captain Engine log:");
 
-        // Including plugins
-		managers["TILED_CSV_LOADER"] = new TiledLoaderCSV();
+        // Including plugins //
+		managers["TILED_LEVEL_LOADER"] = new TiledLevelLoader();
+		managers["TILED_TILESET_LOADER"] = new TiledTilesetLoader();
 	}
 
 	void Core::setProperty(const string& name, LuaRef value)
@@ -147,30 +149,43 @@ namespace cap
 
 	Level* Core::loadLevel(string name, string loader_type)
 	{
-		/*LevelLoader* loader = lvl_loaders[loader_type];
-		if (loader)
-		{
-			levels[name] = loader->load(CAP_LEVELS_DIR + name);
-			return levels[name];
-		}
-		Script::print_log("Warning! Level loader '" + loader_type + "' is not found, level '" + name + "' is not loaded!");*/
+		Level* level = nullptr;
+
+
 		return nullptr;
 	}
 
-	Tileset Core::loadTilesetForLevel(string name, string loader_type)
+	Tileset* Core::loadTileset(string name, string loader_type)
 	{
-		/*LevelLoader* loader = lvl_loaders[loader_type];
+		Tileset* tileset = nullptr;
+
+		ResourceManager* loader = managers[loader_type];
 		if (loader)
 		{
-			
+			if (loader->getType() == CAP_MANAGER_TILESET)
+			{
+				tileset = static_cast<TilesetManager*>(loader)->loadTileset(name);
+				if (tileset) tilesets[tileset->getName()] = tileset;
+			}
+			else Script::print_log("Error. Wrong loader '" + loader_type + "'! Tileset not loaded!");
 		}
-		Script::print_log("Warning! Level loader '" + loader_type + "' is not found, tilesets is not loaded!");*/
+		else Script::print_log("Error. Loader '" + loader_type + "' not found! Tileset not loaded!");
+
 		return nullptr;
+	}
+
+	vector<Tileset*> Core::loadTilesetsForLevel(string name, string loader_type)
+	{
+		vector<Tileset*> list;
+
+
+
+		return list;
 	}
 
     void Core::initClasses()
     {
-        Script::global()
+		Script::global()
 
 			// ------- Class Core ----------------------------------------------- //
 			.beginClass<Core>("Core")
@@ -181,28 +196,34 @@ namespace cap
 			.addStaticProperty("onClose", &Core::onClose)
 			.addStaticProperty("onUpdate", &Core::onUpdate)
 
-			.addStaticProperty("deltaTime", &Core::deltaTime, false)
+			.addStaticFunction("loadLevel", &Core::loadLevel)
+			.addStaticFunction("loadTileset", &Core::loadTileset)
+			.addStaticFunction("loadTilesetsForLevel", &Core::loadTilesetsForLevel)
 
-			//.addStaticFunction("loadLevel", &Core::loadLevel)
+			.addStaticProperty("deltaTime", &Core::deltaTime, false)
 			.endClass()
 
 			// ------- Class Entity ----------------------------------------------- //
 			.beginClass<Entity>("Entity")
 
-			.addFunction("update",		&Entity::update)
+			.addFunction("update", &Entity::update)
 
-			.addFunction("addChild",	&Entity::addChild)
+			.addFunction("addChild", &Entity::addChild)
 
-			.addFunction("setName",		&Entity::setName)
+			.addFunction("setName", &Entity::setName)
 
-			.addFunction("getName",		&Entity::getName)
-			.addFunction("getType",		&Entity::getType)
-			.addFunction("getParent",	&Entity::getParent)
-			.addFunction("getChild",	&Entity::getChild)
+			.addFunction("getName", &Entity::getName)
+			.addFunction("getType", &Entity::getType)
+			.addFunction("getParent", &Entity::getParent)
+			.addFunction("getChild", &Entity::getChild)
 			.endClass()
 
 			// ------- Class PointEntity ----------------------------------------------- //
 			.deriveClass<PointEntity, Entity>("PointEntity")
+			.endClass()
+
+			// ------- Class Tileset ----------------------------------------------- //
+			.beginClass<Tileset>("Tileset")
 			.endClass();
     }
 }

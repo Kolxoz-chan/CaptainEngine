@@ -99,6 +99,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-graphics.lib;sfml-audio.lib;sfml-main.lib;sfml-network.lib;sfml-window.lib;sfml-system.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)source\libraries\sfml\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -119,6 +120,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-graphics.lib;sfml-audio.lib;sfml-main.lib;sfml-network.lib;sfml-window.lib;sfml-system.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)source\libraries\sfml\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -164,7 +166,7 @@
     <ClCompile Include="source\libraries\imgui\imgui_demo.cpp" />
     <ClCompile Include="source\libraries\imgui\imgui_draw.cpp" />
     <ClCompile Include="source\libraries\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="source\loaders\TiledLoaderCSV.cpp" />
+    <ClCompile Include="source\loaders.cpp" />
     <ClCompile Include="source\libraries\lua\lapi.c" />
     <ClCompile Include="source\libraries\lua\lauxlib.c" />
     <ClCompile Include="source\libraries\lua\lbaselib.c" />
@@ -318,7 +320,7 @@
     <ClInclude Include="source\libraries\sfml.hpp" />
     <ClInclude Include="source\libraries\std.hpp" />
     <ClInclude Include="source\libraries\xml.hpp" />
-    <ClInclude Include="source\loaders\TiledLoaderCSV.h" />
+    <ClInclude Include="source\loaders.h" />
     <ClInclude Include="source\libraries\luabridge\detail\CFunctions.h" />
     <ClInclude Include="source\libraries\luabridge\detail\ClassInfo.h" />
     <ClInclude Include="source\libraries\luabridge\detail\Config.h" />
