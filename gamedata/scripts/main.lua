@@ -3,7 +3,7 @@ function Core:onSetup()
 	Core.setProperty("fps", 60)
 	set = Core.loadTileset("gamedata/tilesets/tileset_01.tsx", "TILED_TILESET_LOADER")
 	set = Core.loadTilesetsForLevel("gamedata/tilesets/tileset_01.tsx", "TILED_TILESET_LOADER")
-	print(set)
+	print(#set)
 
 end
 

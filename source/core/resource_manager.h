@@ -50,14 +50,7 @@ namespace cap
 		void setRequired(const RequiredResources& resources);
 
 		virtual Level* loadLevel(const string& name) = 0;
-	};
-
-	// -------------- Tileset Manager ------------------------------- //
-	class TilesetManager : public ResourceManager
-	{
-	public:
-		TilesetManager() : ResourceManager(CAP_MANAGER_TILESET) {};
-
+		virtual vector<Tileset*> loadTilesetsForLevel(const string& name) = 0;
 		virtual Tileset* loadTileset(const string& name) = 0;
 	};
 }

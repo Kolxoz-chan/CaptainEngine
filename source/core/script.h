@@ -14,12 +14,38 @@ public:
     static void init();
     static void free();
 
+	// Convert to lua-value //
 	template <class T>
     static LuaRef toLua(T value)
 	{
 		return LuaRef(L, value);
 	}
 
+	// Convert to table //
+	template <class T>
+	static LuaRef toTable(vector<T> arr)
+	{
+		LuaRef table = newTable();
+		for (int i = 0; i < arr.size(); i++)
+		{
+			table[i] = arr[i];
+		}
+		return table;
+	}
+
+	// Convert to table //
+	template <class T>
+	static LuaRef toTable(map<string, T> arr)
+	{
+		LuaRef table = newTable();
+		for (pair<string, T> p : arr)
+		{
+			table[p.first] = p.second;
+		}
+		return table;
+	}
+
+	// Set global varriable //
 	template <class T>
     static void setVar(string name, T value)
 	{

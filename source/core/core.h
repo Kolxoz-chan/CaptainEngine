@@ -58,7 +58,7 @@ namespace cap
 		// Загрузка ресурсов
 		static Level* loadLevel(string name, string loader_type);
 		static Tileset* loadTileset(string name, string loader_type);
-		static vector<Tileset*> loadTilesetsForLevel(string name, string loader_type);
+		static LuaRef loadTilesetsForLevel(string name, string loader_type);
 
 	private:
         static void initClasses();

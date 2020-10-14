@@ -174,13 +174,14 @@ namespace cap
 		return nullptr;
 	}
 
-	vector<Tileset*> Core::loadTilesetsForLevel(string name, string loader_type)
+	LuaRef Core::loadTilesetsForLevel(string name, string loader_type)
 	{
 		vector<Tileset*> list;
 
 
 
-		return list;
+
+		return Script::toTable(list);
 	}
 
     void Core::initClasses()

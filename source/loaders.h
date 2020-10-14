@@ -8,9 +8,10 @@
 using namespace cap;
 
 // --------------- Lever loader --------------------------- //
-class TiledLevelLoader : public LevelManager
+class TiledManager : public LevelManager
 {
 private:
+	Tileset* required_tileset;
 	int tilewidth, tileheight;
 	
 private:
@@ -21,19 +22,10 @@ private:
 	void print_error(XMLDocument& elem, string path);
 
 public:
-	TiledLevelLoader() ;
-	~TiledLevelLoader() = default;
+	TiledManager() ;
+	~TiledManager() = default;
 
 	Level* loadLevel(const string& path);
-	RequiredList getRequired(const string& path);
-};
-
-// --------------- Tileset loader --------------------------- //
-class TiledTilesetLoader : public TilesetManager
-{
-public:
-	TiledTilesetLoader();
-	~TiledTilesetLoader() = default;
-
+	vector<Tileset*> loadTilesetsForLevel(const string& name);
 	Tileset* loadTileset(const string& path);
 };

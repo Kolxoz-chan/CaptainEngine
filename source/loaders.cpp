@@ -1,6 +1,6 @@
 #include "loaders.h"
 
-TiledLevelLoader::TiledLevelLoader()
+TiledManager::TiledManager()
 {
 	this->name = "Tiled level loader [CSV]";
 	this->autor = "Kolxoz";
@@ -8,7 +8,7 @@ TiledLevelLoader::TiledLevelLoader()
 	this->description = "This parser is designed to load maps created in Tiled 1.3.2 in CSV mode";
 }
 
-TileLayer* TiledLevelLoader::loadTileLayer(XMLElement* layer)
+TileLayer* TiledManager::loadTileLayer(XMLElement* layer)
 {
 	// Имя слоя 
 	string layerName = layer->Attribute("name");
@@ -61,7 +61,7 @@ TileLayer* TiledLevelLoader::loadTileLayer(XMLElement* layer)
 	return currentLayer;
 }
 
-ObjectLayer* TiledLevelLoader::loadObjectLayer(XMLElement* layer)
+ObjectLayer* TiledManager::loadObjectLayer(XMLElement* layer)
 {
 	// Имя слоя и группы-родителя
 	string layerName = layer->Attribute("name");
@@ -162,7 +162,7 @@ ObjectLayer* TiledLevelLoader::loadObjectLayer(XMLElement* layer)
 	return currentLayer;
 }
 
-GroupLayer* TiledLevelLoader::loadGroupLayer(XMLElement* group)
+GroupLayer* TiledManager::loadGroupLayer(XMLElement* group)
 {
 	// Создаём группу
     GroupLayer* currentGroup = new GroupLayer(group->Attribute("name"));
@@ -190,7 +190,7 @@ GroupLayer* TiledLevelLoader::loadGroupLayer(XMLElement* group)
 	return currentGroup;
 }
 
-Level* TiledLevelLoader::loadLevel(const string& name)
+Level* TiledManager::loadLevel(const string& name)
 {
 	// Loading level file
 	string path = name + ".tmx";
@@ -225,15 +225,15 @@ Level* TiledLevelLoader::loadLevel(const string& name)
 	return nullptr;
 }
 
-RequiredList TiledLevelLoader::getRequired(const string& name)
+vector<Tileset*> TiledManager::loadTilesetsForLevel(const string& name)
 {
-	RequiredList list;
+	vector<Tileset*> list;
 
 	// Loading level file
 	string path = name + ".tmx";
 
 	// Tileset paths loading
-	XMLDocument doc;
+	XMLDocument doc, tsx;
 	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
 	{
 		XMLElement* map = doc.RootElement();
@@ -243,7 +243,10 @@ RequiredList TiledLevelLoader::getRequired(const string& name)
 			while (tileset)
 			{
 				string source = tileset->Attribute("source");
-				list.push_back({ cap::CAP_RESOURCE_TILESET, source });
+				source = CAP_GAMEDATA_DIR + source.substr(3);
+
+				Tileset* tiles = loadTileset(source);
+				list[tiles->getName()] = tiles;
 
 				tileset = tileset->NextSiblingElement("tileset");
 			}
@@ -254,7 +257,7 @@ RequiredList TiledLevelLoader::getRequired(const string& name)
 	return list;
 }
 
-void TiledLevelLoader::print_error(XMLDocument& doc, string path)
+void TiledManager::print_error(XMLDocument& doc, string path)
 {
 	string error_name = doc.ErrorName();
 	string error_line = to_string(doc.ErrorLineNum());
@@ -264,16 +267,7 @@ void TiledLevelLoader::print_error(XMLDocument& doc, string path)
 	Script::print_log("Line: " + error_line);
 }
 
-// --------------- Tileset loader --------------------------- //
-TiledTilesetLoader::TiledTilesetLoader()
-{
-	this->name = "Tiled tileset loader";
-	this->autor = "Kolxoz";
-	this->version = "1.0";
-	this->description = "This parser is designed to load tileset created in Tiled 1.3.2";
-}
-
-Tileset* TiledTilesetLoader::loadTileset(const string& path)
+Tileset* TiledManager::loadTileset(const string& path)
 {
 	Tileset* tileset = nullptr;
 	XMLDocument doc;

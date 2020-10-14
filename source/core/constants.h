@@ -52,6 +52,5 @@ namespace cap
 	enum
 	{
 		CAP_MANAGER_LEVEL,
-		CAP_MANAGER_TILESET
 	};
 }
