@@ -3,18 +3,7 @@
 
 namespace cap
 {
-	// --------- LuaObject ------------------------------------------ //
-	LuaObject::LuaObject()
-	{
-		self = Script::newRef();
-	}
-
-	Namespace& LuaObject::regLua(Namespace& global)
-	{
-		return global;
-	}
-
-	// Базовая сущность
+	/* -------------------- Base entity ---------------------- */
 	Entity::Entity(string name, int type) : name(name), type(type)
 	{
 		this->self = Script::newRef();
@@ -55,7 +44,7 @@ namespace cap
 
 	}
 
-	// Точечная сущность
+	/* -------------------- Point entity ---------------------- */
 	PointEntity::PointEntity(string name) : Entity(name, CAP_POINT_ENTITY)
 	{
 	}
@@ -70,12 +59,8 @@ namespace cap
 		return position;
 	}
 
-	void PointEntity::regLua(Namespace& global)
-	{
-		
-	}
 
-	// Пряогугольная сущность
+	/* -------------------- Rect entity ---------------------- */
 	RectEntity::RectEntity(string name)
 	{
 		this->name = name;
@@ -87,17 +72,13 @@ namespace cap
 		this->size = size;
 	}
 
-	void RectEntity::setRect(int x, int y, int width, int height)
+	void RectEntity::setRect(Rect rect)
 	{
-		
+		this->position = rect.getPosition();
+		this->size = rect.getSize();
 	}
 
-	void RectEntity::regLua(Namespace& global)
-	{
-		
-	}
-
-	// Текстурированая сущность
+	/* -------------------- Drawable entity ---------------------- */
 	DrawableEntity::DrawableEntity(string name)
 	{
 		this->name = name;
@@ -128,8 +109,27 @@ namespace cap
 		}
 	}
 
-	void DrawableEntity::regLua(Namespace& global)
+	/* -------------------- Camera entity ---------------------- */
+	Camera::Camera(Rect rect)
 	{
+		m_view = View(rect);
+	}
 
+	void Camera::resize(Point size)
+	{
+		//size.x += int(size.x) % 2;
+		//size.y += int(size.y) % 2;
+
+		m_view.reset(Rect({0,0}, size));
+	}
+
+	void Camera::move(Point pos)
+	{
+		m_view.move(pos);
+	}
+
+	const View& Camera::getView()
+	{
+		return m_view;
 	}
 }

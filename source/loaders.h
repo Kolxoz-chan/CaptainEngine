@@ -1,8 +1,9 @@
 #pragma once
 #include <core/resource_manager.h>
+#include <core/resource.h>
 #include <core/types.h>
 
-#include <libraries/xml.hpp>
+#include <libraries/config.hpp>
 #include <libraries/std.hpp>
 
 using namespace cap;
@@ -26,6 +27,6 @@ public:
 	~TiledManager() = default;
 
 	Level* loadLevel(const string& path);
-	vector<Tileset*> loadTilesetsForLevel(const string& name);
+	TilesetMap loadTilesetsForLevel(const string& name);
 	Tileset* loadTileset(const string& path);
 };

@@ -13,17 +13,20 @@ namespace kxz
             ch = str[counter];
             if(ch == ',')
             {
-
+                if (!field.empty()) row.push_back(field);
+                field.clear();
             }
-            else if(ch == '\n')
+            else if(ch == '\n' || ch == '\0')
             {
+                if (!field.empty()) row.push_back(field);
+                field.clear();
+                if (!row.empty()) table.push_back(row);
+                row.clear();
 
-            }
-            else if(ch == '\0')
-            {
-
+                if (ch == '\0') break;
             }
             else field += ch;
+            counter++;
         }
     }
 
@@ -39,7 +42,8 @@ namespace kxz
 
     std::string CSVParser::toString()
     {
-        for(size_t column=0; )
+        //for(size_t column=0; )
+        return "";
     }
 
     void CSVParser::clear()

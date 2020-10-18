@@ -6,6 +6,8 @@ TiledManager::TiledManager()
 	this->autor = "Kolxoz";
 	this->version = "1.0";
 	this->description = "This parser is designed to load maps created in Tiled 1.3.2 in CSV mode";
+
+	required_tileset = new Tileset();;
 }
 
 TileLayer* TiledManager::loadTileLayer(XMLElement* layer)
@@ -17,13 +19,9 @@ TileLayer* TiledManager::loadTileLayer(XMLElement* layer)
 	TileLayer* currentLayer = new TileLayer(layerName);
 
 	// Смещение слояя
-	int offset_x = 0, offset_y = 0;
-	if (layer->Attribute("offsetx") && layer->Attribute("offsety"))
-	{
-		offset_x = atoi(layer->Attribute("offsetx"));
-		offset_y = atoi(layer->Attribute("offsety"));
-	}
-	currentLayer->setOffset(offset_x, offset_y);
+	int offset_x, offset_y;
+	offset_x = layer->IntAttribute("offsetx", 0);
+	offset_y = layer->IntAttribute("offsety", 0);
 
 	// Работа с чанками
 	XMLElement *data = layer->FirstChildElement("data");
@@ -31,31 +29,32 @@ TileLayer* TiledManager::loadTileLayer(XMLElement* layer)
 
 	while (chunk)
 	{
-		int chunk_w = atoi(chunk->Attribute("width"));		// Длинна чанка
-		int chunk_h = atoi(chunk->Attribute("height"));		// Высота чанка
-		int chunk_x = atoi(chunk->Attribute("x"));			// Позиция чанка по X
-		int chunk_y = atoi(chunk->Attribute("y"));			// Позиция чанка по Y
+		int chunk_w = chunk->IntAttribute("width");		// Длинна чанка
+		int chunk_h = chunk->IntAttribute("height");		// Высота чанка
+		int chunk_x = chunk->IntAttribute("x");			// Позиция чанка по X
+		int chunk_y = chunk->IntAttribute("y");			// Позиция чанка по Y
 
-		char* ch = (char*)chunk->GetText();
+		CSVParser parser;
+		parser.loadFromString(chunk->GetText());
+		CSVTable table = parser.getTable();
 
-		/*for (int y = 0; y < chunk_h; y++)
+
+		for (int y = 0; y < chunk_h; y++)
 		{
 			for (int x = 0; x < chunk_w; x++)
 			{
 				int x_pos = (chunk_x + x) * tilewidth;
 				int y_pos = (chunk_y + y) * tileheight;
 
-				char* num = strtok(ch, " ,\n");
-				int index = atoi(num) - 1;
+				int index = atoi(table[y][x].c_str()) - 1;
 
 				if (index >= 0)
 				{
-					cap::Texture* texture = getTexture(index);
-					if (texture) currentLayer->addTile(textures[index]->toSprite(), x_pos, y_pos);
+					if (required_tileset->length() > index) currentLayer->addTile(required_tileset->getTile(index), x_pos, y_pos);
 					else Script::print_log("Error! Tile with index " + to_string(index) + " is not loaded!");
 				}
 			}
-		}*/
+		}
 		chunk = chunk->NextSiblingElement("chunk"); // Следующий чанк
 	}
 	return currentLayer;
@@ -190,21 +189,35 @@ GroupLayer* TiledManager::loadGroupLayer(XMLElement* group)
 	return currentGroup;
 }
 
-Level* TiledManager::loadLevel(const string& name)
+Level* TiledManager::loadLevel(const string& path)
 {
 	// Loading level file
-	string path = name + ".tmx";
-
+	string level_name;
 	XMLDocument doc;
-	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
+	int status = doc.LoadFile(path.c_str());
+	if (status == XML_SUCCESS)
+	{
+		int begin = path.find_last_of("\/") + 1;
+		int end = path.find_last_of(".");
+		level_name = path.substr(begin, end - begin);
+	}
+	else
+	{
+		level_name = path;
+		string new_path = CAP_LEVELS_DIR + path + ".tmx";	
+		status = doc.LoadFile(new_path.c_str());
+	}
+
+	// Loading level data
+	if (status == XML_SUCCESS)
 	{
 		XMLElement* map = doc.RootElement();
 		if (map)
 		{
-			Level* lvl = new Level(name);
+			Level* lvl = new Level(level_name);
 
-			tilewidth = atoi(map->Attribute("tilewidth"));
-			tileheight = atoi(map->Attribute("tileheight"));
+			tilewidth = map->IntAttribute("tilewidth");
+			tileheight = map->IntAttribute("tileheight");
 
 			// Считываем карту
 			XMLElement* elem = map->FirstChildElement();
@@ -225,9 +238,9 @@ Level* TiledManager::loadLevel(const string& name)
 	return nullptr;
 }
 
-vector<Tileset*> TiledManager::loadTilesetsForLevel(const string& name)
+TilesetMap TiledManager::loadTilesetsForLevel(const string& name)
 {
-	vector<Tileset*> list;
+	TilesetMap list;
 
 	// Loading level file
 	string path = name + ".tmx";
@@ -237,6 +250,8 @@ vector<Tileset*> TiledManager::loadTilesetsForLevel(const string& name)
 	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
 	{
 		XMLElement* map = doc.RootElement();
+		required_tileset->clear();
+
 		if (map)
 		{
 			XMLElement* tileset = map->FirstChildElement("tileset");
@@ -247,6 +262,7 @@ vector<Tileset*> TiledManager::loadTilesetsForLevel(const string& name)
 
 				Tileset* tiles = loadTileset(source);
 				list[tiles->getName()] = tiles;
+				required_tileset->concat(*tiles);
 
 				tileset = tileset->NextSiblingElement("tileset");
 			}

@@ -30,8 +30,18 @@ namespace cap
 		}
 	}
 
+	void Tileset::concat(const Tileset& tileset)
+	{
+		m_tiles.insert(m_tiles.end(), tileset.m_tiles.begin(), tileset.m_tiles.end());
+	}
+
 	int Tileset::length()
 	{
 		return m_tiles.size();
+	}
+
+	void Tileset::clear()
+	{
+		m_tiles.clear();
 	}
 }

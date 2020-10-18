@@ -165,6 +165,12 @@
     <ClCompile Include="source\loaders.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="source\libraries\csvparser\csvparser.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\libraries\sfml_addtions\RichText.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\core.h">
@@ -941,9 +947,6 @@
     <ClInclude Include="source\libraries\tinyxml2\tinyxml2.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="source\libraries\xml.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="source\libraries\std.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -966,6 +969,15 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\loaders.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\libraries\csvparser\csvparser.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\libraries\config.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\libraries\sfml_addtions\RichText.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

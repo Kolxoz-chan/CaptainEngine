@@ -1,10 +1,13 @@
 function Core:onSetup()
 	-- Settings --
+	Core.setProperty("window_size", Point(1280, 720))
 	Core.setProperty("fps", 60)
-	set = Core.loadTileset("gamedata/tilesets/tileset_01.tsx", "TILED_TILESET_LOADER")
-	set = Core.loadTilesetsForLevel("gamedata/tilesets/tileset_01.tsx", "TILED_TILESET_LOADER")
-	print(#set)
 
+	-- Resources loading --
+	Core.loadTilesetsForLevel("gamedata/levels/test", "TILED_MANAGER")
+	lvl = Core.loadLevel("gamedata/levels/test.tmx", "TILED_MANAGER")
+
+	Core.setCurrentLevel(lvl)
 end
 
 function Core:onClose()

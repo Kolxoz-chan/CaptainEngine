@@ -43,9 +43,23 @@ namespace cap
 	Point::Point(double x, double y) 
 		: x(x), y(y) {}
 
+	Point::Point(const Vector2f& point)
+		: x(point.x), y(point.y) {};
+
+	Point::Point(const Vector2i& point)
+		: x(point.x), y(point.y) {};
+
+	Point::Point(const Vector2u& point)
+		: x(point.x), y(point.y) {};
+
 	Point operator+ (const Point& left, const Point& right)
 	{
 		return Point(left.x + right.x, left.y + right.x);
+	}
+
+	Point operator- (const Point& left, const Point& right)
+	{
+		return Point(left.x - right.x, left.y - right.x);
 	}
 
 	Point operator* (const Point& left, const Point& right)
@@ -56,6 +70,16 @@ namespace cap
 	Point operator* (const Point& left, float right)
 	{
 		return Point(left.x * right, left.y * right);
+	}
+
+	Point operator/ (const Point& left, const Point& right)
+	{
+		return Point(left.x / right.x, left.y / right.x);
+	}
+
+	Point operator/ (const Point& left, float right)
+	{
+		return Point(left.x / right, left.y / right);
 	}
 
 	Point::operator Vector2f()
@@ -79,6 +103,16 @@ namespace cap
 
 	Rect::Rect(Point pos, Point size) 
 		: x(pos.x), y(pos.y), width(size.x), height(size.y){}
+
+	Point Rect::getPosition()
+	{
+		return Point(x, y);
+	}
+
+	Point Rect::getSize()
+	{
+		return Point(width, height);
+	}
 
 	Rect::operator IntRect()
 	{

@@ -6,18 +6,8 @@
 
 namespace cap
 {
-	// Базовый класс для Lua-объектов
-	class LuaObject
-	{
-	public:
-		LuaRef self = 0;
-
-		LuaObject();
-		static Namespace& regLua(Namespace& global);
-	};
-
 	// Базовая сущность
-	class Entity : public LuaObject
+	class Entity
 	{
 	protected:
 		Entity* parent;
@@ -26,6 +16,8 @@ namespace cap
 		int type;
 
 	public:
+		LuaRef self = 0;
+
 		// Конструктор
 		Entity(string name, int type);
 
@@ -55,9 +47,6 @@ namespace cap
 		void setPosition(Point pos);
 
 		Point getPosition();
-
-		// Регистрация класса
-		static void regLua(Namespace& global);
 	};
 
 	// Прямоугольная сущность
@@ -70,10 +59,7 @@ namespace cap
 		RectEntity(string name = "object");
 
 		void setSize(Point size);
-		void setRect(int x, int y, int width, int height);
-
-		// Регистрация класса
-		static void regLua(Namespace& global);
+		void setRect(Rect rect);
 	};
 
 	// Отображаемая сущность
@@ -93,8 +79,20 @@ namespace cap
 		void setVisible(bool value);
 
 		virtual void draw();
+	};
 
-		// Регистрация класса
-		static void regLua(Namespace& global);
+	// ----------- Custom Entities ---------------------- //
+	class Camera : public RectEntity
+	{
+	private:
+		View m_view;
+
+	public:
+		Camera(Rect rect);
+
+		void resize(Point size);
+		void move(Point pos);
+
+		const View& getView();
 	};
 }

@@ -92,6 +92,7 @@ namespace cap
 		Level(string name = "");
 		~Level();
 
+		const string& getName();
 		Container* getContainer(int index);
 		Container* getContainer(string name);
 

@@ -40,17 +40,11 @@ namespace cap
 	// -------------- Level Manager ------------------------------- //
 	class LevelManager : public ResourceManager
 	{
-	protected:
-		RequiredResources m_required;
-
 	public:
 		LevelManager() : ResourceManager(CAP_MANAGER_LEVEL) {};
 
-		virtual RequiredList getRequired(const string& name) = 0;
-		void setRequired(const RequiredResources& resources);
-
 		virtual Level* loadLevel(const string& name) = 0;
-		virtual vector<Tileset*> loadTilesetsForLevel(const string& name) = 0;
+		virtual TilesetMap loadTilesetsForLevel(const string& name) = 0;
 		virtual Tileset* loadTileset(const string& name) = 0;
 	};
 }

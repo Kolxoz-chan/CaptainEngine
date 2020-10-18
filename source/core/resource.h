@@ -37,8 +37,9 @@ namespace cap
 		inline Sprite getTile(int x, int y) { return getTile(Point(x, y)); };
 
 		void subdivide(sf::Texture* texture, Point tileset_size, Point tile_size, int spacing = 0, int margin = 0);
-
+		void concat(const Tileset& tileset);
 		int length();
+		void clear();
 	};
 	using TilesetList = vector<Tileset*>;
 	using TilesetMap = map<string, Tileset*>;

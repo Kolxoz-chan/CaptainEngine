@@ -35,9 +35,7 @@ namespace cap
         ImGui::SetWindowPos({ 40, 40 });
         ImGui::SetWindowSize({ 100, 100 });
         
-
-        size_t size = widgets.size();
-        for(size_t i=0; i<size; i++) widgets[i]->draw();
+        for(size_t i=0; i< widgets.size(); i++) widgets[i]->draw();
 
         ImGui::End();
         ImGui::PopStyleVar();
@@ -56,7 +54,7 @@ namespace cap
 
     void GUIButton::draw()
     {
-        if(ImGui::Button(m_title.c_str(), ImVec2(0.5f, 0.0f)))
+        if(ImGui::Button(m_title.c_str()))//, ImVec2(0.5f, 0.0f)))
         {
             if(onClick.isFunction()) onClick();
         }

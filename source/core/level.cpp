@@ -8,6 +8,10 @@ namespace cap
 	{
 		this->name = name;
 		this->type = type;
+		this->visible = true;
+		this->offset_x = 0; 
+		this->offset_y = 0;
+		this->opacity = 1.0;
 	}
 
 	double Container::getOpacity()
@@ -65,11 +69,13 @@ namespace cap
 
 	void TileLayer::draw()
 	{
-		/*
-		for (int i = 0; i < tiles.size(); i++)
+		for (auto y : tiles)
 		{
-			Core::window->draw(tiles[i])
-		}*/
+			for (auto x : y.second)
+			{
+				Core::window->draw(x.second);
+			}
+		}
 	}
 
 	void TileLayer::update()
@@ -140,6 +146,11 @@ namespace cap
 
 	Level::~Level()
 	{
+	}
+
+	const string& Level::getName()
+	{
+		return name;
 	}
 
 	Container* Level::getContainer(int index)

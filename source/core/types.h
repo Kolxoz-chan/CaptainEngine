@@ -28,10 +28,16 @@ namespace cap
 		double x, y;
 
 		Point(double x = 0.0, double y = 0.0);
+		Point(const Vector2f& point);
+		Point(const Vector2i& point);
+		Point(const Vector2u& point);
 
 		friend Point operator+ (const Point& left, const Point& right);
+		friend Point operator- (const Point& left, const Point& right);
 		friend Point operator* (const Point& left, const Point& right);
 		friend Point operator* (const Point& left, float right);
+		friend Point operator/ (const Point& left, const Point& right);
+		friend Point operator/ (const Point& left, float right);
 
 		operator Vector2f();
 		operator Vector2i();
@@ -46,6 +52,9 @@ namespace cap
 
 		Rect(double x = 0.0, double y = 0.0, double h = 0.0, double w = 0.0);
 		Rect(Point pos , Point size);
+
+		Point getPosition();
+		Point getSize();
 
 		operator IntRect();
 		operator FloatRect();
