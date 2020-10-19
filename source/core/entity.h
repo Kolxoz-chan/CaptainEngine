@@ -42,7 +42,7 @@ namespace cap
 		Point position;
 
 	public:
-		PointEntity(string name = "object");
+		PointEntity(const string& name = "object");
 
 		void setPosition(Point pos);
 
@@ -56,7 +56,7 @@ namespace cap
 		Point size;
 
 	public:
-		RectEntity(string name = "object");
+		RectEntity(const string& name = "object");
 
 		void setSize(Point size);
 		void setRect(Rect rect);
@@ -71,7 +71,7 @@ namespace cap
 		bool visible;
 
 	public:
-		DrawableEntity(string name = "object");
+		DrawableEntity(const string& name = "object");
 		~DrawableEntity();
 
 		void setTexture(Sprite sprite);

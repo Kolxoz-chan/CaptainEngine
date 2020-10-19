@@ -274,6 +274,17 @@ namespace cap
 
 			// ------- Class PointEntity ----------------------------------------------- //
 			.deriveClass<PointEntity, Entity>("PointEntity")
+			.addConstructor<void(*)(const string&)>()
+			.endClass()
+
+			// ------- Class PointEntity ----------------------------------------------- //
+			.deriveClass<RectEntity, Entity>("RectEntity")
+			.addConstructor<void(*)(const string&)>()
+			.endClass()
+
+			// ------- Class PointEntity ----------------------------------------------- //
+			.deriveClass<DrawableEntity, Entity>("DrawableEntity")
+			.addConstructor<void(*)(const string&)>()
 			.endClass()
 
 			// ------- Class Tileset ----------------------------------------------- //

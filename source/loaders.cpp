@@ -71,11 +71,11 @@ ObjectLayer* TiledManager::loadObjectLayer(XMLElement* layer)
 	{
 		Entity* obj = nullptr;
 
-		string name = object->Attribute("name");
-		string type = object->Attribute("type");
+		const char* name = object->Attribute("name");
+		const char* type = object->Attribute("type");
 
 		// Если у объекта есть тип
-		if (!type.empty())
+		if (type)
 		{
             LuaRef constr = Script::getVar(type);
 			if (constr.isTable())
@@ -90,7 +90,7 @@ ObjectLayer* TiledManager::loadObjectLayer(XMLElement* layer)
 			else
 			{
 				// Если тип не опознан
-				Script::print_log("Error! Don't such class '" + type + "', object is not loaded");
+				Script::print_log("Error! Don't such class '" + string(type) + "', object is not loaded");
 				continue;
 			}
 		}

@@ -1,8 +1,9 @@
-﻿  core.cpp
+﻿  loaders.cpp
   The contents of <filesystem> are available only with C++17 or later.
+D:\Scripts\CaptainEngine\source\loaders.cpp(200,33): warning C4129: /: неизвестная escape-последовательность
   Создание кода
-  2 of 4159 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    59 functions had inline decision re-evaluated but remain unchanged
+  136 of 4211 functions ( 3.2%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    44 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   CaptainEngine.vcxproj -> D:\Scripts\CaptainEngine\Release\CaptainEngine.exe

@@ -45,7 +45,7 @@ namespace cap
 	}
 
 	/* -------------------- Point entity ---------------------- */
-	PointEntity::PointEntity(string name) : Entity(name, CAP_POINT_ENTITY)
+	PointEntity::PointEntity(const string& name) : Entity(name, CAP_POINT_ENTITY)
 	{
 	}
 
@@ -61,7 +61,7 @@ namespace cap
 
 
 	/* -------------------- Rect entity ---------------------- */
-	RectEntity::RectEntity(string name)
+	RectEntity::RectEntity(const string& name)
 	{
 		this->name = name;
 		this->type = CAP_RECT_ENTITY;
@@ -79,7 +79,7 @@ namespace cap
 	}
 
 	/* -------------------- Drawable entity ---------------------- */
-	DrawableEntity::DrawableEntity(string name)
+	DrawableEntity::DrawableEntity(const string& name)
 	{
 		this->name = name;
 		this->type = CAP_DRAWABLE_ENTTY;
