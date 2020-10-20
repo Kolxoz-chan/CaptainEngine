@@ -80,7 +80,7 @@ ObjectLayer* TiledManager::loadObjectLayer(XMLElement* layer)
             LuaRef constr = Script::getVar(type);
 			if (constr.isTable())
 			{
-				LuaRef lua_obj = constr(name);
+				LuaRef lua_obj = constr();
 				if (lua_obj.isUserdata())
 				{
                     // NOT FINISHED
@@ -100,15 +100,17 @@ ObjectLayer* TiledManager::loadObjectLayer(XMLElement* layer)
 		if (gid)
 		{
 			// Если объект не создан - создаём
-			if (!obj) obj = new DrawableEntity(name);
+			if (!obj) obj = new DrawableEntity();
 
 			// Если объект отображаемый - присваиваем ему текстуру
 			if (obj->getType() == CAP_DRAWABLE_ENTTY)
-			{/*
+			{
 				int index = atoi(gid) - 1;
-				cap::Texture* texture = getTexture(index);
-				if(texture)((DrawableEntity*)obj)->setTexture(texture->toSprite());
-				else Script::print_log("Warning! Object type " + type + " is not drawable, texture is not seted!");*/
+				if (required_tileset->length() > index)
+				{
+					static_cast<DrawableEntity*>(obj)->setTexture(required_tileset->getTile(index));
+				}
+				else Script::print_log("Warning! Object type " + string(type) + " is not drawable, texture is not seted!");
 			}
 		}
 
@@ -127,14 +129,15 @@ ObjectLayer* TiledManager::loadObjectLayer(XMLElement* layer)
 			if (gid) y -= h;
 
 			// Если объект не создан - создаём
-			if (!obj) obj = new RectEntity(name);
+			if (!obj) obj = new RectEntity();
 
 			// Позиция и размер
 			((RectEntity*)obj)->setSize(Point(w, h));
 		}
 
 		// Если объект не создан - создаём
-		if (!obj) obj = new PointEntity(name);
+		if (!obj) obj = new PointEntity();
+		if (name) obj->setName(name);
 
 		// Устанавливаем позицию
 		((PointEntity*)obj)->setPosition(Point(x, y));

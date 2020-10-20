@@ -102,7 +102,7 @@ namespace cap
 
 	void ObjectLayer::draw()
 	{
-
+		for (auto obj : drawable_objects) obj->draw();
 	}
 
 	void ObjectLayer::update()

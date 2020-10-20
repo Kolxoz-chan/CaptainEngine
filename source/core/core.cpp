@@ -28,7 +28,7 @@ namespace cap
 
         // Data init //
 		window = new RenderWindow(VideoMode(width, height), title);
-		default_camera = new Camera(Rect(0, 0, width, height));
+		default_camera = new Camera();
 		default_camera->resize(Point(width, height));
 		current_camera = default_camera;
 

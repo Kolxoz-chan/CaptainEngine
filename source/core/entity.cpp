@@ -84,6 +84,7 @@ namespace cap
 		this->name = name;
 		this->type = CAP_DRAWABLE_ENTTY;
 		this->drawable = nullptr;
+		this->visible = true;
 	}
 
 	DrawableEntity::~DrawableEntity()
@@ -105,17 +106,23 @@ namespace cap
 	{
 		if (drawable && visible)
 		{
+			dynamic_cast<Transformable*>(drawable)->setPosition(position);
 			Core::window->draw(*drawable, states);
 		}
 	}
 
 	/* -------------------- Camera entity ---------------------- */
+	Camera::Camera()
+	{
+		m_view = View();
+	}
+
 	Camera::Camera(Rect rect)
 	{
 		m_view = View(rect);
 	}
 
-	void Camera::resize(Point size)
+	void Camera::resize(const Point& size)
 	{
 		//size.x += int(size.x) % 2;
 		//size.y += int(size.y) % 2;
@@ -124,7 +131,7 @@ namespace cap
 	}
 
 	void Camera::move(Point pos)
-	{
+	{ 
 		m_view.move(pos);
 	}
 
