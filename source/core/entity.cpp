@@ -39,11 +39,6 @@ namespace cap
 		childs.push_back(child);
 	}
 
-	void Entity::update()
-	{
-
-	}
-
 	/* -------------------- Point entity ---------------------- */
 	PointEntity::PointEntity(const string& name) : Entity(name, CAP_POINT_ENTITY)
 	{
@@ -57,6 +52,16 @@ namespace cap
 	Point PointEntity::getPosition()
 	{
 		return position;
+	}
+
+	void PointEntity::move(float x, float y)
+	{
+		position = position + Point(x, y);
+	}
+
+	void PointEntity::move(Point vec)
+	{
+		position = position + vec;
 	}
 
 
@@ -130,9 +135,9 @@ namespace cap
 		m_view.reset(Rect({0,0}, size));
 	}
 
-	void Camera::move(Point pos)
-	{ 
-		m_view.move(pos);
+	void Camera::update()
+	{
+		m_view.setCenter((int)position.x, (int)position.y);
 	}
 
 	const View& Camera::getView()

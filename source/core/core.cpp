@@ -150,7 +150,8 @@ namespace cap
 
 	void Core::update()
 	{
-		current_camera->move(Point(0, 0.5));
+		current_camera->move(0, 1);
+		current_camera->update();
 		window->setView(current_camera->getView());
 
 		ImGui::SFML::Update(*window, time);

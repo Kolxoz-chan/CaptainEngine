@@ -32,7 +32,7 @@ namespace cap
 
 		void addChild(Entity* child);
 
-		virtual void update();
+		virtual void update() {};
 	};
 
 	// Точечная сущность
@@ -47,6 +47,9 @@ namespace cap
 		void setPosition(Point pos);
 
 		Point getPosition();
+
+		void move(float x, float y);
+		void move(Point vec);
 	};
 
 	// Прямоугольная сущность
@@ -92,7 +95,7 @@ namespace cap
 		Camera(Rect rect);
 
 		void resize(const Point& size);
-		void move(Point pos);
+		void update();
 
 		const View& getView();
 	};
