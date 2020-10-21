@@ -56,14 +56,15 @@ namespace cap
 
 	void PointEntity::move(float x, float y)
 	{
-		position = position + Point(x, y);
+		position.x += x;
+		position.y += y;
 	}
 
 	void PointEntity::move(Point vec)
 	{
-		position = position + vec;
+		position.x += vec.x;
+		position.y += vec.y;
 	}
-
 
 	/* -------------------- Rect entity ---------------------- */
 	RectEntity::RectEntity(const string& name)
@@ -117,22 +118,14 @@ namespace cap
 	}
 
 	/* -------------------- Camera entity ---------------------- */
-	Camera::Camera()
-	{
-		m_view = View();
-	}
-
 	Camera::Camera(Rect rect)
 	{
-		m_view = View(rect);
+		m_view.reset(rect);
 	}
 
 	void Camera::resize(const Point& size)
 	{
-		//size.x += int(size.x) % 2;
-		//size.y += int(size.y) % 2;
-
-		m_view.reset(Rect({0,0}, size));
+		m_view.reset(FloatRect(0, 0, size.x, size.y + 1));
 	}
 
 	void Camera::update()

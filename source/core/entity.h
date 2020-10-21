@@ -91,8 +91,7 @@ namespace cap
 		View m_view;
 
 	public:
-		Camera();
-		Camera(Rect rect);
+		Camera(Rect rect = {0.0, 0.0, 640.0, 480.0});
 
 		void resize(const Point& size);
 		void update();

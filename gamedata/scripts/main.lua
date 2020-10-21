@@ -1,6 +1,6 @@
 function Core:onSetup()
 	-- Settings --
-	--Core.setProperty("window_size", Point(1280, 720))
+	Core.setProperty("window_size", Point(1280, 720))
 	Core.setProperty("fps", 60)
 
 	-- Resources loading --

@@ -124,9 +124,13 @@ namespace cap
             }
 			else if (event.type == Event::Resized)
 			{
+				Point size = Point(window->getSize());
+				size.x -= int(size.x) % 2;
+				size.y -= int(size.y) % 2;
+				window->setSize(size);
+				
 				if (current_camera)
 				{
-					Point size = Point(event.size.width, event.size.height);
 					default_camera->resize(size);
 				}
 			}
@@ -167,7 +171,7 @@ namespace cap
 		if(current_level) current_level->draw();
 
         // Draw gui
-        for(GUIForm* form : stack_gui) form->draw();
+        //for(GUIForm* form : stack_gui) form->draw();
 		ImGui::SFML::Render(*window);
 
 		window->display();
