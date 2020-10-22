@@ -1,7 +1,13 @@
+require "class_maker"
+require "player"
+
 function Core:onSetup()
 	-- Settings --
 	Core.setProperty("window_size", Point(1280, 720))
 	Core.setProperty("fps", 60)
+
+	player = Player()
+	print(player:getName())
 
 	-- Resources loading --
 	Core.loadTilesetsForLevel("gamedata/levels/test", "TILED_MANAGER")

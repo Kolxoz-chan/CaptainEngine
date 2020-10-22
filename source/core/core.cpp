@@ -79,6 +79,9 @@ namespace cap
         // Class init
         initClasses();
 
+		// Add require paths
+		Script::addRequirePath("gamedata\\scripts\\?.lua");
+
         // Run script
         Script::include(CAP_SCRIPTS_DIR + file + ".lua");
 		
@@ -245,6 +248,7 @@ namespace cap
 			// ------- Class Entity ----------------------------------------------- //
 			.beginClass<Entity>("Entity")
 
+			.addProperty("self", &Entity::self)
 			.addFunction("update", &Entity::update)
 
 			.addFunction("addChild", &Entity::addChild)

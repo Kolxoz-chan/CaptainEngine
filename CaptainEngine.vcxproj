@@ -385,7 +385,9 @@
     <ClInclude Include="source\libraries\tinyxml2\tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="gamedata\scripts\class_maker.lua" />
     <None Include="gamedata\scripts\main.lua" />
+    <None Include="gamedata\scripts\player.lua" />
     <None Include="source\libraries\sfml\include\SFML\Audio\SoundFileFactory.inl" />
     <None Include="source\libraries\sfml\include\SFML\Graphics\Glsl.inl" />
     <None Include="source\libraries\sfml\include\SFML\Graphics\Rect.inl" />

@@ -61,6 +61,8 @@ public:
     static LuaRef eval(string code);
     static Namespace global();
 
+	static void addRequirePath(string path);
+
 	static void reset_log(string value);
 	static void print_log(string value);
 };

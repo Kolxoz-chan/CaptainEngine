@@ -52,6 +52,12 @@ LuaRef Script::newTable()
 	return luabridge::newTable(L);
 }
 
+void Script::addRequirePath(string path)
+{
+	LuaRef package = getVar("package");
+	package["path"] = package["path"].cast<string>() + ";" + path;
+}
+
 void Script::reset_log(string value)
 {
 	fstream file;

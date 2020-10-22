@@ -1,7 +1,9 @@
-﻿  RichText.cpp
+﻿  loaders.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+D:\Scripts\CaptainEngine\source\loaders.cpp(203,33): warning C4129: /: неизвестная escape-последовательность
   Создание кода
-  2 of 4151 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 4162 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    49 functions had inline decision re-evaluated but remain unchanged
+    40 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  CaptainEngine.vcxproj -> C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\Release\CaptainEngine.exe
+  CaptainEngine.vcxproj -> D:\Scripts\CaptainEngine\Release\CaptainEngine.exe

@@ -30,7 +30,7 @@ TileLayer* TiledManager::loadTileLayer(XMLElement* layer)
 	while (chunk)
 	{
 		int chunk_w = chunk->IntAttribute("width");		// Длинна чанка
-		int chunk_h = chunk->IntAttribute("height");		// Высота чанка
+		int chunk_h = chunk->IntAttribute("height");	// Высота чанка
 		int chunk_x = chunk->IntAttribute("x");			// Позиция чанка по X
 		int chunk_y = chunk->IntAttribute("y");			// Позиция чанка по Y
 

@@ -734,5 +734,7 @@
       <Filter>Файлы заголовков</Filter>
     </None>
     <None Include="gamedata\scripts\main.lua" />
+    <None Include="gamedata\scripts\player.lua" />
+    <None Include="gamedata\scripts\class_maker.lua" />
   </ItemGroup>
 </Project>
