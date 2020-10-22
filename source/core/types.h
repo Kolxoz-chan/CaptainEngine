@@ -2,6 +2,7 @@
 #include <libraries\std.hpp>
 #include <libraries\sfml.hpp>
 #include <libraries\lua.hpp>
+#include <libraries/gui.hpp>
 
 namespace cap
 {
@@ -42,6 +43,9 @@ namespace cap
 		operator Vector2f();
 		operator Vector2i();
 		operator Vector2u();
+		operator ImVec2();
+
+		operator const char* ();
 	};
 
 	// Прямоугольник

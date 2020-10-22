@@ -123,9 +123,14 @@ namespace cap
 		m_view.reset(rect);
 	}
 
+	Camera::Camera(const View& view)
+	{
+		m_view = view;
+	}
+
 	void Camera::resize(const Point& size)
 	{
-		m_view.reset(FloatRect(0, 0, size.x, size.y + 1));
+		m_view.reset(FloatRect(0, 0, size.x, size.y));
 	}
 
 	void Camera::update()

@@ -24,7 +24,7 @@ namespace cap
 		{
 			for (int x = 0; x < tileset_size.x; x++)
 			{
-				Point pos = Point(x, y) * (tile_size + margin) + spacing;
+				Point pos = Point(x, y) * (tile_size + Point(margin, margin)) + Point(spacing, spacing);
 				m_tiles.push_back(Sprite(*m_texrture, Rect(pos, tile_size)));
 			}
 		}

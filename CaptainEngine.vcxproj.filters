@@ -168,7 +168,7 @@
     <ClCompile Include="source\libraries\csvparser\csvparser.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="source\libraries\sfml_addtions\RichText.cpp">
+    <ClCompile Include="source\libraries\sfml_addon\RichText.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -698,7 +698,10 @@
     <ClInclude Include="source\libraries\config.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="source\libraries\sfml_addtions\RichText.h">
+    <ClInclude Include="source\libraries\sfml_addon\RichText.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\libraries\xml.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

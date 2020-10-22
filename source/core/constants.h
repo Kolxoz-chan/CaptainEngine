@@ -32,14 +32,17 @@ namespace cap
 	{
 		CAP_GUI_FORM = 1,
 		CAP_GUI_BUTTON,
-		CAP_GUI_LABEL
+		CAP_GUI_LABEL,
+		CAP_GUI_TEXT
 	};
 
-	// Value type //
+	// Relative values //
 	enum
 	{
-		CAP_VALUE_RELATIVE,
-		CAP_VALUE_ABSOLUTE
+		CAP_REL_X =			1 << 3,
+		CAP_REL_Y =			1 << 2,
+		CAP_REL_WIDTH =		1 << 1,
+		CAP_REL_HEIGHT =	1 << 0
 	};
 
 	// Resource types //

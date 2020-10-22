@@ -26,10 +26,12 @@ namespace cap
         // Lua init //
         Script::init();
 
-        // Data init //
+        // Window //
 		window = new RenderWindow(VideoMode(width, height), title);
-		default_camera = new Camera();
-		default_camera->resize(Point(width, height));
+		window->setPosition(Point(50, 50));
+
+		// Camera init //
+		default_camera = new Camera(window->getDefaultView());
 		current_camera = default_camera;
 
 		current_level = nullptr;
@@ -41,30 +43,6 @@ namespace cap
 
         // GUI init //
 		ImGui::SFML::Init(*window);
-
-		//////////////////////////////////////////////////////////////////////////////
-        GUIForm* test = new GUIForm();
-        test->setTitle("Test form");
-
-		GUILabel* label = new GUILabel();
-		label->setTitle("Everlasting Summer");
-		test->addWidget(label);
-
-        GUIButton* but1 = new GUIButton();
-        but1->setTitle("New game");
-        test->addWidget(but1);
-
-        GUIButton* but2 = new GUIButton();
-        but2->setTitle("Settings");
-        test->addWidget(but2);
-
-        GUIButton* but3 = new GUIButton();
-        but3->setTitle("Exit");
-		but3->onClick = Script::eval("function() Core.close() end");
-        test->addWidget(but3);
-
-        stack_gui.push_back(test);
-		///////////////////////////////////////////////////////////////////////////
 
         // Reset log //
         Script::reset_log("Captain Engine log:");
@@ -113,22 +91,22 @@ namespace cap
 		while (window->pollEvent(event))
 		{
 			ImGui::SFML::ProcessEvent(event);
-            if (event.type == Event::Closed)
-            {
+			if (event.type == Event::Closed)
+			{
 				if (onClose.isFunction())
 				{
 					LuaRef result = onClose();
 					if (result.isNil() || result == true) window->close();
 				}
 				else window->close();
-            }
+			}
 			else if (event.type == Event::Resized)
 			{
 				Point size = Point(window->getSize());
-				size.x -= int(size.x) % 2;
-				size.y -= int(size.y) % 2;
+				size.x += int(size.x) % 2;
+				size.y += int(size.y) % 2;
 				window->setSize(size);
-				
+
 				if (current_camera)
 				{
 					default_camera->resize(size);
@@ -154,7 +132,6 @@ namespace cap
 
 	void Core::update()
 	{
-		current_camera->move(0, 1);
 		current_camera->update();
 		window->setView(current_camera->getView());
 
@@ -171,7 +148,10 @@ namespace cap
 		if(current_level) current_level->draw();
 
         // Draw gui
-        //for(GUIForm* form : stack_gui) form->draw();
+		for (GUIForm* form : stack_gui)
+		{
+			window->draw(*form);
+		}
 		ImGui::SFML::Render(*window);
 
 		window->display();

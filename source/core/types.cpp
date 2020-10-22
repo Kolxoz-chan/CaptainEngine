@@ -23,13 +23,13 @@ namespace cap
 		int index = find(key);
 		if (index < 0)
 		{
-			index = ++m_count;
-			m_values = (LuaRef*)realloc(m_values, m_count);
-			m_keys = (string*)realloc(m_keys, m_count);
+			index = m_count++;
+			m_values = (LuaRef*)realloc(m_values, sizeof(LuaRef) * m_count);
+			m_keys = (string*)realloc(m_keys, sizeof(string) * m_count);
 		}
-
-		m_values[index] = value;
+		
 		m_keys[index] = key;
+		m_values[index] = value;
 	}
 
 	LuaRef LuaMap::get(string key)
@@ -95,6 +95,17 @@ namespace cap
 	Point::operator Vector2u()
 	{
 		return Vector2u(x, y);
+	}
+
+	Point::operator ImVec2()
+	{
+		return ImVec2(x, y);
+	}
+
+	Point::operator const char* ()
+	{
+		string str = "Point(" + to_string(x) + ", " + to_string(y) + ")";
+		return str.c_str();
 	}
 
 	// ------ Rect Class -------------------------------------//

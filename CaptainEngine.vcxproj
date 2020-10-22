@@ -153,7 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="source\libraries\sfml_addtions\RichText.cpp" />
+    <ClCompile Include="source\libraries\sfml_addon\RichText.cpp" />
     <ClCompile Include="source\core\resource.cpp" />
     <ClCompile Include="source\core\resource_manager.cpp" />
     <ClCompile Include="source\core\core.cpp" />
@@ -206,7 +206,7 @@
     <ClCompile Include="source\libraries\tinyxml2\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\libraries\sfml_addtions\RichText.h" />
+    <ClInclude Include="source\libraries\sfml_addon\RichText.h" />
     <ClInclude Include="source\core\resource.h" />
     <ClInclude Include="source\core\resource_manager.h" />
     <ClInclude Include="source\core\core.h" />
@@ -231,6 +231,7 @@
     <ClInclude Include="source\libraries\sfml.hpp" />
     <ClInclude Include="source\libraries\std.hpp" />
     <ClInclude Include="source\libraries\config.hpp" />
+    <ClInclude Include="source\libraries\xml.hpp" />
     <ClInclude Include="source\loaders.h" />
     <ClInclude Include="source\libraries\luabridge\detail\CFunctions.h" />
     <ClInclude Include="source\libraries\luabridge\detail\ClassInfo.h" />
