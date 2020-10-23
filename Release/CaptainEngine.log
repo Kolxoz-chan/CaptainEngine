@@ -1,9 +1,114 @@
-﻿  loaders.cpp
+﻿  main.cpp
   The contents of <filesystem> are available only with C++17 or later.
-D:\Scripts\CaptainEngine\source\loaders.cpp(203,33): warning C4129: /: неизвестная escape-последовательность
+  core.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+  entity.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\entity.cpp(132,44): warning C4244: аргумент: преобразование "const double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\entity.cpp(132,36): warning C4244: аргумент: преобразование "const double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\entity.cpp(137,50): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\entity.cpp(137,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  gui.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+  level.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\level.cpp(66,23): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\level.cpp(66,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\level.cpp(163,21): warning C4018: <: несоответствие типов со знаком и без знака
+  resource.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\resource.cpp(12,57): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+  resource_manager.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+  types.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(15,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(87,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(87,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(92,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(92,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(97,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(97,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(102,20): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(102,17): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(130,31): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(130,24): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(130,21): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(130,18): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(135,33): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(135,26): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(135,23): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\types.cpp(135,20): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+  loaders.cpp
+  The contents of <filesystem> are available only with C++17 or later.
+C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\loaders.cpp(203,33): warning C4129: /: неизвестная escape-последовательность
   Создание кода
-  2 of 4162 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    40 functions had inline decision re-evaluated but remain unchanged
+  2 of 4182 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    26 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  CaptainEngine.vcxproj -> D:\Scripts\CaptainEngine\Release\CaptainEngine.exe
+  CaptainEngine.vcxproj -> C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\Release\CaptainEngine.exe

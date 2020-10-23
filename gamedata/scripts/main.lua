@@ -6,9 +6,6 @@ function Core:onSetup()
 	Core.setProperty("window_size", Point(1280, 720))
 	Core.setProperty("fps", 60)
 
-	player = Player()
-	print(player:getName())
-
 	-- Resources loading --
 	Core.loadTilesetsForLevel("gamedata/levels/test", "TILED_MANAGER")
 	lvl = Core.loadLevel("gamedata/levels/test.tmx", "TILED_MANAGER")

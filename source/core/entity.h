@@ -32,7 +32,7 @@ namespace cap
 
 		void addChild(Entity* child);
 
-		virtual void update() {};
+		virtual void update();
 	};
 
 	// Точечная сущность
@@ -48,7 +48,6 @@ namespace cap
 
 		Point getPosition();
 
-		void move(float x, float y);
 		void move(Point vec);
 	};
 

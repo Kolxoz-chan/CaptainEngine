@@ -107,7 +107,7 @@ namespace cap
 
 	void ObjectLayer::update()
 	{
-
+		for (auto obj : all_objects) obj->update();
 	}
 
 	// --------- Class GroupLayer ------------------------------------------------------------------ //

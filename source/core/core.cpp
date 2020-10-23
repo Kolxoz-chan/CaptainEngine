@@ -135,9 +135,14 @@ namespace cap
 
 	void Core::update()
 	{
+		// Update camera
 		current_camera->update();
 		window->setView(current_camera->getView());
 
+		// Update level
+		if (current_level) current_level->update();
+
+		// Update GUI
 		ImGui::SFML::Update(*window, time);
 		if (onUpdate.isFunction()) onUpdate();
 	}
@@ -264,15 +269,19 @@ namespace cap
 			// ------- Class PointEntity ----------------------------------------------- //
 			.deriveClass<PointEntity, Entity>("PointEntity")
 			.addConstructor<void(*)(const string&)>()
+
+			.addFunction("move", &PointEntity::move)
 			.endClass()
 
 			// ------- Class PointEntity ----------------------------------------------- //
-			.deriveClass<RectEntity, Entity>("RectEntity")
+			.deriveClass<RectEntity, PointEntity>("RectEntity")
 			.addConstructor<void(*)(const string&)>()
+
+			
 			.endClass()
 
 			// ------- Class PointEntity ----------------------------------------------- //
-			.deriveClass<DrawableEntity, Entity>("DrawableEntity")
+			.deriveClass<DrawableEntity, RectEntity>("DrawableEntity")
 			.addConstructor<void(*)(const string&)>()
 			.endClass()
 

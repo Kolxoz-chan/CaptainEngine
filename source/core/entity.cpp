@@ -39,6 +39,11 @@ namespace cap
 		childs.push_back(child);
 	}
 
+	void Entity::update()
+	{
+		if (self["onUpdate"]) self["onUpdate"](self);
+	}
+
 	/* -------------------- Point entity ---------------------- */
 	PointEntity::PointEntity(const string& name) : Entity(name, CAP_POINT_ENTITY)
 	{
@@ -52,12 +57,6 @@ namespace cap
 	Point PointEntity::getPosition()
 	{
 		return position;
-	}
-
-	void PointEntity::move(float x, float y)
-	{
-		position.x += x;
-		position.y += y;
 	}
 
 	void PointEntity::move(Point vec)
@@ -112,7 +111,7 @@ namespace cap
 	{
 		if (drawable && visible)
 		{
-			dynamic_cast<Transformable*>(drawable)->setPosition(position);
+			dynamic_cast<Transformable*>(drawable)->setPosition(position.round());
 			Core::window->draw(*drawable, states);
 		}
 	}

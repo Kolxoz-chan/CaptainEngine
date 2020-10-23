@@ -21,10 +21,10 @@ function ClassMaker:newObject(class, parent)
 	
 	-- If parent is userdata
 	elseif type(parent) == "userdata" then
-		parent.self = class
 		class.__parent = parent
+		parent.self = class
 		meta = {}
-		
+		 
 		-- get index
 		meta.__index = function(self, key)
 			local parent = self.__parent
@@ -37,7 +37,7 @@ function ClassMaker:newObject(class, parent)
 				else return parent[key] end
 			else
 				return rawget(self, key)
-			end
+			end 
 		end
 		
 		-- set new index
@@ -49,8 +49,8 @@ function ClassMaker:newObject(class, parent)
 			else 
 				rawset(self, key, value)
 			end
-		end
-		
+		end 
+
 		return setmetatable(class, meta)
 	
 	-- If parent is table
