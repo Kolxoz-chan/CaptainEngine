@@ -8,9 +8,7 @@ function Core:onSetup()
 
 	-- Resources loading --
 	Core.loadTilesetsForLevel("test", "TILED_MANAGER")
-	lvl = Core.loadLevel("test", "TILED_MANAGER")
-
-	Core.setCurrentLevel(lvl)
+	Core.current_level = Core.loadLevel("test", "TILED_MANAGER")
 end
 
 function Core:onClose()

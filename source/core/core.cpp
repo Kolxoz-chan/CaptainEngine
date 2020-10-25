@@ -250,7 +250,6 @@ namespace cap
 			.beginClass<Core>("Core")
 			.addStaticFunction("setProperty", &Core::setProperty)
 			.addStaticFunction("getProperty", &Core::getProperty)
-			.addStaticFunction("setCurrentLevel", &Core::setCurrentLevel)
 
 			.addStaticProperty("onSetup", &Core::onSetup)
 			.addStaticProperty("onClose", &Core::onClose)
@@ -263,6 +262,8 @@ namespace cap
 			.addStaticFunction("close", &Core::close)
 
 			.addStaticProperty("deltaTime", &Core::deltaTime, false)
+			.addStaticProperty("current_camera", &Core::current_camera)
+			.addStaticProperty("current_level", &Core::current_level)
 			.endClass()
 
 			// ------- Class Entity ----------------------------------------------- //
@@ -298,6 +299,11 @@ namespace cap
 			// ------- Class PointEntity ----------------------------------------------- //
 			.deriveClass<DrawableEntity, RectEntity>("DrawableEntity")
 			.addConstructor<void(*)(const string&)>()
+			.endClass()
+			
+			// ------- Class Camera ----------------------------------------------- //
+			.deriveClass<Camera, RectEntity>("Camera")
+			.addConstructor<void(*)(Rect)>()
 			.endClass()
 
 			// ------- Class Tileset ----------------------------------------------- //
