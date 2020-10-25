@@ -1,17 +1,12 @@
 #pragma once
 #include <core/types.h>
 #include <core/level.h>
-#include <core/resource.h>
 
 #include <libraries/std.hpp>
 #include <libraries/lua.hpp>
 
 namespace cap
 {
-	// -------------- Pseudotypes ------------------------------- //
-	using RequiredResources = vector<pair<int, Resource*>>;
-	using RequiredList = vector<pair<int, string>>;
-
 	// -------------- Base Manager ------------------------------- //
 	class ResourceManager
 	{

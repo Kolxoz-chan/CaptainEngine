@@ -13,10 +13,10 @@ end
 
 -- Create new object
 function ClassMaker:newObject(class, parent)
+	class.__index = class
 
 	-- If hasn't parent
 	if parent == nil then
-		class.__index = class
 		return setmetatable({}, class)
 	
 	-- If parent is userdata

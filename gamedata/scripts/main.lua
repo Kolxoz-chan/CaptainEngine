@@ -7,8 +7,8 @@ function Core:onSetup()
 	Core.setProperty("fps", 60)
 
 	-- Resources loading --
-	Core.loadTilesetsForLevel("gamedata/levels/test", "TILED_MANAGER")
-	lvl = Core.loadLevel("gamedata/levels/test.tmx", "TILED_MANAGER")
+	Core.loadTilesetsForLevel("test", "TILED_MANAGER")
+	lvl = Core.loadLevel("test", "TILED_MANAGER")
 
 	Core.setCurrentLevel(lvl)
 end

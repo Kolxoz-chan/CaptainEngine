@@ -51,9 +51,18 @@ namespace cap
 		CAP_RESOURCE_TILESET
 	};
 
-	// Managers type //
+	// Managers types //
 	enum
 	{
 		CAP_MANAGER_LEVEL,
+	};
+
+	// Devices types
+	enum
+	{
+		CAP_DEVICE_MOUSE =			1 << 0,
+		CAP_DEVICE_KEYBOARD =		1 << 1,
+		CAP_DEVICE_JOYSTICK =		1 << 2,
+		CAP_DEVICE_TOUCHSCREEN =	1 << 3
 	};
 }

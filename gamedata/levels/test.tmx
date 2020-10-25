@@ -78,6 +78,6 @@
   </data>
  </layer>
  <objectgroup id="2" name="Слой объектов 1">
-  <object id="1" gid="11" x="640" y="352" width="64" height="64" type="Player"/>
+  <object id="1" type="Player" gid="11" x="48" y="208" width="64" height="64"/>
  </objectgroup>
 </map>

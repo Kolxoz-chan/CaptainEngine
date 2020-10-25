@@ -243,14 +243,20 @@ Level* TiledManager::loadLevel(const string& path)
 
 TilesetMap TiledManager::loadTilesetsForLevel(const string& name)
 {
+	XMLDocument doc, tsx;
 	TilesetMap list;
 
 	// Loading level file
 	string path = name + ".tmx";
+	int status = doc.LoadFile(path.c_str());
+	if (status != XML_SUCCESS)
+	{
+		path = CAP_LEVELS_DIR + name + ".tmx";
+		status = doc.LoadFile(path.c_str());
+	}
 
 	// Tileset paths loading
-	XMLDocument doc, tsx;
-	if (doc.LoadFile(path.c_str()) == XML_SUCCESS)
+	if (status == XML_SUCCESS)
 	{
 		XMLElement* map = doc.RootElement();
 		required_tileset->clear();

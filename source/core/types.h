@@ -53,7 +53,7 @@ namespace cap
 		operator const char* ();
 	};
 
-	// Прямоугольник
+	// Rect class
 	class Rect
 	{
 	public:
@@ -67,8 +67,32 @@ namespace cap
 
 		operator IntRect();
 		operator FloatRect();
-
 	};
+
+	// Tileset class
+	class Tileset
+	{
+	private:
+		string m_name;
+		sf::Texture* m_texrture = nullptr;
+		vector<sf::Sprite> m_tiles;
+		Point m_tileset_size, m_tile_size, m_margin, m_spacing;
+
+	public:
+		Tileset(string name = string()) : m_name(name) {};
+
+		string getName();
+		Sprite getTile(int index);
+		Sprite getTile(Point coords);
+		inline Sprite getTile(int x, int y) { return getTile(Point(x, y)); };
+
+		void subdivide(sf::Texture* texture, Point tileset_size, Point tile_size, int spacing = 0, int margin = 0);
+		void concat(const Tileset& tileset);
+		int length();
+		void clear();
+	};
+	using TilesetList = vector<Tileset*>;
+	using TilesetMap = map<string, Tileset*>;
 
 	// Обёртка текстуры
 	class Texture

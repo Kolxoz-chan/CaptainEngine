@@ -4,6 +4,7 @@
 #include <core/level.h>
 #include <core/entity.h>
 #include <core/gui.h>
+#include <core/input.h>
 #include <core/resource_manager.h>
 
 #include <libraries/std.hpp>
@@ -68,6 +69,7 @@ namespace cap
 
 	private:
 		static void initClasses();
+		static void initConstants();
 		static void update();
 		static void draw();
 		static void eventProcessing();

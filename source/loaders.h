@@ -1,6 +1,5 @@
 #pragma once
 #include <core/resource_manager.h>
-#include <core/resource.h>
 #include <core/types.h>
 
 #include <libraries/config.hpp>

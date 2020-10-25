@@ -23,8 +23,12 @@ namespace cap
 
 	void Core::init(int width, int height, const string& title)
 	{
-        // Lua init //
+        // Classes init //
         Script::init();
+		Input::init();
+
+		// Init constants //
+		Core::initConstants();
 
         // Window //
 		window = new RenderWindow(VideoMode(width, height), title);
@@ -227,6 +231,17 @@ namespace cap
 		window->close();
 	}
 
+	void Core::initConstants()
+	{
+		// Init keyboard buttons
+		auto buttons = Input::getKeyboardButtons();
+		for (int i = 0; i < buttons.size(); i++) Script::setVar(buttons[i], i);
+
+		// Init mouse buttons
+		buttons = Input::getMouseButtons();
+		for (int i = 0; i < buttons.size(); i++) Script::setVar(buttons[i], i);
+	}
+
     void Core::initClasses()
     {
 		Script::global()
@@ -277,7 +292,7 @@ namespace cap
 			.deriveClass<RectEntity, PointEntity>("RectEntity")
 			.addConstructor<void(*)(const string&)>()
 
-			
+
 			.endClass()
 
 			// ------- Class PointEntity ----------------------------------------------- //
@@ -309,6 +324,18 @@ namespace cap
 			.addProperty("y", &Rect::y)
 			.addProperty("width", &Rect::width)
 			.addProperty("height", &Rect::height)
+			.endClass()
+
+			// ------- Class Input ----------------------------------------------- //
+			.beginClass<Input>("Input")
+
+			.addStaticFunction("isKeyboardClicked", &Input::isKeyboardClicked)
+			.addStaticFunction("isKeyboardPressed", &Input::isKeyboardPressed)
+			.addStaticFunction("isKeyboardReleased", &Input::isKeyboardReleased)
+			.addStaticFunction("isMouseClicked", &Input::isMouseClicked)
+			.addStaticFunction("isMousePressed", &Input::isMousePressed)
+			.addStaticFunction("isMouseReleased", &Input::isMouseReleased)
+
 			.endClass();
     }	
 }

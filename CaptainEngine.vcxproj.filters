@@ -30,9 +30,6 @@
     <ClCompile Include="source\core\script.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="source\core\types.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -159,9 +156,6 @@
     <ClCompile Include="source\core\resource_manager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="source\core\resource.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="source\loaders.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -169,6 +163,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="source\libraries\sfml_addon\RichText.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\types.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\controller.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\core\input.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -686,9 +689,6 @@
     <ClInclude Include="source\core\resource_manager.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="source\core\resource.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="source\loaders.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -702,6 +702,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\libraries\xml.hpp">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\controller.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\core\input.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
