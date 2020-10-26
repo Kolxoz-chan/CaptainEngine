@@ -44,10 +44,10 @@ namespace cap
         Point window_size = target.getSize();
 
         // Converting values
-        if (m_rel_values & CAP_REL_WIDTH) size.x *= window_size.x;
-        if (m_rel_values & CAP_REL_HEIGHT) size.y *= window_size.y;
-        if (m_rel_values & CAP_REL_X) pos.x *= window_size.x - size.x;
-        if (m_rel_values & CAP_REL_Y) pos.y *= window_size.y - size.y;
+        if (m_rel_values & CAP_RELATIVE_WIDTH) size.x *= window_size.x;
+        if (m_rel_values & CAP_RELATIVE_HEIGHT) size.y *= window_size.y;
+        if (m_rel_values & CAP_RELATIVE_X) pos.x *= window_size.x - size.x;
+        if (m_rel_values & CAP_RELATIVE_Y) pos.y *= window_size.y - size.y;
 
         // Widget rect
         Point screen_pos = Point(target.getView().getCenter()) - Point(target.getView().getSize()) / 2;
@@ -78,13 +78,13 @@ namespace cap
 
     void GUIForm::setPosition(Point pos, int relative)
     {
-        m_rel_values = (m_rel_values & (CAP_REL_HEIGHT | CAP_REL_WIDTH)) | (relative & (CAP_REL_X | CAP_REL_Y));
+        m_rel_values = (m_rel_values & CAP_RELATIVE_SIZE) | (relative & CAP_RELATIVE_POS);
         m_pos = pos;
     }
 
     void GUIForm::setSize(Point size, int relative)
     {
-        m_rel_values = (m_rel_values & (CAP_REL_X | CAP_REL_Y)) | (relative & (CAP_REL_HEIGHT | CAP_REL_WIDTH));
+        m_rel_values = (m_rel_values & CAP_RELATIVE_POS) | (relative & CAP_RELATIVE_SIZE);
         m_size = size;
     }
 

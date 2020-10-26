@@ -36,15 +36,22 @@ namespace cap
 		CAP_GUI_TEXT
 	};
 
-	// Relative values //
-	enum
+	// Position and size types //
+	enum 
 	{
-		CAP_REL_X =			1 << 3,
-		CAP_REL_Y =			1 << 2,
-		CAP_REL_WIDTH =		1 << 1,
-		CAP_REL_HEIGHT =	1 << 0,
-		CAP_REL_POS =		CAP_REL_X | CAP_REL_Y,
-		CAP_REL_SIZE =		CAP_REL_WIDTH | CAP_REL_HEIGHT
+		CAP_RELATIVE_X =			1 << 0,
+		CAP_RELATIVE_Y =			1 << 1,
+		CAP_INVERSED_X =			1 << 2,
+		CAP_INVERSED_Y =			1 << 3,
+		CAP_RELATIVE_WIDTH =		1 << 4,
+		CAP_RELATIVE_HEIGHT =		1 << 5,
+		CAP_CONTENT_WIDTH =			1 << 6,
+		CAP_CONTENT_HEIGHT =		1 << 7,
+
+		CAP_RELATIVE_POS =			CAP_RELATIVE_X | CAP_RELATIVE_Y,
+		CAP_INVERSED_POS =			CAP_INVERSED_X | CAP_INVERSED_Y,
+		CAP_RELATIVE_SIZE =			CAP_RELATIVE_WIDTH | CAP_RELATIVE_HEIGHT,
+		CAP_CONTENT_SIZE =			CAP_CONTENT_WIDTH | CAP_CONTENT_HEIGHT
 	};
 
 	// Resource types //

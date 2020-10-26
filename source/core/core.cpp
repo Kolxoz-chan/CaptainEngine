@@ -153,11 +153,6 @@ namespace cap
 		// Draw level
 		if(current_level) current_level->draw();
 
-		auto form = GUIForm();
-		form.setPosition(Point(0.5, 0.5), CAP_REL_POS);
-		form.setSize(Point(0.5, 0.5), CAP_REL_SIZE);
-
-		window->draw(form);
         // Draw gui
 		for (GUIForm* form : stack_gui)
 		{
@@ -260,6 +255,7 @@ namespace cap
 			.addStaticFunction("close", &Core::close)
 
 			.addStaticProperty("deltaTime", &Core::deltaTime, false)
+			.addStaticProperty("default_camera", &Core::default_camera, false)
 			.addStaticProperty("current_camera", &Core::current_camera)
 			.addStaticProperty("current_level", &Core::current_level)
 			.endClass()
@@ -283,6 +279,10 @@ namespace cap
 			// ------- Class PointEntity ----------------------------------------------- //
 			.deriveClass<PointEntity, Entity>("PointEntity")
 			.addConstructor<void(*)(const string&)>()
+
+			.addFunction("setPosition", &PointEntity::setPosition)
+
+			.addFunction("getPosition", &PointEntity::getPosition)
 
 			.addFunction("move", &PointEntity::move)
 			.endClass()
