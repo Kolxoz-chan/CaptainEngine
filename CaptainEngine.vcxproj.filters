@@ -33,21 +33,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="source\libraries\imgui\imgui.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="source\libraries\imgui\imgui_demo.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="source\libraries\imgui\imgui_draw.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="source\libraries\imgui\imgui_widgets.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="source\libraries\imgui\imgui-SFML.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="source\libraries\lua\lapi.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -192,33 +177,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\core\types.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imconfig.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imconfig-SFML.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imgui.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imgui_internal.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imgui-SFML.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imgui-SFML_export.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imstb_rectpack.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imstb_textedit.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\imgui\imstb_truetype.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\libraries\lua\lapi.h">
@@ -680,9 +638,6 @@
     <ClInclude Include="source\libraries\lua.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="source\libraries\gui.hpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="source\core\constants.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -699,9 +654,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\libraries\sfml_addon\RichText.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="source\libraries\xml.hpp">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\core\controller.h">

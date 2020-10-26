@@ -54,17 +54,17 @@ namespace cap
 
 	Point operator+ (const Point& left, const Point& right)
 	{
-		return Point(left.x + right.x, left.y + right.x);
+		return Point(left.x + right.x, left.y + right.y);
 	}
 
 	Point operator- (const Point& left, const Point& right)
 	{
-		return Point(left.x - right.x, left.y - right.x);
+		return Point(left.x - right.x, left.y - right.y);
 	}
 
 	Point operator* (const Point& left, const Point& right)
 	{
-		return Point(left.x * right.x, left.y * right.x);
+		return Point(left.x * right.x, left.y * right.y);
 	}
 
 	Point operator* (const Point& left, float right)
@@ -74,7 +74,7 @@ namespace cap
 
 	Point operator/ (const Point& left, const Point& right)
 	{
-		return Point(left.x / right.x, left.y / right.x);
+		return Point(left.x / right.x, left.y / right.y);
 	}
 
 	Point operator/ (const Point& left, float right)
@@ -95,11 +95,6 @@ namespace cap
 	Point::operator Vector2u()
 	{
 		return Vector2u(x, y);
-	}
-
-	Point::operator ImVec2()
-	{
-		return ImVec2(x, y);
 	}
 
 	Point::operator const char* ()
@@ -174,6 +169,31 @@ namespace cap
 		return Point(width, height);
 	}
 
+	Point Rect::getCenter()
+	{
+		return Point(x + width / 2, y + height / 2);
+	}
+
+	Point Rect::getLeftTop()
+	{
+		return Point(x, y);
+	}
+
+	Point Rect::getLeftBottom()
+	{
+		return Point(x, y + height);
+	}
+
+	Point Rect::getRightTop()
+	{
+		return Point(x + width, y);
+	}
+
+	Point Rect::getRightBottom()
+	{
+		return Point(x + width, y + height);
+	}
+
 	Rect::operator IntRect()
 	{
 		return IntRect(x, y, width, height);
@@ -182,6 +202,12 @@ namespace cap
 	Rect::operator FloatRect()
 	{
 		return FloatRect(x, y, width, height);
+	}
+
+	Rect::operator const char* ()
+	{
+		string str = "Rect(" + to_string(x) + ", " + to_string(y) + ", " + to_string(width) + "x" + to_string(height) + ")";
+		return str.c_str();
 	}
 
 	// ------ Texture Class -------------------------------------//

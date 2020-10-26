@@ -45,9 +45,6 @@ namespace cap
         onClose = Script::newRef();
 		onUpdate = Script::newRef();
 
-        // GUI init //
-		ImGui::SFML::Init(*window);
-
         // Reset log //
         Script::reset_log("Captain Engine log:");
 
@@ -97,7 +94,6 @@ namespace cap
 	{
 		while (window->pollEvent(event))
 		{
-			ImGui::SFML::ProcessEvent(event);
 			if (event.type == Event::Closed)
 			{
 				if (onClose.isFunction())
@@ -134,7 +130,6 @@ namespace cap
 			update();
 			draw();
 		}
-		ImGui::SFML::Shutdown();
 	}
 
 	void Core::update()
@@ -147,7 +142,6 @@ namespace cap
 		if (current_level) current_level->update();
 
 		// Update GUI
-		ImGui::SFML::Update(*window, time);
 		if (onUpdate.isFunction()) onUpdate();
 	}
 
@@ -159,12 +153,16 @@ namespace cap
 		// Draw level
 		if(current_level) current_level->draw();
 
+		auto form = GUIForm();
+		form.setPosition(Point(0.5, 0.5), CAP_REL_POS);
+		form.setSize(Point(0.5, 0.5), CAP_REL_SIZE);
+
+		window->draw(form);
         // Draw gui
 		for (GUIForm* form : stack_gui)
 		{
 			window->draw(*form);
 		}
-		ImGui::SFML::Render(*window);
 
 		window->display();
 	}

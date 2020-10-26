@@ -6,7 +6,6 @@
 #include <core/types.h>
 
 #include <libraries/std.hpp>
-#include <libraries/gui.hpp>
 
 namespace cap
 {
@@ -19,10 +18,19 @@ namespace cap
         string m_name;
         int m_type;
         int m_rel_values;
-
+        map<int, any> m_styles;
 
     public:
         GUIWidget(string name, int type);
+
+        template<class T>
+        T getStyle(int key) const
+        {
+            return any_cast<T>(m_styles.at(key));
+        }
+        void setStyle(int key, const Color& value);
+        bool hasStyle(int key) const;
+        
     };
 
     // --------- Class Form -------------------------------//
@@ -30,10 +38,9 @@ namespace cap
     {
     private:
        string m_title;
-       int flags;
+       int m_flags;
        vector<GUIWidget*> widgets;
 
-    protected:
        void draw(RenderTarget& target, RenderStates states) const;
 
     public:

@@ -42,7 +42,9 @@ namespace cap
 		CAP_REL_X =			1 << 3,
 		CAP_REL_Y =			1 << 2,
 		CAP_REL_WIDTH =		1 << 1,
-		CAP_REL_HEIGHT =	1 << 0
+		CAP_REL_HEIGHT =	1 << 0,
+		CAP_REL_POS =		CAP_REL_X | CAP_REL_Y,
+		CAP_REL_SIZE =		CAP_REL_WIDTH | CAP_REL_HEIGHT
 	};
 
 	// Resource types //
@@ -64,5 +66,11 @@ namespace cap
 		CAP_DEVICE_KEYBOARD =		1 << 1,
 		CAP_DEVICE_JOYSTICK =		1 << 2,
 		CAP_DEVICE_TOUCHSCREEN =	1 << 3
+	};
+
+	// GUI styles list
+	enum
+	{
+		GUI_STYLE_BACKGROUND_COLOR
 	};
 }
