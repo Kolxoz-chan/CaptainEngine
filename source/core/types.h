@@ -100,40 +100,34 @@ namespace cap
 	using TilesetList = vector<Tileset*>;
 	using TilesetMap = map<string, Tileset*>;
 
-	// Обёртка текстуры
-	class Texture
-	{
-	private:
-		sf::Image* m_image;
-		sf::Texture* m_texture;
-
-	public:
-		Texture();
-
-		Sprite toSprite();
-		Sprite cutRect(Rect rect);
-
-		operator sf::Texture();
-		operator sf::Image();
-
-	};
-
-	// Анимация 
+	// Anmation class 
 	class Animation : public Drawable
 	{
 		using Frame = pair<int, const Sprite>;
 
 	private:
-		bool started = false;
+		bool started = true;
+		Clock timer;
+		int time = 0;
 		int current_frame = 0;
 		vector<Frame> frames;
+
+		void draw(RenderTarget& target, RenderStates states) const;
+		int getNextFrame();
 
 	public:
 		Animation() = default;
 
-		void addFrame(int delay, const Sprite texture);
+		void addFrame(int delay, const Sprite& texture);
 
 		void setCurentFrame(int frame);
-		
+
+		void play();
+		void pause();
+		void stop();
+		void restart();
+		void update();
+
+		int length();
 	};
 }

@@ -210,44 +210,78 @@ namespace cap
 		return str.c_str();
 	}
 
-	// ------ Texture Class -------------------------------------//
-	Texture::Texture()
-	{
-		m_image = nullptr;
-		m_texture = nullptr;
-	}
-
-
-	Sprite Texture::toSprite()
-	{
-		return Sprite(*m_texture);
-	}
-
-	Sprite Texture::cutRect(Rect rect)
-	{
-		return Sprite(*m_texture, rect);
-	}
-
-	Texture::operator sf::Texture()
-	{
-		return *m_texture;
-	}
-
-	Texture::operator sf::Image()
-	{
-		return *m_image;
-	}
-
 	// ------ Animation Class -------------------------------------//
-	void Animation::addFrame(int delay, const Sprite texture)
+	void Animation::addFrame(int delay, const Sprite& texture)
 	{
-		frames.push_back({ delay, texture });
+		frames.push_back(Frame(delay, texture));
 	}
 
 	void Animation::setCurentFrame(int frame)
 	{
 		int size = frames.size();
+
 		if (frame < size) current_frame = frame;
 		else current_frame = size ? size - 1 : 0;
+
+		timer.restart();
+		time = 0;
+	}
+
+	int Animation::getNextFrame()
+	{
+		if (current_frame == frames.size() - 1) return 0;
+		return ++current_frame;
+	}
+
+	void Animation::update()
+	{
+		if (frames.size() > 1)
+		{
+			Frame frame = frames[current_frame];
+			time += timer.restart().asMilliseconds();
+			if (time > frame.first)
+			{
+				time -= frame.first;
+				current_frame = getNextFrame();
+			}
+		}
+	}
+
+	void Animation::draw(RenderTarget& target, RenderStates states) const
+	{
+		if (frames.size())
+		{
+			Sprite sprite = frames[current_frame].second;
+			target.draw(sprite);
+		}
+	}
+
+	void Animation::play()
+	{
+		started = true;
+	}
+
+	void Animation::pause()
+	{
+		started = false;
+	}
+
+	void Animation::stop()
+	{
+		restart();
+		pause();
+	}
+
+	void Animation::restart()
+	{
+		time = 0;
+		started = true;
+		current_frame = 0;
+		timer.restart();
+	}
+
+	int Animation::length()
+	{
+		return frames.size();
 	}
 }

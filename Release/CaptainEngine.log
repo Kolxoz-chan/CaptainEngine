@@ -1,9 +1,147 @@
-﻿  core.cpp
-C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(225,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\source\core\core.cpp(229,21): warning C4018: <: несоответствие типов со знаком и без знака
+﻿  main.cpp
+  controller.cpp
+  core.cpp
+D:\Scripts\CaptainEngine\source\core\core.cpp(225,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Scripts\CaptainEngine\source\core\core.cpp(229,21): warning C4018: <: несоответствие типов со знаком и без знака
+  entity.cpp
+D:\Scripts\CaptainEngine\source\core\entity.cpp(132,44): warning C4244: аргумент: преобразование "const double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Scripts\CaptainEngine\source\core\entity.cpp(132,36): warning C4244: аргумент: преобразование "const double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Scripts\CaptainEngine\source\core\entity.cpp(137,50): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Scripts\CaptainEngine\source\core\entity.cpp(137,33): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  gui.cpp
+  input.cpp
+  level.cpp
+D:\Scripts\CaptainEngine\source\core\level.cpp(66,23): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Scripts\CaptainEngine\source\core\level.cpp(66,20): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Scripts\CaptainEngine\source\core\level.cpp(163,21): warning C4018: <: несоответствие типов со знаком и без знака
+  resource_manager.cpp
+  script.cpp
+  types.cpp
+D:\Scripts\CaptainEngine\source\core\types.cpp(15,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Scripts\CaptainEngine\source\core\types.cpp(87,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(87,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(92,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(92,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(97,22): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(97,19): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(119,57): warning C4244: аргумент: преобразование "double" в "const unsigned int", возможна потеря данных
+D:\Scripts\CaptainEngine\source\core\types.cpp(199,31): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(199,24): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(199,21): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(199,18): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(204,33): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(204,26): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(204,23): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Scripts\CaptainEngine\source\core\types.cpp(204,20): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+  csvparser.cpp
+D:\Scripts\CaptainEngine\source\libraries\csvparser\csvparser.cpp(117,39): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+  RichText.cpp
+  tinyxml2.cpp
+  loaders.cpp
+D:\Scripts\CaptainEngine\source\loaders.cpp(203,33): warning C4129: /: неизвестная escape-последовательность
+  lapi.c
+  lauxlib.c
+  lbaselib.c
+  lcode.c
+  lcorolib.c
+  lctype.c
+  ldblib.c
+  ldebug.c
+  ldo.c
+  ldump.c
+  lfunc.c
+  lgc.c
+  linit.c
+  liolib.c
+  llex.c
+  lmathlib.c
+  lmem.c
+  loadlib.c
+  lobject.c
+  lopcodes.c
+  Компиляция...
+  loslib.c
+  lparser.c
+  lstate.c
+  lstring.c
+  lstrlib.c
+  ltable.c
+  ltablib.c
+  ltm.c
+  lua.c
+  luac.c
+  lundump.c
+  lutf8lib.c
+  lvm.c
+  lzio.c
   Создание кода
-  118 of 3371 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    10 functions had inline decision re-evaluated but remain unchanged
+D:\Scripts\CaptainEngine\source\libraries\csvparser\csvparser.cpp(31): warning C4715: kxz::CSVParser::loadFromString: значение возвращается не при всех путях выполнения
+  3323 of 3371 functions (98.6%) were compiled, the rest were copied from previous compilation.
+    107 functions were new in current compilation
+    17 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  CaptainEngine.vcxproj -> C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\Release\CaptainEngine.exe
+  CaptainEngine.vcxproj -> D:\Scripts\CaptainEngine\Release\CaptainEngine.exe
