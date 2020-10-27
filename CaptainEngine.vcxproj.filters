@@ -695,4 +695,7 @@
     <None Include="gamedata\scripts\player.lua" />
     <None Include="gamedata\scripts\class_maker.lua" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="log.txt" />
+  </ItemGroup>
 </Project>

@@ -13,7 +13,6 @@ end
 
 function Core:onClose()
 
-	return true
 end
 
 function Core:onUpdate()

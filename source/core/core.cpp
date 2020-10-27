@@ -17,9 +17,9 @@ namespace cap
 	Forms           Core::forms;
 	GUIStack        Core::stack_gui;
 
-    LuaRef          Core::onSetup = 0;
-    LuaRef          Core::onClose = 0;
-	LuaRef			Core::onUpdate = 0;
+    LuaRef          Core::onSetup = Script::newRef();
+    LuaRef          Core::onClose = Script::newRef();
+	LuaRef			Core::onUpdate = Script::newRef();
 
 	void Core::init(int width, int height, const string& title)
 	{
@@ -37,13 +37,7 @@ namespace cap
 		// Camera init //
 		default_camera = new Camera(window->getDefaultView());
 		current_camera = default_camera;
-
 		current_level = nullptr;
-
-		// Init events //
-        onSetup = Script::newRef();
-        onClose = Script::newRef();
-		onUpdate = Script::newRef();
 
         // Reset log //
         Script::reset_log("Captain Engine log:");
@@ -174,9 +168,9 @@ namespace cap
 				level = static_cast<LevelManager*>(loader)->loadLevel(name);
 				if (level) levels[level->getName()] = level;
 			}
-			else Script::print_log("Error. Wrong loader '" + loader_type + "'! Tileset not loaded!");
+			else Script::print_log("Error. Wrong loader '" + loader_type + "'! Level not loaded!");
 		}
-		else Script::print_log("Error. Loader '" + loader_type + "' not found! Tileset not loaded!");
+		else Script::print_log("Error. Loader '" + loader_type + "' not found! Level not loaded!");
 
 		return level;
 	}
