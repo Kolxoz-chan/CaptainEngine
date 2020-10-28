@@ -1,6 +1,7 @@
 #pragma once
 #include <core\types.h>
 #include <core\script.h>
+#include <core\constants.h>
 
 #include <libraries\std.hpp>
 
@@ -65,12 +66,14 @@ namespace cap
 	};
 
 	// Отображаемая сущность
-	class DrawableEntity : public RectEntity
+	class DrawableEntity : public RectEntity, public Drawable
 	{
 	private:
 		RenderStates states;
 		Drawable* drawable;
 		bool visible;
+
+		void draw(RenderTarget& target, RenderStates states) const;
 
 	public:
 		DrawableEntity(const string& name = "object");
@@ -79,8 +82,6 @@ namespace cap
 		void setTexture(Sprite sprite);
 
 		void setVisible(bool value);
-
-		virtual void draw();
 	};
 
 	// ----------- Custom Entities ---------------------- //

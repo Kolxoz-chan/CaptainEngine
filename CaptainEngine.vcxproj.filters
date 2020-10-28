@@ -694,7 +694,6 @@
     <None Include="gamedata\scripts\main.lua" />
     <None Include="gamedata\scripts\player.lua" />
     <None Include="gamedata\scripts\class_maker.lua" />
-    <None Include=".gitignore" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

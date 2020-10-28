@@ -32,7 +32,7 @@ namespace cap
 		Point(const Vector2i& point);
 		Point(const Vector2u& point);
 
-		inline Point round()
+		inline Point round() const
 		{
 			return Point((int)x, (int)y);
 		}
@@ -44,8 +44,8 @@ namespace cap
 		friend Point operator* (const Point& left, float right);
 		friend Point operator/ (const Point& left, float right);
 
-		friend Point operator== (const Point& left, const Point& right);
-		friend Point operator< (const Point& left, const Point& right);
+		bool operator== (const Point& right) const;
+		bool operator< (const Point& right) const;
 
 		operator Vector2f();
 		operator Vector2i();

@@ -62,7 +62,6 @@ namespace cap
 
 	void TileLayer::addTile(Sprite tile, Point pos)
 	{
-		tile.setPosition(pos);
 		m_tiles[pos] = tile;
 	}
 
@@ -71,7 +70,7 @@ namespace cap
 		View view = target.getView();
 		Point center = view.getCenter();
 		Point size = view.getSize();
-		Rect rect = Rect(center - size / 2, size) / Rect(m_tilesize, m_tilesize);
+		Rect rect = Rect(center - size / 2, size) / Rect(m_tilesize, m_tilesize) + Rect(-1, -1, 1, 1);
 		rect = rect.round();
 
 		for (int x = rect.x; x < rect.width; x++)
@@ -81,7 +80,11 @@ namespace cap
 				Point point = Point(x, y);
 				if (m_tiles.find(point) != m_tiles.end())
 				{
-					target.draw(m_tiles.at(point));
+					target.draw(m_tiles.at(point), states);
+				}
+				else if (m_objects.find(point) != m_objects.end())
+				{
+					target.draw(*m_objects.at(point), states);
 				}
 			}
 		}
@@ -125,7 +128,7 @@ namespace cap
 
 	void ObjectLayer::draw(RenderTarget& target, RenderStates states) const
 	{
-		for (auto obj : drawable_objects) obj->draw();
+		for (auto obj : drawable_objects) target.draw(*obj, states);
 	}
 
 	void ObjectLayer::update()

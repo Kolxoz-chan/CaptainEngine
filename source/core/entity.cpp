@@ -1,5 +1,4 @@
 #include <core\entity.h>
-#include <core\core.h>
 
 namespace cap
 {
@@ -107,12 +106,12 @@ namespace cap
 		this->drawable = new Sprite(sprite);
 	}
 
-	void DrawableEntity::draw()
+	void DrawableEntity::draw(RenderTarget& target, RenderStates states) const
 	{
 		if (drawable && visible)
 		{
 			dynamic_cast<Transformable*>(drawable)->setPosition(position.round());
-			Core::window->draw(*drawable, states);
+			target.draw(*drawable, states);
 		}
 	}
 

@@ -371,7 +371,6 @@
     <ClInclude Include="source\libraries\tinyxml2\tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".gitignore" />
     <None Include="gamedata\scripts\class_maker.lua" />
     <None Include="gamedata\scripts\main.lua" />
     <None Include="gamedata\scripts\player.lua" />

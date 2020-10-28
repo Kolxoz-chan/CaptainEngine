@@ -39,7 +39,7 @@ namespace cap
 	class TileLayer : public Container
 	{
 		using TileMatrix = map<Point, Sprite>;
-		using ObjectMatrix = map<Point, Entity*>;
+		using ObjectMatrix = map<Point, DrawableEntity*>;
 
 	private:
 		TileMatrix m_tiles;

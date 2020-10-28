@@ -82,14 +82,17 @@ namespace cap
 		return Point(left.x / right, left.y / right);
 	}
 
-	Point operator== (const Point& left, const Point& right)
+	bool Point::operator== (const Point& right) const
 	{
-		return left.x == right.x && left.y == right.y;
+		return x == right.x && y == right.y;
 	}
 
-	Point operator< (const Point& left, const Point& right)
+	bool Point::operator< (const Point& right) const
 	{
-		return (left.y < right.y) || (left.x < right.x);
+		if (y < right.y) return true;
+		if (y == right.y) return x < right.x;
+		return false;
+		
 	}
 
 	Point::operator Vector2f()

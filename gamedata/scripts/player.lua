@@ -5,7 +5,7 @@ function Player:new()
 end
 
 function Player:onUpdate()
-	local speed = Core.deltaTime * 100
+	local speed = Core.deltaTime * 150
 
 	if Input.isKeyboardPressed(KB_W) or Input.isKeyboardPressed(KB_UP) then
 		self:move(Point(0, -1 * speed))
