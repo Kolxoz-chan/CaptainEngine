@@ -13,7 +13,7 @@ namespace cap
 	protected:
 		int m_type;
 		LuaMap properties;
-		string name, description, autor, version, url;
+		string name, description, author, version, url;
 
 	public:
 		ResourceManager(int type) : m_type(type) {};

@@ -3,7 +3,7 @@
 TiledManager::TiledManager()
 {
 	this->name = "Tiled level loader [CSV]";
-	this->autor = "Kolxoz";
+	this->author = "Kolxoz";
 	this->version = "1.0";
 	this->description = "This parser is designed to load maps created in Tiled 1.3.2 in CSV mode";
 
@@ -17,6 +17,9 @@ TileLayer* TiledManager::loadTileLayer(XMLElement* layer)
 	
 	// —оздаЄм слой
 	TileLayer* currentLayer = new TileLayer(layerName);
+
+	// Set tile size
+	currentLayer->setTilesize(tilesize);
 
 	// —мещение сло€€
 	int offset_x, offset_y;
@@ -43,14 +46,22 @@ TileLayer* TiledManager::loadTileLayer(XMLElement* layer)
 		{
 			for (int x = 0; x < chunk_w; x++)
 			{
-				int x_pos = (chunk_x + x) * tilewidth;
-				int y_pos = (chunk_y + y) * tileheight;
+				int x_pos = (chunk_x + x);
+				int y_pos = (chunk_y + y);
 
 				int index = atoi(table[y][x].c_str()) - 1;
 
 				if (index >= 0)
 				{
-					if (required_tileset->length() > index) currentLayer->addTile(required_tileset->getTile(index), x_pos, y_pos);
+					if (required_tileset->length() > index)
+					{
+						Point point = Point(x_pos, y_pos);
+
+						Sprite tile = required_tileset->getTile(index);
+						tile.setPosition(point * tilesize);
+
+						currentLayer->addTile(tile, point);
+					}
 					else Script::print_log("Error! Tile with index " + to_string(index) + " is not loaded!");
 				}
 			}
@@ -219,8 +230,9 @@ Level* TiledManager::loadLevel(const string& path)
 		{
 			Level* lvl = new Level(level_name);
 
-			tilewidth = map->IntAttribute("tilewidth");
-			tileheight = map->IntAttribute("tileheight");
+			// Set tilesize
+			tilesize.x = map->IntAttribute("tilewidth");
+			tilesize.y = map->IntAttribute("tileheight");
 
 			// —читываем карту
 			XMLElement* elem = map->FirstChildElement();

@@ -149,7 +149,7 @@ namespace cap
 		window->clear();
 
 		// Draw level
-		if(current_level) current_level->draw();
+		if(current_level) window->draw(*current_level);
 
         // Draw gui
 		for (GUIForm* form : stack_gui)

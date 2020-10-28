@@ -12,7 +12,7 @@ class TiledManager : public LevelManager
 {
 private:
 	Tileset* required_tileset;
-	int tilewidth, tileheight;
+	Point tilesize;
 	
 private:
 	TileLayer* loadTileLayer(XMLElement* group);

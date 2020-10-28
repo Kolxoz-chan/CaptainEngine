@@ -1,5 +1,4 @@
 #include <core\level.h>
-#include <core\core.h>
 
 namespace cap
 {
@@ -61,19 +60,29 @@ namespace cap
 
 	}
 
-	void TileLayer::addTile(Sprite tile, int x, int y)
+	void TileLayer::addTile(Sprite tile, Point pos)
 	{
-		tile.setPosition(x, y);
-		tiles[x][y] = tile;
+		tile.setPosition(pos);
+		m_tiles[pos] = tile;
 	}
 
-	void TileLayer::draw()
+	void TileLayer::draw(RenderTarget& target, RenderStates states) const
 	{
-		for (auto y : tiles)
+		View view = target.getView();
+		Point center = view.getCenter();
+		Point size = view.getSize();
+		Rect rect = Rect(center - size / 2, size) / Rect(m_tilesize, m_tilesize);
+		rect = rect.round();
+
+		for (int x = rect.x; x < rect.width; x++)
 		{
-			for (auto x : y.second)
+			for (int y = rect.y; y < rect.height; y++)
 			{
-				Core::window->draw(x.second);
+				Point point = Point(x, y);
+				if (m_tiles.find(point) != m_tiles.end())
+				{
+					target.draw(m_tiles.at(point));
+				}
 			}
 		}
 	}
@@ -81,6 +90,11 @@ namespace cap
 	void TileLayer::update()
 	{
 
+	}
+
+	void TileLayer::setTilesize(Point size)
+	{
+		m_tilesize = size;
 	}
 
 	TileLayer* TileLayer::fromContainer(Container* container)
@@ -109,7 +123,7 @@ namespace cap
 			
 	}
 
-	void ObjectLayer::draw()
+	void ObjectLayer::draw(RenderTarget& target, RenderStates states) const
 	{
 		for (auto obj : drawable_objects) obj->draw();
 	}
@@ -130,11 +144,11 @@ namespace cap
 		containers.push_back(container);
 	}
 
-	void GroupLayer::draw()
+	void GroupLayer::draw(RenderTarget& target, RenderStates states) const
 	{
-		for (auto cont : containers)
+		for (auto container : containers)
 		{
-			if (cont->isVisible()) cont->draw();
+			if (container->isVisible()) target.draw(*container);
 		}
 	}
 
@@ -182,11 +196,11 @@ namespace cap
 		containers.push_back(container);
 	}
 
-	void Level::draw()
+	void Level::draw(RenderTarget& target, RenderStates states) const
 	{
-		for (auto cont : containers)
+		for (auto container : containers)
 		{
-			if (cont->isVisible()) cont->draw();
+			if (container->isVisible()) target.draw(*container);
 		}
 	}
 

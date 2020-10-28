@@ -9,7 +9,7 @@
 namespace cap
 {
 	// Base container class //
-	class Container
+	class Container : public Drawable
 	{
 	protected:
 		int type;
@@ -30,7 +30,6 @@ namespace cap
 		Point getOffset();
 		const string& getName();
 
-		virtual void draw() = 0;
 		virtual void update() = 0;
 
 		bool isVisible();
@@ -39,20 +38,23 @@ namespace cap
 	// Tile layer class //
 	class TileLayer : public Container
 	{
-		using TileMatrix = map<int, map<int, Sprite>>;
-		using ObjectMatrix = map<int, map<int, Entity*>>;
+		using TileMatrix = map<Point, Sprite>;
+		using ObjectMatrix = map<Point, Entity*>;
 
 	private:
-		TileMatrix tiles;
-		ObjectMatrix objects;
+		TileMatrix m_tiles;
+		ObjectMatrix m_objects;
+		Point m_tilesize;
 
 	public:
 		TileLayer(string name);
 
-		void addTile(Sprite sprite, int x, int y);
+		void addTile(Sprite sprite, Point pos);
 
-		void draw();
+		void draw(RenderTarget& target, RenderStates states) const;
 		void update();
+
+		void setTilesize(Point size);
 
 		// static functions
 		static TileLayer* fromContainer(Container* container);
@@ -70,7 +72,7 @@ namespace cap
 
 		void addObject(Entity* obj);
 
-		void draw();
+		void draw(RenderTarget& target, RenderStates states) const;
 		void update();
 
 		static ObjectLayer* fromContainer(Container* container);
@@ -87,14 +89,14 @@ namespace cap
 
 		void addContainer(Container* container);
 
-		void draw();
+		void draw(RenderTarget& target, RenderStates states) const;
 		void update();
 
 		static GroupLayer* fromContainer(Container* container);
 	};
 
 	// Level class //
-	class Level
+	class Level : public Drawable
 	{
 	private:
 		string name;
@@ -110,7 +112,7 @@ namespace cap
 
 		void addContainer(Container* container);
 
-		void draw();
+		void draw(RenderTarget& target, RenderStates states) const;
 		void update();
 	};
 }

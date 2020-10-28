@@ -40,9 +40,12 @@ namespace cap
 		friend Point operator+ (const Point& left, const Point& right);
 		friend Point operator- (const Point& left, const Point& right);
 		friend Point operator* (const Point& left, const Point& right);
-		friend Point operator* (const Point& left, float right);
 		friend Point operator/ (const Point& left, const Point& right);
+		friend Point operator* (const Point& left, float right);
 		friend Point operator/ (const Point& left, float right);
+
+		friend Point operator== (const Point& left, const Point& right);
+		friend Point operator< (const Point& left, const Point& right);
 
 		operator Vector2f();
 		operator Vector2i();
@@ -60,14 +63,22 @@ namespace cap
 		Rect(double x = 0.0, double y = 0.0, double h = 0.0, double w = 0.0);
 		Rect(Point pos , Point size);
 
+		Rect round();
+
 		Point getPosition();
 		Point getSize();
-
 		Point getCenter();
 		Point getLeftTop();
 		Point getLeftBottom();
 		Point getRightTop();
 		Point getRightBottom();
+
+		friend Rect operator+ (const Rect& left, const Rect& right);
+		friend Rect operator- (const Rect& left, const Rect& right);
+		friend Rect operator* (const Rect& left, const Rect& right);
+		friend Rect operator/ (const Rect& left, const Rect& right);
+		friend Rect operator* (const Rect& left, float right);
+		friend Rect operator/ (const Rect& left, float right);
 
 		operator IntRect();
 		operator FloatRect();

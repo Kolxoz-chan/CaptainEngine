@@ -15,7 +15,7 @@ namespace cap
 
 	const string& ResourceManager::getAutor()
 	{
-		return autor;
+		return author;
 	}
 
 	const string& ResourceManager::getVersion()

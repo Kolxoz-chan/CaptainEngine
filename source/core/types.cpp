@@ -82,6 +82,16 @@ namespace cap
 		return Point(left.x / right, left.y / right);
 	}
 
+	Point operator== (const Point& left, const Point& right)
+	{
+		return left.x == right.x && left.y == right.y;
+	}
+
+	Point operator< (const Point& left, const Point& right)
+	{
+		return (left.y < right.y) || (left.x < right.x);
+	}
+
 	Point::operator Vector2f()
 	{
 		return Vector2f(x, y);
@@ -159,6 +169,11 @@ namespace cap
 	Rect::Rect(Point pos, Point size) 
 		: x(pos.x), y(pos.y), width(size.x), height(size.y){}
 
+	Rect Rect::round()
+	{
+		return Rect(int(x), int(y), int(width), int(height));
+	}
+
 	Point Rect::getPosition()
 	{
 		return Point(x, y);
@@ -194,6 +209,67 @@ namespace cap
 		return Point(x + width, y + height);
 	}
 
+	Rect operator+ (const Rect& left, const Rect& right)
+	{
+		return Rect(
+			left.x + right.x,
+			left.y + right.y,
+			left.width + right.width,
+			left.height + right.height
+		);
+	}
+
+	Rect operator- (const Rect& left, const Rect& right)
+	{
+		return Rect(
+			left.x - right.x,
+			left.y - right.y,
+			left.width - right.width,
+			left.height - right.height
+		);
+	}
+
+	Rect operator* (const Rect& left, const Rect& right)
+	{
+		return Rect(
+			left.x * right.x,
+			left.y * right.y,
+			left.width * right.width,
+			left.height * right.height
+		);
+	}
+
+	Rect operator/ (const Rect& left, const Rect& right)
+	{
+		return Rect(
+			left.x / right.x,
+			left.y / right.y,
+			left.width / right.width,
+			left.height / right.height
+		);
+	}
+
+	Rect operator* (const Rect& left, float right)
+	{
+		return Rect(
+			left.x * right,
+			left.y * right,
+			left.width * right,
+			left.height * right
+		);
+	}
+	
+
+	Rect operator/ (const Rect& left, float right)
+	{
+		return Rect(
+			left.x / right,
+			left.y / right,
+			left.width / right,
+			left.height / right
+		);
+	}
+
 	Rect::operator IntRect()
 	{
 		return IntRect(x, y, width, height);
@@ -206,7 +282,7 @@ namespace cap
 
 	Rect::operator const char* ()
 	{
-		string str = "Rect(" + to_string(x) + ", " + to_string(y) + ", " + to_string(width) + "x" + to_string(height) + ")";
+		string str = "Rect(" + to_string(x) + ", " + to_string(y) + ", " + to_string(width) + ", " + to_string(height) + ")";
 		return str.c_str();
 	}
 
