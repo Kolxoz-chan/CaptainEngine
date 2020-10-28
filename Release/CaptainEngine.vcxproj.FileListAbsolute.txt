@@ -1,2 +1,0 @@
-C:\Users\uservso\Desktop\Sergey\VS\CaptainEngine\Release\CaptainEngine.exe
-D:\Scripts\CaptainEngine\Release\CaptainEngine.exe

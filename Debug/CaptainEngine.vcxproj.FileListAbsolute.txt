@@ -1,2 +1,0 @@
-D:\Scripts\CaptainEngine\Debug\CaptainEngine.exe
-D:\Scripts\CaptainEngine\Debug\CaptainEngine.pdb

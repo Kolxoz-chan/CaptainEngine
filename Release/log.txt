@@ -1,2 +1,0 @@
-Captain Engine log:
-cannot open gamedata/scripts/main.lua: No such file or directory
