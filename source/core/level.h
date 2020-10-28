@@ -8,6 +8,7 @@
 
 namespace cap
 {
+	// Base container class //
 	class Container
 	{
 	protected:
@@ -35,11 +36,12 @@ namespace cap
 		bool isVisible();
 	};
 
-	using TileMatrix = map<int, map<int, Sprite>>;
-	using ObjectMatrix = map<int, map<int, Entity*>>;
-
+	// Tile layer class //
 	class TileLayer : public Container
 	{
+		using TileMatrix = map<int, map<int, Sprite>>;
+		using ObjectMatrix = map<int, map<int, Entity*>>;
+
 	private:
 		TileMatrix tiles;
 		ObjectMatrix objects;
@@ -51,8 +53,12 @@ namespace cap
 
 		void draw();
 		void update();
+
+		// static functions
+		static TileLayer* fromContainer(Container* container);
 	};
 
+	// Object layer class //
 	class ObjectLayer : public Container
 	{
 	private:
@@ -66,8 +72,11 @@ namespace cap
 
 		void draw();
 		void update();
+
+		static ObjectLayer* fromContainer(Container* container);
 	};
 
+	// Group layer class //
 	class GroupLayer : public Container
 	{
 	private:
@@ -80,8 +89,11 @@ namespace cap
 
 		void draw();
 		void update();
+
+		static GroupLayer* fromContainer(Container* container);
 	};
 
+	// Level class //
 	class Level
 	{
 	private:

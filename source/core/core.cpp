@@ -72,7 +72,11 @@ namespace cap
 	void Core::initScript(string file)
     {
         // Class init
-        initClasses();
+		auto global = Script::global();
+		initTypesClasses(global);
+		initBaseClasses(global);
+		initContainersClasses(global);
+		initEntitiesClasses(global);
 
 		// Add require paths
 		Script::addRequirePath("gamedata\\scripts\\?.lua");
@@ -229,9 +233,9 @@ namespace cap
 		for (int i = 0; i < buttons.size(); i++) Script::setVar(buttons[i], i);
 	}
 
-    void Core::initClasses()
-    {
-		Script::global()
+	void Core::initBaseClasses(Namespace& global)
+    {	
+		global = global
 
 			// ------- Class Core ----------------------------------------------- //
 			.beginClass<Core>("Core")
@@ -253,6 +257,50 @@ namespace cap
 			.addStaticProperty("current_camera", &Core::current_camera)
 			.addStaticProperty("current_level", &Core::current_level)
 			.endClass()
+
+			// ------- Class Input ----------------------------------------------- //
+			.beginClass<Input>("Input")
+
+			.addStaticFunction("isKeyboardClicked", &Input::isKeyboardClicked)
+			.addStaticFunction("isKeyboardPressed", &Input::isKeyboardPressed)
+			.addStaticFunction("isKeyboardReleased", &Input::isKeyboardReleased)
+			.addStaticFunction("isMouseClicked", &Input::isMouseClicked)
+			.addStaticFunction("isMousePressed", &Input::isMousePressed)
+			.addStaticFunction("isMouseReleased", &Input::isMouseReleased)
+
+			.endClass();
+    }
+
+	void Core::initTypesClasses(Namespace& global)
+	{
+		global = global
+
+			// ------- Class Tileset ----------------------------------------------- //
+			.beginClass<Tileset>("Tileset")
+			.endClass()
+
+			// ------- Class Point ----------------------------------------------- //
+			.beginClass<Point>("Point")
+			.addConstructor<void(*)(double, double)>()
+
+			.addProperty("x", &Point::x)
+			.addProperty("y", &Point::y)
+			.endClass()
+
+			// ------- Class Rect ----------------------------------------------- //
+			.beginClass<Rect>("Rect")
+			.addConstructor<void(*)(double, double, double, double)>()
+
+			.addProperty("x", &Rect::x)
+			.addProperty("y", &Rect::y)
+			.addProperty("width", &Rect::width)
+			.addProperty("height", &Rect::height)
+			.endClass();
+	}
+
+	void Core::initEntitiesClasses(Namespace& global)
+	{
+		global = global
 
 			// ------- Class Entity ----------------------------------------------- //
 			.beginClass<Entity>("Entity")
@@ -285,55 +333,25 @@ namespace cap
 			.deriveClass<RectEntity, PointEntity>("RectEntity")
 			.addConstructor<void(*)(const string&)>()
 
-
 			.endClass()
 
 			// ------- Class PointEntity ----------------------------------------------- //
 			.deriveClass<DrawableEntity, RectEntity>("DrawableEntity")
 			.addConstructor<void(*)(const string&)>()
 			.endClass()
-			
+
 			// ------- Class Camera ----------------------------------------------- //
 			.deriveClass<Camera, RectEntity>("Camera")
 			.addConstructor<void(*)(Rect)>()
-			.endClass()
-
-			// ------- Class Tileset ----------------------------------------------- //
-			.beginClass<Level>("Level")
-			.endClass()
-
-			// ------- Class Tileset ----------------------------------------------- //
-			.beginClass<Tileset>("Tileset")
-			.endClass()
-
-			// ------- Class Point ----------------------------------------------- //
-			.beginClass<Point>("Point")
-			.addConstructor<void(*)(double, double)>()
-
-			.addProperty("x", &Point::x)
-			.addProperty("y", &Point::y)
-			.endClass()
-
-			// ------- Class Rect ----------------------------------------------- //
-			.beginClass<Rect>("Rect")
-			.addConstructor<void(*)(double, double, double, double)>()
-
-			.addProperty("x", &Rect::x)
-			.addProperty("y", &Rect::y)
-			.addProperty("width", &Rect::width)
-			.addProperty("height", &Rect::height)
-			.endClass()
-
-			// ------- Class Input ----------------------------------------------- //
-			.beginClass<Input>("Input")
-
-			.addStaticFunction("isKeyboardClicked", &Input::isKeyboardClicked)
-			.addStaticFunction("isKeyboardPressed", &Input::isKeyboardPressed)
-			.addStaticFunction("isKeyboardReleased", &Input::isKeyboardReleased)
-			.addStaticFunction("isMouseClicked", &Input::isMouseClicked)
-			.addStaticFunction("isMousePressed", &Input::isMousePressed)
-			.addStaticFunction("isMouseReleased", &Input::isMouseReleased)
-
 			.endClass();
-    }	
+	}
+
+	void Core::initContainersClasses(Namespace& global)
+	{
+		global = global
+
+			// ------- Class Level ----------------------------------------------- //
+			.beginClass<Level>("Level")
+			.endClass();
+	}
 }

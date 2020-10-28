@@ -83,6 +83,15 @@ namespace cap
 
 	}
 
+	TileLayer* TileLayer::fromContainer(Container* container)
+	{
+		if (container)
+		{
+			/// ????????????? ////
+		}
+		return nullptr;
+	}
+
 	// --------- Class ObjectLayer ------------------------------------------------------------------ //
 	ObjectLayer::ObjectLayer(string name) : Container(name, CAP_OBJECT_CONTAINER)
 	{

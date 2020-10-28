@@ -68,7 +68,10 @@ namespace cap
 		static void close();
 
 	private:
-		static void initClasses();
+		static void initBaseClasses(Namespace& global);
+		static void initTypesClasses(Namespace& global);
+		static void initEntitiesClasses(Namespace& global);
+		static void initContainersClasses(Namespace& global);
 		static void initConstants();
 		static void update();
 		static void draw();
