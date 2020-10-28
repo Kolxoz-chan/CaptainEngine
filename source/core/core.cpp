@@ -350,6 +350,10 @@ namespace cap
 	{
 		global = global
 
+			// ------- Class Container ----------------------------------------------- //
+			.beginClass<Container>("Container")
+			.endClass()
+
 			// ------- Class Level ----------------------------------------------- //
 			.beginClass<Level>("Level")
 			.endClass();
