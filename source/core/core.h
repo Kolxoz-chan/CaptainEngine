@@ -41,6 +41,8 @@ namespace cap
 		static LuaRef onSetup;
 		static LuaRef onClose;
 		static LuaRef onUpdate;
+		static LuaRef onPreDraw;
+		static LuaRef onPostDraw;
 
 		// Data arrais
 		static Managers managers;

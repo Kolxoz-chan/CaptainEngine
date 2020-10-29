@@ -20,6 +20,8 @@ namespace cap
     LuaRef          Core::onSetup = Script::newRef();
     LuaRef          Core::onClose = Script::newRef();
 	LuaRef			Core::onUpdate = Script::newRef();
+	LuaRef          Core::onPreDraw = Script::newRef();
+	LuaRef			Core::onPostDraw = Script::newRef();
 
 	void Core::init(int width, int height, const string& title)
 	{
@@ -152,8 +154,14 @@ namespace cap
 		// Clear display
 		window->clear();
 
+		// Pre draw event
+		if (onPreDraw.isFunction()) onPreDraw();
+
 		// Draw level
-		if(current_level) window->draw(*current_level);
+		if (current_level)
+		{
+			window->draw(*current_level);
+		}
 
         // Draw gui
 		for (GUIForm* form : stack_gui)
@@ -161,6 +169,10 @@ namespace cap
 			window->draw(*form);
 		}
 
+		// Post draw event
+		if (onPostDraw.isFunction()) onPostDraw();
+
+		// Display
 		window->display();
 	}
 
@@ -249,6 +261,8 @@ namespace cap
 			.addStaticProperty("onSetup", &Core::onSetup)
 			.addStaticProperty("onClose", &Core::onClose)
 			.addStaticProperty("onUpdate", &Core::onUpdate)
+			.addStaticProperty("onPreDraw", &Core::onPreDraw)
+			.addStaticProperty("onPostDraw", &Core::onPostDraw)
 
 			.addStaticFunction("loadLevel", &Core::loadLevel)
 			.addStaticFunction("loadTileset", &Core::loadTileset)
@@ -271,6 +285,7 @@ namespace cap
 			.addStaticFunction("isMouseClicked", &Input::isMouseClicked)
 			.addStaticFunction("isMousePressed", &Input::isMousePressed)
 			.addStaticFunction("isMouseReleased", &Input::isMouseReleased)
+
 			.addStaticFunction("getMousePosition", &Input::getMousePosition)
 
 			.endClass();
@@ -291,8 +306,8 @@ namespace cap
 			.addProperty("x", &Point::x)
 			.addProperty("y", &Point::y)
 
-			.addFunction("__tostring", &Point::operator const char *)
-			.addFunction("__eq", &Point::operator==)
+			.addFunction("__tostring", &Point::toString)
+			//.addFunction("__eq", &Point::isEqual)
 
 			.addStaticFunction("distance", &Point::distance)
 			.endClass()

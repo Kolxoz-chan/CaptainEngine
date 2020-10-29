@@ -51,7 +51,13 @@ namespace cap
 		operator Vector2i();
 		operator Vector2u();
 
-		operator const char* ();
+		inline operator const char* ()
+		{
+			return toString();
+		}
+
+		const char* toString();
+		bool isEqual(const Point* left, const Point* right);
 
 		static double distance(const Point& left, const Point& right);
 	};

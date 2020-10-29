@@ -110,10 +110,15 @@ namespace cap
 		return Vector2u(x, y);
 	}
 
-	Point::operator const char* ()
+	const char* Point::toString()
 	{
 		string str = "Point(" + to_string(x) + ", " + to_string(y) + ")";
 		return str.c_str();
+	}
+
+	bool Point::isEqual(const Point* left, const Point* right)
+	{
+		return (*left) == (*right);
 	}
 
 	double Point::distance(const Point& left, const Point& right)
