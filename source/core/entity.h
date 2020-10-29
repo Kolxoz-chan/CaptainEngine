@@ -50,6 +50,7 @@ namespace cap
 		Point getPosition();
 
 		void move(Point vec);
+		void move_to(Point vec, double step);
 	};
 
 	// Прямоугольная сущность

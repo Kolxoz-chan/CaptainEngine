@@ -12,7 +12,7 @@ function Core:onSetup()
 end
 
 function Core:onClose()
-
+	
 end
 
 function Core:onUpdate()

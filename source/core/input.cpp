@@ -4,6 +4,7 @@ namespace cap
 {
 	vector<bool>		Input::m_mouse_pressed;
 	vector<bool>		Input::m_keyboard_pressed;
+	Window*				Input::window = nullptr;
 
 	void Input::init()
 	{
@@ -32,6 +33,21 @@ namespace cap
 			m_keyboard_pressed[button] = false;
 		}
 		return false;
+	}
+
+	Point Input::getMousePosition(bool absolute)
+	{
+		Point pos = Mouse::getPosition(*window);
+		if (absolute)
+		{
+			View cam = static_cast<RenderWindow*>(window)->getView();
+			Point cam_center = cam.getCenter();
+			Point cam_size = cam.getSize();
+
+			pos = pos + cam_center - cam_size / 2;
+		}
+
+		return pos;
 	}
 
 	bool Input::isMousePressed(int button)

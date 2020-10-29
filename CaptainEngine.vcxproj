@@ -374,7 +374,6 @@
     <None Include="gamedata\scripts\class_maker.lua" />
     <None Include="gamedata\scripts\main.lua" />
     <None Include="gamedata\scripts\player.lua" />
-    <None Include="README.md" />
     <None Include="source\libraries\sfml\include\SFML\Audio\SoundFileFactory.inl" />
     <None Include="source\libraries\sfml\include\SFML\Graphics\Glsl.inl" />
     <None Include="source\libraries\sfml\include\SFML\Graphics\Rect.inl" />
@@ -384,9 +383,6 @@
     <None Include="source\libraries\sfml\include\SFML\System\Utf.inl" />
     <None Include="source\libraries\sfml\include\SFML\System\Vector2.inl" />
     <None Include="source\libraries\sfml\include\SFML\System\Vector3.inl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="log.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

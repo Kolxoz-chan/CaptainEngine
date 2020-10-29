@@ -23,21 +23,22 @@ namespace cap
 
 	void Core::init(int width, int height, const string& title)
 	{
-        // Classes init //
-        Script::init();
+		// Classes init //
+		Script::init();
 		Input::init();
 
-		// Init constants //
-		Core::initConstants();
-
-        // Window //
+		// Window //
 		window = new RenderWindow(VideoMode(width, height), title);
 		window->setPosition(Point(50, 50));
+		Input::window = window;
 
 		// Camera init //
 		default_camera = new Camera(window->getDefaultView());
 		current_camera = default_camera;
 		current_level = nullptr;
+
+		// Init constants
+		Core::initConstants();
 
         // Reset log //
         Script::reset_log("Captain Engine log:");
@@ -92,6 +93,7 @@ namespace cap
 	{
 		while (window->pollEvent(event))
 		{
+			// Event on close window
 			if (event.type == Event::Closed)
 			{
 				if (onClose.isFunction())
@@ -101,6 +103,8 @@ namespace cap
 				}
 				else window->close();
 			}
+
+			// Event on resize window
 			else if (event.type == Event::Resized)
 			{
 				Point size = Point(window->getSize());
@@ -267,6 +271,7 @@ namespace cap
 			.addStaticFunction("isMouseClicked", &Input::isMouseClicked)
 			.addStaticFunction("isMousePressed", &Input::isMousePressed)
 			.addStaticFunction("isMouseReleased", &Input::isMouseReleased)
+			.addStaticFunction("getMousePosition", &Input::getMousePosition)
 
 			.endClass();
     }
@@ -285,6 +290,11 @@ namespace cap
 
 			.addProperty("x", &Point::x)
 			.addProperty("y", &Point::y)
+
+			.addFunction("__tostring", &Point::operator const char *)
+			.addFunction("__eq", &Point::operator==)
+
+			.addStaticFunction("distance", &Point::distance)
 			.endClass()
 
 			// ------- Class Rect ----------------------------------------------- //
@@ -306,12 +316,12 @@ namespace cap
 			.beginClass<Entity>("Entity")
 
 			.addProperty("self", &Entity::self)
+
 			.addFunction("update", &Entity::update)
 
 			.addFunction("addChild", &Entity::addChild)
 
 			.addFunction("setName", &Entity::setName)
-
 			.addFunction("getName", &Entity::getName)
 			.addFunction("getType", &Entity::getType)
 			.addFunction("getParent", &Entity::getParent)
@@ -327,6 +337,7 @@ namespace cap
 			.addFunction("getPosition", &PointEntity::getPosition)
 
 			.addFunction("move", &PointEntity::move)
+			.addFunction("move_to", &PointEntity::move_to)
 			.endClass()
 
 			// ------- Class PointEntity ----------------------------------------------- //

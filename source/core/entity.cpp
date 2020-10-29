@@ -64,6 +64,19 @@ namespace cap
 		position.y += vec.y;
 	}
 
+	void PointEntity::move_to(Point vec, double step)
+	{
+		Point pos = getPosition();
+		if (Point::distance(vec, pos) > step)
+		{
+			vec = vec - pos;
+			double sum = abs(vec.x) + abs(vec.y);
+			move((vec / sum) * step);
+		}
+		else setPosition(vec);
+	}
+
+
 	/* -------------------- Rect entity ---------------------- */
 	RectEntity::RectEntity(const string& name)
 	{

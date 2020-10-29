@@ -1,5 +1,7 @@
 #pragma once
 #include <core/constants.h>
+#include <core/types.h>
+
 #include <libraries/std.hpp>
 #include <libraries/sfml.hpp>
 
@@ -25,6 +27,7 @@ namespace cap
 		static bool isKeyboardClicked(int button);
 
 		// Mouse
+		static Point getMousePosition(bool absolute = false);
 		static bool isMousePressed(int button);
 		static bool isMouseReleased(int button);
 		static bool isMouseClicked(int button);
@@ -32,5 +35,8 @@ namespace cap
 		// Getters
 		static const vector<string>& getKeyboardButtons();
 		static const vector<string>& getMouseButtons();
+
+		// Fields
+		static Window* window;
 	};
 }

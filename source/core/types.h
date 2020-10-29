@@ -52,6 +52,8 @@ namespace cap
 		operator Vector2u();
 
 		operator const char* ();
+
+		static double distance(const Point& left, const Point& right);
 	};
 
 	// Rect class

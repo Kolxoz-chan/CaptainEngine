@@ -116,6 +116,12 @@ namespace cap
 		return str.c_str();
 	}
 
+	double Point::distance(const Point& left, const Point& right)
+	{
+		Point difference = left - right;
+		return sqrt(pow(difference.x, 2) + pow(difference.y, 2));
+	}
+
 	// ------ Tileset Class -------------------------------------//
 	string Tileset::getName()
 	{
