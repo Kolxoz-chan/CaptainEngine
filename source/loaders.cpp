@@ -102,6 +102,7 @@ ObjectLayer* TiledManager::loadObjectLayer(XMLElement* layer)
 			{
 				// Если тип не опознан
 				Script::print_log("Error! Don't such class '" + string(type) + "', object is not loaded");
+				object = object->NextSiblingElement("object");
 				continue;
 			}
 		}

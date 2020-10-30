@@ -34,6 +34,11 @@ namespace cap
 
 		inline Point round() const
 		{
+			return Point(std::floor(x), std::floor(y));
+		}
+
+		inline Point toInteger() const
+		{
 			return Point((int)x, (int)y);
 		}
 
@@ -57,7 +62,7 @@ namespace cap
 		}
 
 		const char* toString();
-		bool isEqual(const Point* left, const Point* right);
+		bool isEqual(const Point* right);
 
 		static double distance(const Point& left, const Point& right);
 	};

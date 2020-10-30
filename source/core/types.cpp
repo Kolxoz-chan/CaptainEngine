@@ -116,9 +116,9 @@ namespace cap
 		return str.c_str();
 	}
 
-	bool Point::isEqual(const Point* left, const Point* right)
+	bool Point::isEqual(const Point* right)
 	{
-		return (*left) == (*right);
+		return (*this) == (*right);
 	}
 
 	double Point::distance(const Point& left, const Point& right)

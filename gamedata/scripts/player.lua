@@ -13,10 +13,10 @@ function Player:onUpdate()
 
 	-- Move to target --
 	if self.target then
-		self:move_to(self.target, Core.deltaTime * 100)
+		self:move_to(self.target, Core.deltaTime * self.speed)
 
 		-- Reset target --
-		if self.target.x == pos.x and self.target.y == pos.y then
+		if self.target == pos then
 			self:resetTarget()
 		end
 	end
@@ -37,7 +37,7 @@ end
 
 -- Update user actions --
 function Player:contol_update()
-	local speed = Core.deltaTime * 150
+	local speed = Core.deltaTime * self.speed
 
 	if Input.isKeyboardPressed(KB_W) or Input.isKeyboardPressed(KB_UP) then
 		self:move(Point(0, -1 * speed))

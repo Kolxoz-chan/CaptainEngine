@@ -155,7 +155,7 @@ namespace cap
 		window->clear();
 
 		// Pre draw event
-		if (onPreDraw.isFunction()) onPreDraw();
+		//if (onPreDraw.isFunction()) onPreDraw();
 
 		// Draw level
 		if (current_level)
@@ -170,7 +170,7 @@ namespace cap
 		}
 
 		// Post draw event
-		if (onPostDraw.isFunction()) onPostDraw();
+		//if (onPostDraw.isFunction()) onPostDraw();
 
 		// Display
 		window->display();
@@ -306,8 +306,10 @@ namespace cap
 			.addProperty("x", &Point::x)
 			.addProperty("y", &Point::y)
 
+			.addFunction("round", &Point::round)
+			.addFunction("toInteger", &Point::toInteger)
 			.addFunction("__tostring", &Point::toString)
-			//.addFunction("__eq", &Point::isEqual)
+			.addFunction("__eq", &Point::isEqual)
 
 			.addStaticFunction("distance", &Point::distance)
 			.endClass()
