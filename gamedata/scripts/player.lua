@@ -1,25 +1,16 @@
 Player = ClassMaker:newClass()
 
 function Player:new()
+	self.speed = 200
 	return ClassMaker:newObject(self, DrawableEntity())
 end
 
 function Player:onUpdate()
 	-- Update control --
 	self:contol_update()
-
+	
 	-- Getting values --
-	local pos = self:getPosition()
-
-	-- Move to target --
-	if self.target then
-		self:move_to(self.target, Core.deltaTime * self.speed)
-
-		-- Reset target --
-		if self.target == pos then
-			self:resetTarget()
-		end
-	end
+	local pos = self:getCenter()
 
 	-- Update camera --
 	Core.current_camera:setPosition(pos)
@@ -53,10 +44,6 @@ function Player:contol_update()
 
 	if Input.isKeyboardPressed(KB_D) or Input.isKeyboardPressed(KB_RIGHT) then
 		self:move(Point(1 * speed, 0))
-	end
-
-	if Input.isMouseClicked(MB_LEFT) then
-		self:setTarget(Input.getMousePosition(true))
 	end
 end
 

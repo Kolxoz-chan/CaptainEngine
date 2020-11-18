@@ -28,7 +28,7 @@ public:
 		LuaRef table = newTable();
 		for (int i = 0; i < arr.size(); i++)
 		{
-			table[i] = arr[i];
+			table[i+1] = arr[i];
 		}
 		return table;
 	}

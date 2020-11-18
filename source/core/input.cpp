@@ -2,19 +2,13 @@
 
 namespace cap
 {
-	vector<bool>		Input::m_mouse_pressed;
-	vector<bool>		Input::m_keyboard_pressed;
-	Window*				Input::window = nullptr;
-
-	void Input::init()
-	{
-		m_mouse_pressed = vector<bool>(Mouse::ButtonCount, false);
-		m_keyboard_pressed = vector<bool>(Keyboard::KeyCount, false);
-	}
+	map<Mouse::Button, bool>	Input::m_mouse_clicked;
+	map<Keyboard::Key, bool>	Input::m_keyboard_clicked;
+	Window*						Input::window = nullptr;
 
 	bool Input::isKeyboardPressed(int button)
 	{
-		return m_keyboard_pressed[button] = Keyboard::isKeyPressed(Keyboard::Key(button));
+		return Keyboard::isKeyPressed(Keyboard::Key(button));
 	}
 
 	bool Input::isKeyboardReleased(int button)
@@ -24,13 +18,20 @@ namespace cap
 
 	bool Input::isKeyboardClicked(int button)
 	{
-		if (Keyboard::isKeyPressed(Keyboard::Key(button)) && !m_keyboard_pressed[button])
+		Keyboard::Key key = Keyboard::Key(button);
+		bool has_button = (m_keyboard_clicked.find(key) != m_keyboard_clicked.end());
+
+		if (Keyboard::isKeyPressed(key) && !has_button)
 		{
-			return m_keyboard_pressed[button] = true;
+			return m_keyboard_clicked[key] = true;
 		}
-		if (!Keyboard::isKeyPressed(Keyboard::Key(button)) && m_keyboard_pressed[button])
+		else if (!Keyboard::isKeyPressed(key) && has_button)
 		{
-			m_keyboard_pressed[button] = false;
+			m_keyboard_clicked.erase(key);
+		}
+		else if (has_button)
+		{
+			return m_keyboard_clicked[key];
 		}
 		return false;
 	}
@@ -52,7 +53,7 @@ namespace cap
 
 	bool Input::isMousePressed(int button)
 	{
-		return m_mouse_pressed[button] = Mouse::isButtonPressed(Mouse::Button(button));
+		return Mouse::isButtonPressed(Mouse::Button(button));
 	}
 
 	bool Input::isMouseReleased(int button)
@@ -62,13 +63,20 @@ namespace cap
 
 	bool Input::isMouseClicked(int button)
 	{
-		if (Mouse::isButtonPressed(Mouse::Button(button)) && !m_mouse_pressed[button])
+		Mouse::Button key = Mouse::Button(button);
+		bool has_button = (m_mouse_clicked.find(key) != m_mouse_clicked.end());
+
+		if (Mouse::isButtonPressed(key) && !has_button)
 		{
-			return m_mouse_pressed[button] = true;
+			return m_mouse_clicked[key] = true;
 		}
-		if (!Mouse::isButtonPressed(Mouse::Button(button)) && m_mouse_pressed[button])
+		else if (!Mouse::isButtonPressed(key) && has_button)
 		{
-			m_mouse_pressed[button] = false;
+			m_mouse_clicked.erase(key);
+		}
+		else if (has_button)
+		{
+			return m_mouse_clicked[key];
 		}
 		return false;
 	}
@@ -81,6 +89,19 @@ namespace cap
 	const vector<string>& Input::getMouseButtons()
 	{
 		return m_mouse_buttons;
+	}
+
+	void Input::update()
+	{
+		for (auto p : m_mouse_clicked)
+		{
+			m_mouse_clicked[p.first] = false;
+		}
+
+		for (auto p : m_keyboard_clicked)
+		{
+			m_keyboard_clicked[p.first] = false;
+		}
 	}
 
 	vector<string> Input::m_mouse_buttons =

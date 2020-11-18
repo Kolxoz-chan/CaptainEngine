@@ -53,30 +53,11 @@ namespace cap
         void setSize(Point size, int relative = NULL);
     };
 
-    // --------- Class Button -------------------------------//
-    class GUIButton : public GUIWidget
-    {
-    private:
-        string m_title;
-
-    protected:
-        void draw(RenderTarget& target, RenderStates states) const;
-
-    public:
-        // Callback
-        LuaRef onClick = 0;
-
-        // Methods
-        GUIButton(string name = string());
-
-        void setText(string title);
-    };
-
     // --------- Class Label -------------------------------//
     class GUILabel : public GUIWidget
     {
     private:
-        string m_title;
+        string m_text;
 
     protected:
         void draw(RenderTarget& target, RenderStates states) const;
@@ -87,19 +68,28 @@ namespace cap
         void setText(string title);
     };
 
-    // --------- Class Text -------------------------------//
-    class GUIText : public GUIWidget
+    // --------- Class Button -------------------------------//
+    class GUIButton : public GUILabel
     {
-    private:
-        string m_title;
-
     protected:
         void draw(RenderTarget& target, RenderStates states) const;
 
     public:
-        GUIText(string name = string());
+        // Callback
+        LuaRef onClick = 0;
 
-        void setText(string title);
+        // Methods
+        GUIButton(string name = string());
+    };
+
+    // --------- Class LineEdit -------------------------------//
+    class GUILineEdit : public GUILabel
+    {
+    protected:
+        void draw(RenderTarget& target, RenderStates states) const;
+
+    public:
+        GUILineEdit(string name = string());
     };
 }
 

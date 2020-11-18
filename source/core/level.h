@@ -72,6 +72,10 @@ namespace cap
 
 		void addObject(Entity* obj);
 
+		LuaRef getObjects(LuaRef arg);
+		Entity* getFirstObject(LuaRef arg);
+		Entity* getLastObject(LuaRef arg);
+
 		void draw(RenderTarget& target, RenderStates states) const;
 		void update();
 
@@ -107,7 +111,7 @@ namespace cap
 		~Level();
 
 		const string& getName();
-		Container* getContainer(int index);
+		//Container* getContainer(int index);
 		Container* getContainer(string name);
 
 		void addContainer(Container* container);

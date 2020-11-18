@@ -5,7 +5,7 @@ namespace cap
 	/* -------------------- Base entity ---------------------- */
 	Entity::Entity(string name, int type) : name(name), type(type)
 	{
-		this->self = Script::newRef();
+		this->self = Script::newTable();
 	}
 
 	int Entity::getType()
@@ -30,7 +30,7 @@ namespace cap
 
 	Entity* Entity::getParent()
 	{
-		return parent;
+		return m_parent;
 	}
 
 	void Entity::addChild(Entity* child)
@@ -84,6 +84,21 @@ namespace cap
 		this->type = CAP_RECT_ENTITY;
 	}
 
+	Point RectEntity::getCenter()
+	{
+		return Rect(position, size).getCenter();
+	}
+
+	Point RectEntity::getSize()
+	{
+		return size;
+	}
+
+	Rect RectEntity::getRect()
+	{
+		return Rect(position, size);
+	}
+
 	void RectEntity::setSize(Point size)
 	{
 		this->size = size;
@@ -100,13 +115,11 @@ namespace cap
 	{
 		this->name = name;
 		this->type = CAP_DRAWABLE_ENTTY;
-		this->drawable = nullptr;
-		this->visible = true;
 	}
 
 	DrawableEntity::~DrawableEntity()
 	{
-		if (drawable) delete drawable;
+		if (m_drawable) delete m_drawable;
 	}
 
 	void DrawableEntity::setVisible(bool value)
@@ -116,15 +129,15 @@ namespace cap
 
 	void DrawableEntity::setTexture(Sprite sprite)
 	{
-		this->drawable = new Sprite(sprite);
+		m_drawable = new Sprite(sprite);
 	}
 
 	void DrawableEntity::draw(RenderTarget& target, RenderStates states) const
 	{
-		if (drawable && visible)
+		if (m_drawable && visible)
 		{
-			dynamic_cast<Transformable*>(drawable)->setPosition(position.round());
-			target.draw(*drawable, states);
+			dynamic_cast<Transformable*>(m_drawable)->setPosition(position.round());
+			target.draw(*m_drawable, states);
 		}
 	}
 
@@ -137,6 +150,11 @@ namespace cap
 	Camera::Camera(const View& view)
 	{
 		m_view = view;
+	}
+
+	void Camera::zoom(double value)
+	{
+		m_view.zoom(value);
 	}
 
 	void Camera::resize(const Point& size)
@@ -152,5 +170,77 @@ namespace cap
 	const View& Camera::getView()
 	{
 		return m_view;
+	}
+
+	/* -------------------- Primitive entity ---------------------- */
+	Primitive::Primitive(const string& name) : DrawableEntity(name)
+	{
+		m_drawable = new ConvexShape();
+	}
+
+	void Primitive::setBackgroundColor(const Color& color)
+	{
+		m_background_color = color;
+	}
+
+	void Primitive::setOutlineColor(const Color& color)
+	{
+		m_outline_color = color;
+	}
+
+	void Primitive::setOutlineThikness(double value)
+	{
+		m_outline_thickness = value;
+	}
+
+	void Primitive::generatePrimitive(int primitive)
+	{
+		ConvexShape* shape = static_cast<ConvexShape*>(m_drawable);
+		shape->setPointCount(0);
+
+		switch (primitive)
+		{
+		case CAP_PRIMITIVE_RECT:
+			shape->setPointCount(4);
+
+			shape->setPoint(0, Point(0, 0));
+			shape->setPoint(1, Point(1, 0));
+			shape->setPoint(2, Point(1, 1));
+			shape->setPoint(3, Point(0, 1));
+
+			break;
+		}
+	}
+
+	void Primitive::clear()
+	{
+		static_cast<ConvexShape*>(m_drawable)->setPointCount(0);
+	}
+
+	void Primitive::addPoint(Point point)
+	{
+		ConvexShape* shape = static_cast<ConvexShape*>(m_drawable);
+		shape->setPoint(shape->getPointCount(), point);
+	}
+
+	void Primitive::draw(RenderTarget& target, RenderStates states) const
+	{
+		if (m_drawable && visible)
+		{
+			ConvexShape shape = *dynamic_cast<ConvexShape*>(m_drawable);
+			shape.setPosition(position.round());
+			
+			for (int i = 0; i < shape.getPointCount(); i++)
+			{
+				Point point = shape.getPoint(i);
+				shape.setPoint(i, point * size);
+			}
+
+			shape.setFillColor(m_background_color);
+			shape.setOutlineColor(m_outline_color);
+			shape.setOutlineThickness(m_outline_thickness);
+
+			target.draw(shape, states);
+		}
 	}
 }

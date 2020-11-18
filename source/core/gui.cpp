@@ -68,7 +68,7 @@ namespace cap
             Color style = getStyle<Color>(GUI_STYLE_BACKGROUND_COLOR);
             window.setFillColor(style);
         }
-        window.setOutlineColor(Color::Red);
+        window.setOutlineColor(sf::Color::Red);
         window.setOutlineThickness(4);
 
         target.draw(window);
@@ -88,31 +88,15 @@ namespace cap
         m_size = size;
     }
 
-    // --------- Class Button -------------------------------//
-    GUIButton::GUIButton(string name) : GUIWidget(name, CAP_GUI_BUTTON) 
-    {
-        onClick = Script::newRef();
-    }
-
-    void GUIButton::setText(string title)
-    {
-        m_title = title;
-    }
-
-    void GUIButton::draw(RenderTarget& target, RenderStates states) const
-    {
-        // ??????????? //
-    }
-
     // --------- Class Label -------------------------------//
     GUILabel::GUILabel(string name) : GUIWidget(name, CAP_GUI_LABEL)
     {
         
     }
 
-    void  GUILabel::setText(string title)
+    void  GUILabel::setText(string text)
     {
-        m_title = title;
+        m_text = text;
     }
 
     void GUILabel::draw(RenderTarget& target, RenderStates states) const
@@ -120,18 +104,25 @@ namespace cap
         // ??????????????????? //
     }
 
+    // --------- Class Button -------------------------------//
+    GUIButton::GUIButton(string name) : GUILabel(name)
+    {
+        m_type = CAP_GUI_BUTTON;
+        onClick = Script::newRef();
+    }
+
+    void GUIButton::draw(RenderTarget& target, RenderStates states) const
+    {
+        // ??????????? //
+    }
+
     // --------- Class Text -------------------------------//
-    GUIText::GUIText(string name) : GUIWidget(name, CAP_GUI_TEXT)
+    GUILineEdit::GUILineEdit(string name) : GUILabel(name)
     {
-
+        m_type = CAP_GUI_TEXT;
     }
-    void GUIText::draw(RenderTarget& target, RenderStates states) const
+    void GUILineEdit::draw(RenderTarget& target, RenderStates states) const
     {
-        // ??????????????? //
-    }
-
-    void GUIText::setText(string title)
-    {
-        m_title = title;
+        // ??????????????? 
     }
 }

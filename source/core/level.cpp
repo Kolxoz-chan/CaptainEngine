@@ -126,6 +126,76 @@ namespace cap
 			
 	}
 
+	LuaRef ObjectLayer::getObjects(LuaRef arg)
+	{
+		// if hasn't args 
+		if (arg.isNil())
+		{
+			return Script::toTable(all_objects);
+		}
+
+		// if arg is function
+		if (arg.isFunction())
+		{
+			LuaRef table = Script::newTable();
+			for (int i=0; i < all_objects.size(); i++)
+			{
+				Entity* obj = all_objects[i];
+				if(arg(obj)) table[i + 1] = obj;
+			}
+			return table;
+		}
+
+		return Script::newRef();
+	}
+
+	Entity* ObjectLayer::getFirstObject(LuaRef arg)
+	{
+		// if hasn't args 
+		if (arg.isNil())
+		{
+			if (all_objects.empty()) return nullptr;
+			else return all_objects[0];
+		}
+
+		// if arg is function
+		if (arg.isFunction())
+		{
+			for (int i = 0; i < all_objects.size(); i++)
+			{
+				Entity* obj = all_objects[i];
+				if (arg(obj)) return obj;
+			}
+			return nullptr;
+		}
+
+		return nullptr;
+	}
+
+	Entity* ObjectLayer::getLastObject(LuaRef arg)
+	{
+		// if hasn't args 
+		if (arg.isNil())
+		{
+			if (all_objects.empty()) return nullptr;
+			else return all_objects[all_objects.size() - 1];
+		}
+
+		// if arg is function
+		if (arg.isFunction())
+		{
+			Entity* object = nullptr;
+			for (int i = 0; i < all_objects.size(); i++)
+			{
+				Entity* obj = all_objects[i];
+				if (arg(obj)) object =  obj;
+			}
+			return object;
+		}
+
+		return nullptr;
+	}
+
 	void ObjectLayer::draw(RenderTarget& target, RenderStates states) const
 	{
 		for (auto obj : drawable_objects) target.draw(*obj, states);
@@ -134,6 +204,11 @@ namespace cap
 	void ObjectLayer::update()
 	{
 		for (auto obj : all_objects) obj->update();
+	}
+
+	ObjectLayer* ObjectLayer::fromContainer(Container* container)
+	{
+		return (ObjectLayer*)container;
 	}
 
 	// --------- Class GroupLayer ------------------------------------------------------------------ //
@@ -177,11 +252,6 @@ namespace cap
 	const string& Level::getName()
 	{
 		return name;
-	}
-
-	Container* Level::getContainer(int index)
-	{
-		return containers[index];
 	}
 
 	Container* Level::getContainer(string name)

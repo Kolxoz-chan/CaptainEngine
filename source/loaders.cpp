@@ -207,8 +207,10 @@ GroupLayer* TiledManager::loadGroupLayer(XMLElement* group)
 Level* TiledManager::loadLevel(const string& path)
 {
 	// Loading level file
+	Level* lvl = nullptr;
 	string level_name;
 	XMLDocument doc;
+
 	int status = doc.LoadFile(path.c_str());
 	if (status == XML_SUCCESS)
 	{
@@ -229,7 +231,7 @@ Level* TiledManager::loadLevel(const string& path)
 		XMLElement* map = doc.RootElement();
 		if (map)
 		{
-			Level* lvl = new Level(level_name);
+			lvl = new Level(level_name);
 
 			// Set tilesize
 			tilesize.x = map->IntAttribute("tilewidth");
@@ -246,12 +248,11 @@ Level* TiledManager::loadLevel(const string& path)
 
 				elem = elem->NextSiblingElement();
 			}
-			return lvl;
 		}
 	}
 	else print_error(doc, path);
 
-	return nullptr;
+	return lvl;
 }
 
 TilesetMap TiledManager::loadTilesetsForLevel(const string& name)
@@ -315,7 +316,7 @@ Tileset* TiledManager::loadTileset(const string& path)
 		XMLElement* image = root->FirstChildElement("image");
 		sf::Texture* texture = new sf::Texture();
 		string source = image->Attribute("source");
-		source = CAP_GAMEDATA_DIR + source.substr(3);
+		source = CAP_GAMEDATA_DIR + source.substr(3); 
 		
 		// Image loading
 		if (!texture->loadFromFile(source))
@@ -324,7 +325,7 @@ Tileset* TiledManager::loadTileset(const string& path)
 			Script::print_log("Error. File '" + source + "' not found! Tileset not loaded!");
 			return nullptr;
 		}
-		Point tile_size = { root->FloatAttribute("tilewidth"), root->FloatAttribute("tilewidth")};
+		Point tile_size = { root->FloatAttribute("tilewidth"), root->FloatAttribute("tileheight")};
 		int tilecount = root->IntAttribute("tilecount");
 		int columns = root->IntAttribute("columns");
 		int rows = tilecount / columns;

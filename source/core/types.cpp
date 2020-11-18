@@ -95,17 +95,17 @@ namespace cap
 		
 	}
 
-	Point::operator Vector2f()
+	Point::operator Vector2f() const
 	{
 		return Vector2f(x, y);
 	}
 
-	Point::operator Vector2i()
+	Point::operator Vector2i() const
 	{
 		return Vector2i(x, y);
 	}
 
-	Point::operator Vector2u()
+	Point::operator Vector2u() const
 	{
 		return Vector2u(x, y);
 	}
@@ -284,12 +284,12 @@ namespace cap
 		);
 	}
 
-	Rect::operator IntRect()
+	Rect::operator IntRect() const
 	{
 		return IntRect(x, y, width, height);
 	}
 
-	Rect::operator FloatRect()
+	Rect::operator FloatRect() const
 	{
 		return FloatRect(x, y, width, height);
 	}

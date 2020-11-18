@@ -7,11 +7,14 @@
 
 namespace cap
 {
+	class Container;
+
 	// Базовая сущность
 	class Entity
 	{
 	protected:
-		Entity* parent;
+		Container* m_container = nullptr;
+		Entity* m_parent = nullptr;
 		vector<Entity*> childs;
 		string name;
 		int type;
@@ -62,6 +65,10 @@ namespace cap
 	public:
 		RectEntity(const string& name = "object");
 
+		Point getCenter();
+		Point getSize();
+		Rect getRect();
+
 		void setSize(Point size);
 		void setRect(Rect rect);
 	};
@@ -69,12 +76,12 @@ namespace cap
 	// Отображаемая сущность
 	class DrawableEntity : public RectEntity, public Drawable
 	{
-	private:
+	protected:
 		RenderStates states;
-		Drawable* drawable;
-		bool visible;
+		Drawable* m_drawable = nullptr;
+		bool visible = true;
 
-		void draw(RenderTarget& target, RenderStates states) const;
+		virtual void draw(RenderTarget& target, RenderStates states) const;
 
 	public:
 		DrawableEntity(const string& name = "object");
@@ -85,20 +92,43 @@ namespace cap
 		void setVisible(bool value);
 	};
 
-	// ----------- Custom Entities ---------------------- //
+	// --------------- Camera entity ------------------- //
 	class Camera : public RectEntity
 	{
 	private:
 		View m_view;
 
 	public:
-		Camera() = default;
+		Camera(const string& name = "object") : RectEntity(name) {};
 		Camera(const View& view);
 		Camera(Rect rect);
 
+		void zoom(double value);
 		void resize(const Point& size);
 		void update();
 
 		const View& getView();
+	};
+
+	// ----------- Primitive Entity ---------------------- //
+	class Primitive : public DrawableEntity
+	{
+	private:
+		Color m_background_color, m_outline_color;
+		double m_outline_thickness = 0;
+
+		void draw(RenderTarget& target, RenderStates states) const;
+
+	public:
+		Primitive(const string& name = "object");
+
+		void setBackgroundColor(const Color& color);
+		void setOutlineColor(const Color& color);
+		void setOutlineThikness(double value);
+
+		void generatePrimitive(int primitive);
+
+		void clear();
+		void addPoint(Point point);
 	};
 }

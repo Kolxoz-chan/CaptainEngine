@@ -75,6 +75,14 @@ namespace cap
 		CAP_DEVICE_TOUCHSCREEN =	1 << 3
 	};
 
+	// Devices types
+	enum
+	{
+		CAP_PRIMITIVE_RECT,
+		CAP_PRIMITIVE_CIRCLE,
+		CAP_PRIMITIVE_TRIANGLE
+	};
+
 	// GUI styles list
 	enum
 	{

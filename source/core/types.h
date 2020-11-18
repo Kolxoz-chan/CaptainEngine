@@ -52,9 +52,9 @@ namespace cap
 		bool operator== (const Point& right) const;
 		bool operator< (const Point& right) const;
 
-		operator Vector2f();
-		operator Vector2i();
-		operator Vector2u();
+		operator Vector2f() const;
+		operator Vector2i() const;
+		operator Vector2u() const;
 
 		inline operator const char* ()
 		{
@@ -93,11 +93,21 @@ namespace cap
 		friend Rect operator* (const Rect& left, float right);
 		friend Rect operator/ (const Rect& left, float right);
 
-		operator IntRect();
-		operator FloatRect();
+		operator IntRect() const;
+		operator FloatRect() const;
 
 		operator const char* ();
 	};
+
+	// Color class
+/*	class Color : sf::Color
+	{
+	public:
+		Color(uint8_t r = 255, uint8_t g = 255, uint8_t b = 255, uint8_t a = 255);
+
+		inline operator sf::Color() const { return sf::Color(r, g, b, a); }
+		
+	};*/
 
 	// Tileset class
 	class Tileset

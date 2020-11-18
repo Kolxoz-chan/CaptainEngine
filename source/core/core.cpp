@@ -17,17 +17,23 @@ namespace cap
 	Forms           Core::forms;
 	GUIStack        Core::stack_gui;
 
-    LuaRef          Core::onSetup = Script::newRef();
-    LuaRef          Core::onClose = Script::newRef();
-	LuaRef			Core::onUpdate = Script::newRef();
-	LuaRef          Core::onPreDraw = Script::newRef();
-	LuaRef			Core::onPostDraw = Script::newRef();
+    LuaRef          Core::onSetup = 0;
+    LuaRef          Core::onClose = 0;
+	LuaRef			Core::onUpdate = 0;
+	LuaRef          Core::onPreDraw = 0;
+	LuaRef			Core::onPostDraw = 0;
 
 	void Core::init(int width, int height, const string& title)
 	{
 		// Classes init //
 		Script::init();
-		Input::init();
+
+		// Init variables //
+		onSetup = Script::newRef();
+		onClose = Script::newRef();
+		onUpdate = Script::newRef();
+		onPreDraw = Script::newRef();
+		onPostDraw = Script::newRef();
 
 		// Window //
 		window = new RenderWindow(VideoMode(width, height), title);
@@ -44,6 +50,13 @@ namespace cap
 
         // Reset log //
         Script::reset_log("Captain Engine log:");
+
+		// Create gui
+		GUIForm* form = new GUIForm();
+		stack_gui.push_back(form);
+
+		form->setPosition(100, 100);
+		form->setSize(300, 300);
 
         // Including plugins //
 		managers["TILED_MANAGER"] = new TiledManager();
@@ -142,6 +155,9 @@ namespace cap
 		current_camera->update();
 		window->setView(current_camera->getView());
 
+		// Update input
+		Input::update();
+
 		// Update level
 		if (current_level) current_level->update();
 
@@ -155,7 +171,7 @@ namespace cap
 		window->clear();
 
 		// Pre draw event
-		//if (onPreDraw.isFunction()) onPreDraw();
+		if (onPreDraw.isFunction()) onPreDraw();
 
 		// Draw level
 		if (current_level)
@@ -170,7 +186,7 @@ namespace cap
 		}
 
 		// Post draw event
-		//if (onPostDraw.isFunction()) onPostDraw();
+		if (onPostDraw.isFunction()) onPostDraw();
 
 		// Display
 		window->display();
@@ -357,13 +373,16 @@ namespace cap
 			.addFunction("move_to", &PointEntity::move_to)
 			.endClass()
 
-			// ------- Class PointEntity ----------------------------------------------- //
+			// ------- Class RectEntity ----------------------------------------------- //
 			.deriveClass<RectEntity, PointEntity>("RectEntity")
 			.addConstructor<void(*)(const string&)>()
 
+			.addFunction("getCenter", &RectEntity::getCenter)
+			.addFunction("getRect", &RectEntity::getRect)
+
 			.endClass()
 
-			// ------- Class PointEntity ----------------------------------------------- //
+			// ------- Class DrawableEntity ----------------------------------------------- //
 			.deriveClass<DrawableEntity, RectEntity>("DrawableEntity")
 			.addConstructor<void(*)(const string&)>()
 			.endClass()
@@ -371,6 +390,24 @@ namespace cap
 			// ------- Class Camera ----------------------------------------------- //
 			.deriveClass<Camera, RectEntity>("Camera")
 			.addConstructor<void(*)(Rect)>()
+
+			.addFunction("zoom", &Camera::zoom)
+
+			.endClass()
+
+			// ------- Class Primitive ----------------------------------------------- //
+			.deriveClass<Primitive, DrawableEntity>("Primitive")
+			.addConstructor<void(*)(const string&)>()
+
+			.addFunction("setOutlineColor", &Primitive::setOutlineColor)
+			.addFunction("setBackgroundColor", &Primitive::setBackgroundColor)
+			.addFunction("setOutlineThikness", &Primitive::setOutlineThikness)
+
+			.addFunction("generatePrimitive", &Primitive::generatePrimitive)
+
+			.addFunction("clear", &Primitive::clear)
+			.addFunction("addPoint", &Primitive::addPoint)
+
 			.endClass();
 	}
 
@@ -382,8 +419,22 @@ namespace cap
 			.beginClass<Container>("Container")
 			.endClass()
 
+			// ------- Class Container ----------------------------------------------- //
+			.beginClass<ObjectLayer>("ObjectLayer")
+
+			.addFunction("getFirstObject", &ObjectLayer::getFirstObject)
+			.addFunction("getLastObject", &ObjectLayer::getLastObject)
+			.addFunction("getObjects", &ObjectLayer::getObjects)
+
+			.addStaticFunction("fromContainer", ObjectLayer::fromContainer)
+
+			.endClass()
+
 			// ------- Class Level ----------------------------------------------- //
 			.beginClass<Level>("Level")
+
+			.addFunction("getContainer", &Level::getContainer)
+
 			.endClass();
 	}
 }

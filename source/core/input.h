@@ -10,16 +10,14 @@ namespace cap
 	class Input
 	{
 	private:
-		static vector<bool> m_mouse_pressed;
-		static vector<bool> m_keyboard_pressed;
+		static map<Mouse::Button, bool> m_mouse_clicked;
+		static map<Keyboard::Key, bool> m_keyboard_clicked;
 		static vector<string> m_mouse_buttons;
 		static vector<string> m_keyboard_buttons;
 
 	public:
 		Input() = delete;
 		~Input() = delete;
-
-		static void init();
 
 		// Keyboard
 		static bool isKeyboardPressed(int button);
@@ -35,6 +33,9 @@ namespace cap
 		// Getters
 		static const vector<string>& getKeyboardButtons();
 		static const vector<string>& getMouseButtons();
+
+		// Other
+		static void update();
 
 		// Fields
 		static Window* window;

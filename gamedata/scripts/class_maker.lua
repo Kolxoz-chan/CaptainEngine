@@ -12,15 +12,18 @@ function ClassMaker:newClass()
 end
 
 -- Create new object
-function ClassMaker:newObject(class, parent)
+function ClassMaker:newObject(old_class, parent)
+
+	-- copying table --
+	local class = {}
+	for k,v in pairs(old_class) do
+		class[k] = v
+	end
+
 	class.__index = class
 
-	-- If hasn't parent
-	if parent == nil then
-		return setmetatable({}, class)
-	
-	-- If parent is userdata
-	elseif type(parent) == "userdata" then
+	-- if parent is userdata
+	if type(parent) == "userdata" then
 		class.__parent = parent
 		parent.self = class
 		meta = {}
@@ -53,11 +56,13 @@ function ClassMaker:newObject(class, parent)
 
 		return setmetatable(class, meta)
 	
-	-- If parent is table
+	-- if parent is table
 	elseif type(parent) == "table" then
 		for key, val in pairs(class) do
 			parent[key] = val			
 		end
 		return parent
 	end
+
+	return setmetatable({}, class)
 end
